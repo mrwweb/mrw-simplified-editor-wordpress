@@ -1,0 +1,27 @@
+/* disable Dropcap. Currently no API to do it... */
+.components-panel__body.blocks-font-size .components-toggle-control:nth-child(3) {
+	display: none;
+}
+
+/* Hide the "Upload" button in the editor because it skips the media library */
+.components-form-file-upload,
+.editor-media-placeholder__url-input-container {
+	display: none;
+}
+
+/* Hide Heading Levels 1, 5, and 6 */
+.components-button[data-subscript="1"],
+.components-button[data-subscript="5"],
+.components-button[data-subscript="6"] {
+	display: none;
+}
+
+/* Image Pixel & Percentage Sizing  */
+.block-library-image__dimensions {
+	display: none;
+}
+
+/* Page Order Field */
+.editor-page-attributes__order {
+	display: none;
+}
