@@ -1,16 +1,18 @@
-=== MRW Web Design Simple TinyMCE ===
+=== MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: TinyMCE, Editor Styles, Editor, Text Editor
 Requires at least: 4.1
 Tested up to: 5.0
 Stable tag: 1.2.0
 Donate link: https://www.paypal.me/rootwiley
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Get rid of bad and obscure TinyMCE buttons. Move the rest to a single top row. Comes with a bit of help for adding custom CSS classes too.
+Formerly "MRW Web Design Simple TinyMCE" - Reduce number of features in the Block Editor and TinyMCE. Helps users focus on making great content and letting their themes make it beautiful.
 
 == Description ==
+
+*Formerly "MRW Web Design Simple TinyMCE"*
 
 **Please see the FAQ below for important information about WordPress 5.0 compatibility and upcoming changes to this plugin.**
 
@@ -79,9 +81,11 @@ At present, the plugin has no impact outside of the "Classic" block.
 
 However, I hope to release a new version of the plugin in early 2019 that implements the same philosophical types of changes to the new block editor interface. Currently, I plan to do the following:
 
+
 - Remove the default Verse, Table, More, Preformatted, and Code blocks
 	- (If the "More" *button* was added back to the old editor via a plugin filter, I plan to detect that and leave the "More" block in the new editor.)
 - Disable background and text color pickers unless the theme has registered explicit support for color palettes
+- Disable the drop-cap feature
 - Disable pixel-based sizing for fonts and images
 - Disable percentage sizing for images
 - Remove alignment options from block toolbar
