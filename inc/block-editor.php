@@ -48,6 +48,7 @@ function mrw_block_editor_js_config() {
 		'core/nextpage',
 		'core/audio',
 		'core/video',
+		'core/spacer',
 
 		// Widgets
 		'core/calendar',

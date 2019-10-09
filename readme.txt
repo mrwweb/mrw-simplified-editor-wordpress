@@ -27,7 +27,7 @@ When publishing content with a CMS, content should be entered semantically and f
 
 = Block Editor Features =
 
-- Hides infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
+- Hides infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
 - Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
 - Removes all preset Block Style Variations
 - Hides settings for dropcap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
