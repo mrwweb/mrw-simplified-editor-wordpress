@@ -106,14 +106,14 @@ function mrw_block_editor_js() {
 
 	wp_enqueue_style(
 		'mrw-block-editor-css',
-		plugins_url( 'mrw-web-design-simple-tinymce/css/block-editor.css' ),
+		plugins_url( 'css/block-editor.css', dirname(__FILE__) ),
 		array(),
 		'2.0.0'
 	);
 
     wp_register_script(
     	'mrw-block-editor-js',
-    	plugins_url( 'mrw-web-design-simple-tinymce/js/block-editor.js' ),
+    	plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
     	array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
     	'2.0.0'
     );
