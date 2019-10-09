@@ -2,21 +2,42 @@
 Contributors: mrwweb
 Tags: TinyMCE, Editor Styles, Editor, Text Editor
 Requires at least: 4.1
+Requires PHP: 5.6.20
 Tested up to: 5.0
 Stable tag: 1.2.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Formerly "MRW Web Design Simple TinyMCE" - Reduce number of features in the Block Editor and TinyMCE. Helps users focus on making great content and letting their themes make it beautiful.
+Formerly "MRW Web Design Simple TinyMCE" - Reduce the number of features in the Block Editor and Classic Editor. Help users focus on making great content and letting their themes make it beautiful.
 
 == Description ==
 
-*Formerly "MRW Web Design Simple TinyMCE"*
+*(Formerly "MRW Web Design Simple TinyMCE")*
 
-**Please see the FAQ below for important information about WordPress 5.0 compatibility and upcoming changes to this plugin.**
+When publishing content with a CMS, content should be entered semantically and formatted via a design system (created by the theme) to ensure consistent formatting and portable content.
 
-When publishing content with a CMS, all formatting should be semantic and promote highly-readable content. Out of the box, WordPress's TinyMCE configuration does not encourage either.
+**This plugin simplifies both the Block and Classic Editors to focus users on creating content, not formatting words.** There are no settings, and a few useful filters.
+
+> I built this plugin for use on client sites and share it in hopes that others will find it helpful. I'm highly motivated to maintain it since I use it for other people.
+> 
+> **This is an opinionated plugin.** You can read an in-depth reasoning behind the decisions made by this plugin in the post ["A WordPress Formatting Manifesto."](http://mrwweb.com/wordpress-formatting-manifesto/)
+>
+> [Submit Issues and follow development on Github.](https://github.com/mrwweb/mrw-web-design-simple-tinymce)
+
+= Block Editor Changes =
+
+- Hides infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
+- Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
+- Removes all preset Block Style Variations
+- Hides settings for dropcap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
+- Hides buttons for uploading images or inserting images via URL
+- Disables all color settings unless a theme explicitly defines a color palette
+- Calls extra attention to contrast errors
+
+\* Currently, headings only hidden on English language sites.
+
+= Classic Editor Changes =
 
 This plugin creates a single row of buttons containing the following (see also: plugin banner):
 
@@ -26,34 +47,16 @@ This plugin also provides a simple-yet-powerful filter (see below) for developer
 
 *\* The Styleselect contains Headings 2-4 and Blockquote as well as Strikethrough, Subscript, Superscript, Preformatted, and Code (added in v1.1.0) in an "Other Formats" submenu.*
 
-*\*\* This plugin pairs deliciously with [Paste as Plain Text](https://wordpress.org/plugins/paste-as-plain-text/).*
-
-> I built this plugin for use on client sites and share it in hopes that others will find it helpful. I'm highly motivated to maintain it since I use it for other people.
-> 
-> However, **this is an opinionated plugin.** You can read an in-depth reasoning behind the decisions made by this plugin in the post ["A WordPress Formatting Manifesto."](http://mrwweb.com/wordpress-formatting-manifesto/)
-> 
-> Major feature additions are unlikely and support will be limited to bugs and *basic* use of the filters.
-
-= Filters =
-
-The plugin hooks early to the standard `mce_buttons`, `mce_buttons_2`, 	and `tiny_mce_before_init` filters so that it's easy to override.
-
-This plugin replaces the "formatselect" with the "styleselect" for its added support of custom CSS styles. There is easy-to-use filter for allowing the application of CSS classes in the editor: `mrw_mce_text_style`. You can find an [example of the filter's usage on the "Other Notes" tag](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other_notes/). See also:
-
-* [tinymce.com/wiki.php/Configuration:style_formats](http://tinymce.com/wiki.php/Configuration:style_formats)
-* [tinymce.com/wiki.php/Configuration:formats](http://tinymce.com/wiki.php/Configuration:formats)
-* [wordpress.stackexchange.com/a/128950/9844](http://wordpress.stackexchange.com/a/128950/9844)
-
 = Other Plugins by MRWweb =
 
-* [Feature a Page Widget](https://wordpress.org/plugins/feature-a-page-widget/) - Shows a summary of any Page in any sidebar..
+* [Feature a Page Widget](https://wordpress.org/plugins/feature-a-page-widget/) - Shows a summary of any Page in any sidebar.
+* [Post Type Archive Descriptions](https://wordpress.org/plugins/post-type-archive-descriptions/) - Enables an editable description for a post type to display at the top of the post type archive page.
 * [Post Status Menu Items](http://wordpress.org/plugins/post-status-menu-items/) - Adds post status links–e.g. "Draft" (7)–to post type admin menus.
-* [Advanced Custom Fields Repeater & Flexible Content Fields Collapser](http://wordpress.org/plugins/advanced-custom-field-repeater-collapser/) - Easier sorting for large repeated fields in the Advanced Custom Fields plugin.
 * [Hawaiian Characters](http://wordpress.org/plugins/hawaiian-characters/) - Adds the correct characters with diacriticals to the WordPress editor Character Map for Hawaiian
 
 == Installation ==
 
-1. Upload `/mrwweb-simple-tinymce/` to the `/wp-content/plugins/` directory
+1. Upload `/mrw-web-design-simple-tinymce/` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the "Plugins" menu in WordPress
 1. Write away, right away!
 
@@ -68,45 +71,115 @@ This plugin replaces the "formatselect" with the "styleselect" for its added sup
 == Frequently Asked Questions ==
 
 = Is this plugin compatible with WordPress 5.0 / "Gutenberg"? =
-Yes and no. The changes this plugin makes the default WordPress content editor will continue to appear in two locations:
 
-1. On any page using the "Classic Editor" (pre-WordPress 5.0), most likely via the [Classic Editor plugin](https://wordpress.org/plugins/classic-editor/).
-1. Via the "Classic" block of the new editor.
+Yes! As of v2.0.0, the plugin removes some blocks, all default style variations, and a number of annoying settings that distract from making good content.
+
+= What happens to the old features of this editor? =
+
+Nothing! All the changes made to the Classic editor remain in place and appear in the Classic Block in the Block Editor.
 
 See Screenshot #3 to see the "Classic" block with this plugin enabled.
 
-= What changes does this plugin make to the new WordPress 5.0 block editor? =
-
-At present, the plugin has no impact outside of the "Classic" block.
-
-However, I hope to release a new version of the plugin in early 2019 that implements the same philosophical types of changes to the new block editor interface. Currently, I plan to do the following:
-
-
-- Remove the default Verse, Table, More, Preformatted, and Code blocks
-	- (If the "More" *button* was added back to the old editor via a plugin filter, I plan to detect that and leave the "More" block in the new editor.)
-- Disable background and text color pickers unless the theme has registered explicit support for color palettes
-- Disable the drop-cap feature
-- Disable pixel-based sizing for fonts and images
-- Disable percentage sizing for images
-- Remove alignment options from block toolbar
-- Remove Heading 1 option from the Heading block
-
-Just like the current plugin, these changes will all provide filters for overriding or adjusting decisions.
-
-If you have any feedback on these or other changes, please [let me know your thoughts](https://MRWweb.com/contact/).
-
 = What happened to the "Formats" dropdown in WordPress 5.0? =
-As noted in the first FAQ, any changes you've made to this plugin are still reflected in the Classic block of the new editor. So you and your users can access custom styles via the Formats dropdown in the Classic block.
 
-Luckily, the new editor provides for a ["Block Style Variation"](https://wordpress.org/gutenberg/handbook/designers-developers/developers/filters/block-filters/#block-style-variations) that is a better experience in the new editor. That allows you to set new styling classes on an existing block, very similar to how Formats worked in TinyMCE.
+As noted earlier, any changes you've made to this plugin are still reflected in the Classic block of the new editor. You and your users can access custom styles via the Formats dropdown in the Classic block.
+
+However, the new editor provides for a ["Block Style Variation"](https://wordpress.org/gutenberg/handbook/designers-developers/developers/filters/block-filters/#block-style-variations) that is a better experience in the new editor. That allows you to set new styling classes on an existing block, very similar to how Formats worked in TinyMCE.
+
+= Block Editor Filters =
+
+- `mrw_block_blacklist` - An array of blocks hidden by default. Add blocks to hide them or remove blocks from the array to show them.
+- `mrw_style_variations_blacklist` - Hides all default Block Style Variations. Unset either an entire block's worth of variations or a specific one.
+- `mrw_block_editor_disable_settings` - An array of Block Settings hidden by the editor. Current hidden settings:
+	- `drop-cap` - Drop Cap setting for Paragraph Block
+	- `image-file-upload` - Button to upload image directly rather than through Media Library in Image, Cover, Media & Text, and Gallery Blocks.
+	- `image-url` - Button to insert image from a URL rather than uploaded to Media Library in Image, Cover, Media & Text, and Gallery Blocks.
+	- `heading-1` - Heading 1 option in Heading Block
+	- `heading-5` - Heading 5 option in Heading Block
+	- `heading-6` - Heading 6 option in Heading Block
+	- `image-dimensions` - Pixel and percentage sizing of images in Image Block
+- `mrw_block_editor_hide_color_palette` - Whether to display the default or theme color palette. Defaults to true (hide it), but will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-color-palette' )` in most cases.
+
+= Classic Editor / Classic Block Filters =
+
+The plugin hooks early to the standard `mce_buttons`, `mce_buttons_2`, 	and `tiny_mce_before_init` filters so that it's easy to override.
+
+This plugin replaces the "formatselect" with the "styleselect" for its added support of custom CSS styles. There is easy-to-use filter for allowing the application of CSS classes in the editor: `mrw_mce_text_style`. You can find an [example of the filter's usage on the "Other Notes" tag](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other_notes/). See also:
+
+* [tinymce.com/wiki.php/Configuration:style_formats](http://tinymce.com/wiki.php/Configuration:style_formats)
+* [tinymce.com/wiki.php/Configuration:formats](http://tinymce.com/wiki.php/Configuration:formats)
+* [wordpress.stackexchange.com/a/128950/9844](http://wordpress.stackexchange.com/a/128950/9844)
 
 == Other Notes ==
 
 = Code Recipes =
 
-Below we have examples for adding back a button and adding a new "Text Styles" section for custom styles in the "Format" drop down.
+Below are a variety of useful, tested code examples for modifying the plugin's settings.
 
-= Add the "Insert More Tag" Button =
+= Block Editor: Allow use of default color palette =
+
+`
+add_filter( 'mrw_block_editor_hide_color_palette', '__return_true' );
+`
+
+= Block Editor: Hide or Unhide a Block =
+
+`
+add_filter( 'mrw_block_blacklist', 'show_verse_and_hide_latest_comments' );
+function show_verse_and_hide_latest_comments( $blacklist ) {
+
+	// Unhide the Verse Block (hidden by default)
+	$blacklist = array_diff( $blacklist, array( 'core/verse' ) );
+
+	// Hide the Latest Comments block (not hidden by default)
+	$blacklist[] = 'core/latest-comments';
+
+	return $blacklist;
+
+}
+`
+
+= Block Editor: Show one or some default Block Variations hidden by the plugin =
+
+`
+add_filter( 'mrw_style_variations_blacklist', 'show_circle_image_and_all_separator_styles' );
+function show_circle_image_and_all_separator_styles( $blacklist ) {
+
+	/*
+	STRUCTURE:
+	$blacklist = array(
+		'block-1' => array( 'variation-1', 'variation-2' ),
+		'block-2' => array( 'variation-1', 'variation-2' ),
+		// etc...
+	);
+	 */
+
+	// Unhide one specific variation for a block type
+	$blacklist['core/image'] = array_diff(
+		$blacklist['core/image'],
+		array( 'circle-mask')
+	);
+
+	// Unhide *all* variations for a block type
+	unset( $blacklist['core/separator'] );
+
+	return $blacklist;
+
+}
+`
+
+= Block Editor: Show a few Block Settings hidden by the plugin =
+
+This will show (unhide, really) the Drop Cap and Heading 1 settings for the Paragraph and Heading Blocks, respectively.
+
+`
+add_filter( 'mrw_block_editor_disable_settings', 'bring_back_the_dropcap_and_heading_1' );
+function bring_back_the_dropcap_and_heading_1( $features ) {
+	return array_diff( $features, array( 'dropcap', 'heading-1' ) );
+}
+`
+
+= Classic Editor / Block Editor: Add the "Insert More Tag" and More Block at once =
 
 This is the one button that might legitimately be missing from this plugin for a small subset of users. If you need it, use the following snippet in your theme's `functions.php` file. (Since the More Tag is used by a theme, the `functions.php` files is a good place for it.)
 
@@ -120,7 +193,7 @@ function mrw_mce_add_more_tag_button( $buttons ) {
 }
 `
 
-= Add Custom Styles to "Text Styles" submenu of "Formats" menu =
+= Classic Editor: Add Custom Styles to "Text Styles" submenu of "Formats" menu =
 
 **Warning:** The following feature is almost completely useless without an accompanying set of CSS rules in [an `editor-style.css` file](http://codex.wordpress.org/Editor_Style).
 
@@ -182,6 +255,18 @@ function mrw_add_text_styles_example( $styles ) {
 
 == Changelog ==
 
+= 2.0.0 (tbd) =
+* MAJOR UPDATE! Includes numerous changes to the Block Editor made using the same philosophy of encouraging editors to create semantic, portable content while letting themes make content beautiful.
+	* Hides the following infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive.
+		* The "More" Block is shown if you previously used this plugin and had filtered the TinyMCE buttons to re-add the More button.
+	* Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv.
+	* Removes all preset Block Style Variations.
+	* Hides Block Settings for dropcap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, and font sizing by pixel.
+	* Strongly encourages use of Media Library for all image uploading.
+	* Disables all color options unless theme explicitly defines a color palette.
+	* Calls extra attention to color contrast errors.
+* New `mrw_block_blacklist` filter allows hiding blocks from the editor in PHP.
+
 = 1.2.0 (Nov 13, 2016) =
 * Update "Heading" list to emphasize implied hierarchy. (See [#38049](https://core.trac.wordpress.org/ticket/38049) for background and potential core inclusion.)
 * Add horizontal rule button.
@@ -221,6 +306,9 @@ function mrw_add_text_styles_example( $styles ) {
 * Initial release
 
 == Upgrade Notice ==
+= 2.0.0 =
+* MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.
+
 = 1.1.0 =
 * Beating WordPress 4.2 to hiding `wp_help` on mobile. Adding `code` element to "Other Formats."
 
