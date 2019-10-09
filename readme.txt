@@ -86,6 +86,20 @@ As noted earlier, any changes you've made to this plugin are still reflected in 
 
 However, the new editor supports a ["Block Style Variation feature"](https://wordpress.org/gutenberg/handbook/designers-developers/developers/filters/block-filters/#block-style-variations) that is a better experience in the new editor. It allows you to set new styling classes on an existing block, very similar to how Formats worked in TinyMCE.
 
+= Block Editor Filters =
+
+- `mrw_block_blacklist` - An array of blocks hidden by default. Add blocks to hide them or remove blocks from the array to show them.
+- `mrw_style_variations_blacklist` - Hides all default Block Style Variations. Unset either an entire block's worth of variations or a specific one.
+- `mrw_block_editor_disable_settings` - An array of Block Settings hidden by the editor. Current hidden settings:
+	- `drop-cap` - Drop Cap setting for Paragraph Block
+	- `image-file-upload` - Button to upload image directly rather than through Media Library in Image, Cover, Media & Text, and Gallery Blocks.
+	- `image-url` - Button to insert image from a URL rather than uploaded to Media Library in Image, Cover, Media & Text, and Gallery Blocks.
+	- `heading-1` - Heading 1 option in Heading Block
+	- `heading-5` - Heading 5 option in Heading Block
+	- `heading-6` - Heading 6 option in Heading Block
+	- `image-dimensions` - Pixel and percentage sizing of images in Image Block
+- `mrw_block_editor_hide_color_palette` - Whether to display the default or theme color palette. Defaults to true (hide it), but will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-color-palette' )` in most cases.
+
 = Block Editor Filter Code Examples =
 
 Below are a variety of useful, tested code examples for modifying the plugin's settings.
@@ -153,6 +167,16 @@ function bring_back_the_dropcap_and_heading_1( $features ) {
 }
 `
 
+= Classic Editor / Classic Block Filters =
+
+The plugin hooks early to the standard `mce_buttons`, `mce_buttons_2`, 	and `tiny_mce_before_init` filters so that it's easy to override.
+
+This plugin replaces the "formatselect" with the "styleselect" for its added support of custom CSS styles. There is easy-to-use filter for allowing the application of CSS classes in the editor: `mrw_mce_text_style`. You can find an [example of the filter's usage on the "Other Notes" tag](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other_notes/). See also:
+
+* [tinymce.com/wiki.php/Configuration:style_formats](http://tinymce.com/wiki.php/Configuration:style_formats)
+* [tinymce.com/wiki.php/Configuration:formats](http://tinymce.com/wiki.php/Configuration:formats)
+* [wordpress.stackexchange.com/a/128950/9844](http://wordpress.stackexchange.com/a/128950/9844)
+
 = Classic Editor / Block Editor: Add the "Insert More Tag" and More Block at once =
 
 This is the one button that might legitimately be missing from this plugin for a small subset of users. If you need it, use the following snippet in your theme's `functions.php` file. (Since the More Tag is used by a theme, the `functions.php` files is a good place for it.)
@@ -218,30 +242,6 @@ function mrw_add_text_styles_example( $styles ) {
 	);
 	return array_merge( $styles, $new_styles );
 }`
-
-= Block Editor Filters =
-
-- `mrw_block_blacklist` - An array of blocks hidden by default. Add blocks to hide them or remove blocks from the array to show them.
-- `mrw_style_variations_blacklist` - Hides all default Block Style Variations. Unset either an entire block's worth of variations or a specific one.
-- `mrw_block_editor_disable_settings` - An array of Block Settings hidden by the editor. Current hidden settings:
-	- `drop-cap` - Drop Cap setting for Paragraph Block
-	- `image-file-upload` - Button to upload image directly rather than through Media Library in Image, Cover, Media & Text, and Gallery Blocks.
-	- `image-url` - Button to insert image from a URL rather than uploaded to Media Library in Image, Cover, Media & Text, and Gallery Blocks.
-	- `heading-1` - Heading 1 option in Heading Block
-	- `heading-5` - Heading 5 option in Heading Block
-	- `heading-6` - Heading 6 option in Heading Block
-	- `image-dimensions` - Pixel and percentage sizing of images in Image Block
-- `mrw_block_editor_hide_color_palette` - Whether to display the default or theme color palette. Defaults to true (hide it), but will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-color-palette' )` in most cases.
-
-= Classic Editor / Classic Block Filters =
-
-The plugin hooks early to the standard `mce_buttons`, `mce_buttons_2`, 	and `tiny_mce_before_init` filters so that it's easy to override.
-
-This plugin replaces the "formatselect" with the "styleselect" for its added support of custom CSS styles. There is easy-to-use filter for allowing the application of CSS classes in the editor: `mrw_mce_text_style`. You can find an [example of the filter's usage on the "Other Notes" tag](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other_notes/). See also:
-
-* [tinymce.com/wiki.php/Configuration:style_formats](http://tinymce.com/wiki.php/Configuration:style_formats)
-* [tinymce.com/wiki.php/Configuration:formats](http://tinymce.com/wiki.php/Configuration:formats)
-* [wordpress.stackexchange.com/a/128950/9844](http://wordpress.stackexchange.com/a/128950/9844)
 
 == Screenshots ==
 
