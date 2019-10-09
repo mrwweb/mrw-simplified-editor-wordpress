@@ -27,7 +27,7 @@ function mrw_block_editor_theme_support() {
 	 *
 	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
 	 */
-	$theme_palette = get_theme_support( 'editor-color-palette' )
+	$theme_palette = get_theme_support( 'editor-color-palette' );
 	$hide_palette = apply_filters( 'mrw_block_editor_hide_color_palette', empty( $theme_palette ) );
 	if( $hide_palette ) {
 		add_theme_support( 'editor-color-palette' );
