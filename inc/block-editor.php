@@ -83,11 +83,11 @@ function mrw_block_editor_js_config() {
 		$mrw_block_blacklist[] = 'core/more';
 	}
 
-	// use array values to ensure this is passed as an array and not an object
+	// use array_values to ensure this is passed as an array and not an object
 	$mrw_simple_js_options['blockBlacklist'] = array_values( apply_filters( 'mrw_block_blacklist', $mrw_block_blacklist ) );
 
-	// remove button styles
-	$mrw_style_variations_blacklist = array(
+	// default style variations
+	$default_style_variations_blacklist = array(
 		'core/image'		=> array( 'default', 'circle-mask' ),
 		'core/button' 		=> array( 'default', 'fill', 'squared', 'outline' ),
 		'core/quote' 		=> array( 'default', 'large' ),
@@ -95,7 +95,15 @@ function mrw_block_editor_js_config() {
 		'core/pullquote' 	=> array( 'default', 'solid-color' ),
 		'core/table'		=> array( 'default', 'stripes' ),
 	);
-	$mrw_simple_js_options['variationsBlacklist'] = apply_filters( 'mrw_style_variations_blacklist', $mrw_style_variations_blacklist );
+
+	$final_style_variations_blacklist = apply_filters( 'mrw_style_variations_blacklist', $default_style_variations_blacklist );
+
+	// use array_values to ensure this is passed as an array and not an object
+	foreach ( $final_style_variations_blacklist as $block => $variations ) {
+		$final_style_variations_blacklist[$block] = array_values( $variations );
+	}
+
+	$mrw_simple_js_options['variationsBlacklist'] = $final_style_variations_blacklist;
 
 	return $mrw_simple_js_options;
 
@@ -111,12 +119,12 @@ function mrw_block_editor_js() {
 		'2.0.0'
 	);
 
-    wp_register_script(
-    	'mrw-block-editor-js',
-    	plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
-    	array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
-    	'2.0.0'
-    );
+	wp_register_script(
+		'mrw-block-editor-js',
+		plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
+		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+		'2.0.0'
+	);
 
 	wp_localize_script(
 		'mrw-block-editor-js',
