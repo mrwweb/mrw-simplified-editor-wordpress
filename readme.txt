@@ -30,7 +30,7 @@ When publishing content with a CMS, content should be entered semantically and f
 - Hides infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
 - Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
 - Removes all preset Block Style Variations
-- Hides settings for dropcap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
+- Hides settings for Drop Cap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
 - Hides buttons for uploading images or inserting images via URL
 - Disables all color settings unless a theme explicitly defines a color palette
 - Calls extra attention to contrast errors
@@ -161,9 +161,9 @@ function show_circle_image_and_all_separator_styles( $blacklist ) {
 This will show (unhide, really) the Drop Cap and Heading 1 settings for the Paragraph and Heading Blocks, respectively.
 
 `
-add_filter( 'mrw_block_editor_disable_settings', 'bring_back_the_dropcap_and_heading_1' );
-function bring_back_the_dropcap_and_heading_1( $features ) {
-	return array_diff( $features, array( 'dropcap', 'heading-1' ) );
+add_filter( 'mrw_block_editor_disable_settings', 'bring_back_the_drop_cap_and_heading_1' );
+function bring_back_the_drop_cap_and_heading_1( $features ) {
+	return array_diff( $features, array( 'drop-cap', 'heading-1' ) );
 }
 `
 
@@ -259,7 +259,7 @@ function mrw_add_text_styles_example( $styles ) {
 		* The "More" Block is shown if you previously used this plugin and had filtered the TinyMCE buttons to re-add the More button.
 	* Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv.
 	* Removes all preset Block Style Variations.
-	* Hides Block Settings for dropcap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, and font sizing by pixel.
+	* Hides Block Settings for Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, and font sizing by pixel.
 	* Strongly encourages use of Media Library for all image uploading.
 	* Disables all color options unless theme explicitly defines a color palette.
 	* Calls extra attention to color contrast errors.
