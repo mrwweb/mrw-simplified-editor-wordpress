@@ -41,21 +41,21 @@ function mrw_block_editor_js_config() {
 
 	$mrw_block_blacklist = array(
 		// Core
-		'core/verse',
-		'core/table',
-		'core/preformatted',
+		'core/audio',
 		'core/code',
 		'core/nextpage',
-		'core/audio',
-		'core/video',
+		'core/preformatted',
 		'core/spacer',
+		'core/table',
+		'core/verse',
+		'core/video',
 
 		// Widgets
-		'core/calendar',
-		'core/tag-cloud',
-		'core/search',
-		'core/rss',
 		'core/archive',
+		'core/calendar',
+		'core/rss',
+		'core/search',
+		'core/tag-cloud',
 
 		// Embeds
 		'core-embed/amazon-kindle',
