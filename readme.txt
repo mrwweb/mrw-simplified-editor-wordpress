@@ -4,7 +4,7 @@ Tags: TinyMCE, Editor Styles, Editor, Text Editor
 Requires at least: 4.1
 Requires PHP: 5.6.20
 Tested up to: 5.3
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -254,6 +254,9 @@ function mrw_add_text_styles_example( $styles ) {
 4. Example from Block Editor showing reduced settings of Paragraph block. Just write!
 
 == Changelog ==
+
+= 2.0.1 (Nov 14, 2019) =
+* Fix release package. See 2.0.0 release notes.
 
 = 2.0.0 (Nov 14, 2019) =
 * [NEW] MAJOR UPDATE! Includes numerous changes to the Block Editor made using the same philosophy of encouraging editors to create semantic, portable content while letting themes make content beautiful. This update removes:
