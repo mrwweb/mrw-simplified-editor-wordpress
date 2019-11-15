@@ -251,6 +251,8 @@ function mrw_add_text_styles_example( $styles ) {
 
 3. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin.
 
+4. Example from Block Editor showing reduced settings of Paragraph block. Just write!
+
 == Changelog ==
 
 = 2.0.0 (Nov 14, 2019) =
