@@ -1,0 +1,54 @@
+/**
+ * This file disables all settings that can't be otherwise turned off with a PHP or JS API.
+ *
+ * You can use the `mrw_block_editor_disable_settings` filter to turn change which settings are disables in a backwards-compatible way
+ */
+
+/* Dropcap */
+.mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3) {
+	display: none;
+}
+
+/*
+ Hide the "Upload" button in the editor because it skips the media library
+ Hide the "Image from URL" option to discourage hotlinking and not having alt text
+ */
+.mrw-block-editor-no-image-file-upload .components-form-file-upload,
+.mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container {
+	display: none;
+}
+
+/* Hide Heading Levels 1, 5, and 6 */
+.mrw-block-editor-no-heading-1 .components-button[data-subscript="1"],
+.mrw-block-editor-no-heading-1 .components-button[aria-label="Heading 1"],
+.mrw-block-editor-no-heading-5 .components-button[data-subscript="5"],
+.mrw-block-editor-no-heading-5 .components-button[aria-label="Heading 5"],
+.mrw-block-editor-no-heading-6 .components-button[data-subscript="6"],
+.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"] {
+	display: none;
+}
+
+/* Image Pixel & Percentage Sizing  */
+.mrw-block-editor-no-image-dimensions .block-library-image__dimensions {
+	display: none;
+}
+
+/* Change visual appearance of Color Contrast warning to an error. Move to top of Color Settings */
+.editor-panel-color-settings.is-opened {
+	display: flex;
+	flex-direction: column;
+}
+.editor-panel-color-settings .components-panel__body-title {
+	order: -2;
+}
+.editor-panel-color-settings .editor-contrast-checker {
+	order: -1;
+	margin-bottom: 24px;
+}
+.editor-panel-color-settings .editor-contrast-checker .components-notice.is-warning {
+	border-left-color: #d94f4f;
+	background-color: #f9e2e2;
+}
+.edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
+	margin-bottom: 0;
+}
