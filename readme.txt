@@ -3,17 +3,17 @@ Contributors: mrwweb
 Tags: TinyMCE, Editor Styles, Editor, Text Editor
 Requires at least: 4.1
 Requires PHP: 5.6.20
-Tested up to: 5.0
-Stable tag: 1.2.0
+Tested up to: 5.3
+Stable tag: 2.0.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Formerly "MRW Web Design Simple TinyMCE" - Reduce the number of features in the Block Editor and Classic Editor. Help users focus on making great content and letting their themes make it beautiful.
+Focus editors on making great content and letting their themes make it beautiful by smartly reducing the number of options in the Block and Classic Editors. Formerly "MRW Web Design Simple TinyMCE"
 
 == Description ==
 
-_(Formerly "MRW Web Design Simple TinyMCE")_
+*(Formerly "MRW Web Design Simple TinyMCE")*
 
 When publishing content with a CMS, content should be entered semantically and formatted via a design system (created by the theme) to ensure consistent formatting and portable content.
 
@@ -27,15 +27,15 @@ When publishing content with a CMS, content should be entered semantically and f
 
 = Block Editor Features =
 
-- Hides infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
-- Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
-- Removes all preset Block Style Variations
-- Hides settings for Drop Cap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
-- Hides buttons for uploading images or inserting images via URL
-- Disables all color settings unless a theme explicitly defines a color palette
+- **Hidden Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
+- **Hidden Embeds:** Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
+- **Removes all default Block Style Variations**
+- **Hides Settings:** Drop Cap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
+- **Encourages use of Media Library** by hiding buttons for uploading images or inserting images via URL
+- **Disables color settings** unless a theme explicitly defines a color palette
 - Calls extra attention to contrast errors
 
-\* Currently, headings only hidden on English language sites.
+\* Currently, headings 1, 5, and 6 are only hidden on English sites.
 
 = Classic Editor / Classic Block Features =
 
@@ -253,17 +253,21 @@ function mrw_add_text_styles_example( $styles ) {
 
 == Changelog ==
 
-= 2.0.0 (tbd) =
-* MAJOR UPDATE! Includes numerous changes to the Block Editor made using the same philosophy of encouraging editors to create semantic, portable content while letting themes make content beautiful.
-	* Hides the following infrequently used blocks: Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive.
+= 2.0.0 (Nov 14, 2019) =
+* [NEW] MAJOR UPDATE! Includes numerous changes to the Block Editor made using the same philosophy of encouraging editors to create semantic, portable content while letting themes make content beautiful. This update removes:
+	* **Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive.
 		* The "More" Block is shown if you previously used this plugin and had filtered the TinyMCE buttons to re-add the More button.
-	* Hides less common embeds: Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv.
-	* Removes all preset Block Style Variations.
-	* Hides Block Settings for Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, and font sizing by pixel.
-	* Strongly encourages use of Media Library for all image uploading.
-	* Disables all color options unless theme explicitly defines a color palette.
-	* Calls extra attention to color contrast errors.
-* New `mrw_block_blacklist` filter allows hiding blocks from the editor in PHP.
+	* **Embeds:** Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv.
+	* **All default Block Style Variations.**
+	* **Block Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, percentage and pixel sizing for images, and font sizing by pixel.
+	* **Image Uploads:** All images are selected from and uploaded to "Media Library."
+	* Colors: All color options unless theme explicitly defines a color palette.
+* [NEW] Calls extra attention to color contrast errors.
+* [NEW] Block Editor Filters
+	* `mrw_block_blacklist` filter allows hiding blocks from the editor in PHP.
+	* `mrw_style_variations_blacklist` filter allows hiding style variations in PHP.
+	* `mrw_block_editor_disable_settings` filter for re-enabling settings hidden by this plugin
+	* `mrw_block_editor_hide_color_palette` filter to unhide default Block Editor color palette
 
 = 1.2.0 (Nov 13, 2016) =
 * Update "Heading" list to emphasize implied hierarchy. (See [#38049](https://core.trac.wordpress.org/ticket/38049) for background and potential core inclusion.)
