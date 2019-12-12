@@ -313,7 +313,7 @@ function mrw_add_text_styles_example( $styles ) {
 * Initial release
 
 == Upgrade Notice ==
-= 2.0.0 =
+= 2.0.1 =
 * MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.
 
 = 1.1.0 =
