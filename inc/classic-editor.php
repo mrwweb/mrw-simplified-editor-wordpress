@@ -4,8 +4,6 @@ add_filter( 'mce_buttons', 'mrw_mce_buttons_1', 0 );
  * Remove formatting buttons that cause more trouble than they're worth.
  * Merge remaining buttons onto first row.
  *
- * @todo - Need to include Add Media button for the classic editor block
- *
  * @since  1.0.0
  * @access public
  * @param  $buttons array the default TinyMCE buttons
