@@ -14,8 +14,6 @@ add_filter( 'mce_buttons', 'mrw_mce_buttons_1', 0 );
  */
 function mrw_mce_buttons_1( $buttons ) {
 
-	$screen = get_current_screen();
-
 	$buttons = array(
 		0 => 'styleselect',
 		5 => 'bold',
@@ -33,7 +31,8 @@ function mrw_mce_buttons_1( $buttons ) {
 		75 => 'dfw',
 	);
 
-	if( isset( $screen->is_block_editor ) && $screen->is_block_editor ) {
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
+	if( $screen && isset( $screen->is_block_editor ) && $screen->is_block_editor ) {
 		$buttons[1000] = 'wp_add_media';
 		unset( $buttons[75] );
 	}
