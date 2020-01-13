@@ -1,10 +1,10 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
-Tags: TinyMCE, Editor Styles, Editor, Text Editor
+Tags: Block Editor, Gutenberg, TinyMCE, Editor Styles, Editor
 Requires at least: 4.1
 Requires PHP: 5.6.20
 Tested up to: 5.3
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -255,6 +255,9 @@ function mrw_add_text_styles_example( $styles ) {
 
 == Changelog ==
 
+= 2.0.2 (Jan 13, 2019) =
+* Add check for get_current_screen() to prevent errors when using TinyMCE on the front end. props @patrick-b
+
 = 2.0.1 (Nov 14, 2019) =
 * Fix release package. See 2.0.0 release notes.
 
@@ -313,6 +316,9 @@ function mrw_add_text_styles_example( $styles ) {
 * Initial release
 
 == Upgrade Notice ==
+= 2.0.2 =
+* Bug fix for front-end TinyMCE. (2.0.0 is a MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.)
+
 = 2.0.1 =
 * MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.
 
