@@ -17,7 +17,8 @@
  Hide the "Image from URL" option to discourage hotlinking and not having alt text
  */
 .mrw-block-editor-no-image-file-upload .components-form-file-upload,
-.mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container {
+.mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container,
+.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container {
 	display: none;
 }
 
