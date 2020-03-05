@@ -98,6 +98,7 @@ However, the new editor supports a ["Block Style Variation feature"](https://wor
 	- `heading-5` - Heading 5 option in Heading Block
 	- `heading-6` - Heading 6 option in Heading Block
 	- `image-dimensions` - Pixel and percentage sizing of images in Image Block
+	- `new-tabs` - Option to open links in new tabs for links, buttons, and images
 - `mrw_block_editor_hide_color_palette` - Whether to display the default or theme color palette. Defaults to true (hide it). Will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-color-palette' )`.
 - `mrw_block_editor_hide_gradient_presets` - Whether to display the default or theme  gradient presets. Defaults to true (hide it). Will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-gradient-presets' )`.
 

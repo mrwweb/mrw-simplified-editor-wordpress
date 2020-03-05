@@ -169,6 +169,7 @@ function mrw_block_editor_settings_admin_classes( $classes ) {
 		'heading-5',
 		'heading-6',
 		'image-dimensions',
+		'new-tabs',
 	);
 
 	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );
