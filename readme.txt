@@ -245,11 +245,13 @@ function mrw_add_text_styles_example( $styles ) {
 
 == Screenshots ==
 
-1. The editor in all its minimal glory. This shows the default set of buttons and styles.
+1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
-2. "Link Button" is an example of a text style that can be added with the [`mrw_mce_text_style` filter](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other-notes/). In this example, it's grayed-out by default since it can only be applied to links!
+2. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin.
 
-3. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin.
+3. The CLassic Editor in all its minimal glory. This shows the default set of buttons and styles.
+
+4. "Link Button" is an example of a text style that can be added with the [`mrw_mce_text_style` filter](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other-notes/). In this example, it's grayed-out by default since it can only be applied to links!
 
 4. Example from Block Editor showing reduced settings of Paragraph block. Just write!
 
