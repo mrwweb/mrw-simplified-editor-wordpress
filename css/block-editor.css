@@ -18,7 +18,8 @@
  */
 .mrw-block-editor-no-image-file-upload .components-form-file-upload,
 .mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container,
-.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container {
+.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container,
+.mrw-block-editor-no-image-url .block-editor-media-replace-flow__options .components-form-file-upload + button {
 	display: none;
 }
 

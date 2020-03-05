@@ -110,7 +110,7 @@ function mrw_block_editor_js_config() {
 
 	// default style variations
 	$default_style_variations_blacklist = array(
-		'core/image'		=> array( 'default', 'circle-mask' ),
+		'core/image'		=> array( 'default', 'circle-mask', 'rounded' ),
 		'core/button' 		=> array( 'default', 'fill', 'squared', 'outline' ),
 		'core/quote' 		=> array( 'default', 'large' ),
 		'core/separator' 	=> array( 'default', 'wide', 'dots' ),
