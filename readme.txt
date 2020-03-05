@@ -3,8 +3,8 @@ Contributors: mrwweb
 Tags: Block Editor, Gutenberg, TinyMCE, Editor Styles, Editor
 Requires at least: 4.1
 Requires PHP: 5.6.20
-Tested up to: 5.3
-Stable tag: 2.0.2
+Tested up to: 5.4
+Stable tag: 2.1.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,12 +27,15 @@ When publishing content with a CMS, content should be entered semantically and f
 
 = Block Editor Features =
 
+All features can be re-enabled via core filters or plugin filters.
+
 - **Hidden Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
-- **Hidden Embeds:** Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
+- **Hidden Embeds:** Amazon Kindle, Animoto, Cloudup, College Humor (Removed from Core in 5.4), Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv
 - **Removes all default Block Style Variations**
 - **Hides Settings:** Drop Cap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
 - **Encourages use of Media Library** by hiding buttons for uploading images or inserting images via URL
-- **Disables color settings** unless a theme explicitly defines a color palette
+- **Disables color & gradient settings** unless a theme explicitly defines a color palette or gradient presets
+- **Links:** Remove most ways of opening links in a new tab
 - **Other:** Increases prominence of contrast errors
 
 \* Currently, headings 1, 5, and 6 are only hidden on English-language sites.
@@ -112,6 +115,12 @@ Below are a variety of useful, tested code examples for modifying the plugin's s
 add_filter( 'mrw_block_editor_hide_color_palette', '__return_true' );
 `
 
+**Allow use of default gradient presets**
+
+`
+add_filter( 'mrw_block_editor_hide_gradient_presets', '__return_true' );
+`
+
 **Hide or Unhide a Block**
 
 `
@@ -142,7 +151,7 @@ function show_circle_image_and_all_separator_styles( $blacklist ) {
 		'block-2' => array( 'variation-1', 'variation-2' ),
 		// etc...
 	);
-	 */
+	*/
 
 	// Unhide one specific variation for a block type
 	$blacklist['core/image'] = array_diff(
@@ -259,6 +268,11 @@ function mrw_add_text_styles_example( $styles ) {
 
 == Changelog ==
 
+= 2.1.0 (DATE) =
+* WordPress 5.4 compatibility updates
+* [New] Remove default Gradient Presets, just like colors
+* [New] Remove majority of ways to open links in a new tab
+
 = 2.0.2 (Jan 13, 2019) =
 * Add check for get_current_screen() to prevent errors when using TinyMCE on the front end. props @patrick-b
 
@@ -320,6 +334,9 @@ function mrw_add_text_styles_example( $styles ) {
 * Initial release
 
 == Upgrade Notice ==
+= 2.1.0 =
+* Important WordPress 5.4 compatibility fixes. Disable default gradients and social icon style variations.
+
 = 2.0.2 =
 * Bug fix for front-end TinyMCE. (2.0.0 is a MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.)
 
