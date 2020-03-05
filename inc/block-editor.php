@@ -32,6 +32,28 @@ function mrw_block_editor_theme_support() {
 	if( $hide_palette ) {
 		add_theme_support( 'editor-color-palette' );
 	}
+
+	/**
+	 * Disable the custom gradient builder
+	 *
+	 * Override with remove_theme_support( 'disable-custom-gradients' ) hooked to after_setup_theme with priority 12+
+	 *
+	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-gradients
+	 */
+	add_theme_support( 'disable-custom-gradients' );
+
+	/**
+	 * Disable default color palette if the theme has not explicitly registered a palette
+	 *
+	 * Override this with mrw_block_editor_color_palette filter
+	 *
+	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-gradient-presets
+	 */
+	$theme_gradients = get_theme_support( 'editor-gradient-presets' );
+	$hide_gradients = apply_filters( 'mrw_block_editor_hide_gradient_presets', empty( $theme_gradients ) );
+	if( $hide_gradients ) {
+		add_theme_support( 'editor-gradient-presets', array() );
+	}
 	
 }
 
