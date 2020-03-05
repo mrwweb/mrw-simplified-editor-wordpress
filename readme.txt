@@ -33,9 +33,9 @@ When publishing content with a CMS, content should be entered semantically and f
 - **Hides Settings:** Drop Cap, Heading 1*, Heading 5*, Heading 6*, image percentage and pixel sizing, and font sizing by pixel
 - **Encourages use of Media Library** by hiding buttons for uploading images or inserting images via URL
 - **Disables color settings** unless a theme explicitly defines a color palette
-- Calls extra attention to contrast errors
+- **Other:** Increases prominence of contrast errors
 
-\* Currently, headings 1, 5, and 6 are only hidden on English sites.
+\* Currently, headings 1, 5, and 6 are only hidden on English-language sites.
 
 = Classic Editor / Classic Block Features =
 
