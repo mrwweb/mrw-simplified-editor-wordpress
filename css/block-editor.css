@@ -33,7 +33,8 @@
 }
 
 /* Image Pixel & Percentage Sizing  */
-.mrw-block-editor-no-image-dimensions .block-library-image__dimensions {
+.mrw-block-editor-no-image-dimensions .block-library-image__dimensions,
+.mrw-block-editor-no-image-dimensions .block-editor-image-size-control {
 	display: none;
 }
 
