@@ -116,6 +116,7 @@ function mrw_block_editor_js_config() {
 		'core/separator' 	=> array( 'default', 'wide', 'dots' ),
 		'core/pullquote' 	=> array( 'default', 'solid-color' ),
 		'core/table'		=> array( 'default', 'stripes' ),
+		'core/social-links'	=> array( 'logos-only', 'pill-shape' ),
 	);
 
 	$final_style_variations_blacklist = apply_filters( 'mrw_style_variations_blacklist', $default_style_variations_blacklist );
