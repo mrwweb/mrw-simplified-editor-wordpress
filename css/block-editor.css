@@ -5,7 +5,10 @@
  */
 
 /* Dropcap */
-.mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3) {
+/* WP 5.0-5.3 */
+.mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3),
+/* WP 5.4+ */
+.mrw-block-editor-no-drop-cap .components-font-size-picker + .components-toggle-control {
 	display: none;
 }
 
