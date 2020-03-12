@@ -61,6 +61,10 @@ function mrw_block_editor_js_config() {
 
 	$mrw_simple_js_options = array();
 
+
+	/*==============================
+	=            Blocks            =
+	==============================*/
 	$mrw_block_blacklist = array(
 		// Core
 		'core/audio',
@@ -108,7 +112,11 @@ function mrw_block_editor_js_config() {
 	// use array_values to ensure this is passed as an array and not an object
 	$mrw_simple_js_options['blockBlacklist'] = array_values( apply_filters( 'mrw_block_blacklist', $mrw_block_blacklist ) );
 
-	// default style variations
+
+
+	/*========================================
+	=            Style Variations            =
+	========================================*/
 	$default_style_variations_blacklist = array(
 		'core/image'		=> array( 'default', 'circle-mask', 'rounded' ),
 		'core/button' 		=> array( 'default', 'fill', 'squared', 'outline' ),
@@ -127,6 +135,13 @@ function mrw_block_editor_js_config() {
 	}
 
 	$mrw_simple_js_options['variationsBlacklist'] = $final_style_variations_blacklist;
+
+
+	/*================================
+	=            Features            =
+	================================*/
+	$mrw_simple_js_options['featureBlacklist'] = mrw_disabled_block_editor_settings();
+	
 
 	return $mrw_simple_js_options;
 
@@ -159,8 +174,7 @@ function mrw_block_editor_js() {
 
 }
 
-add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
-function mrw_block_editor_settings_admin_classes( $classes ) {
+function mrw_disabled_block_editor_settings() {
 
 	$mrw_disabled_block_editor_settings = array(
 		'drop-cap',
@@ -173,7 +187,22 @@ function mrw_block_editor_settings_admin_classes( $classes ) {
 		'new-tabs',
 	);
 
+	// only prevent fullscreen in versions of WordPress that need it
+	global $wp_version;
+	if( version_compare( $wp_version, '5.4-beta1', '>=' ) ) {
+		$mrw_disabled_block_editor_settings[] = 'prevent-fullscreen';
+	}
+
 	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );
+
+	return $mrw_disabled_block_editor_settings;
+
+}
+
+add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
+function mrw_block_editor_settings_admin_classes( $classes ) {
+
+	$mrw_disabled_block_editor_settings = mrw_disabled_block_editor_settings();
 
 	$mrw_prefix = ' mrw-block-editor-no-';
 	foreach( $mrw_disabled_block_editor_settings as $setting ) {

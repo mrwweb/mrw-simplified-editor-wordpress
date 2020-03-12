@@ -272,6 +272,7 @@ function mrw_add_text_styles_example( $styles ) {
 * WordPress 5.4 compatibility updates
 * [New] Remove default Gradient Presets, just like colors
 * [New] Remove majority of ways to open links in a new tab
+* [New] Force Fullscreen Mode. Unfortunately, WordPress 5.4 [forces all users to use Fullscreen Mode without inheriting their current preference](https://make.wordpress.org/core/2020/03/03/fullscreen-mode-enabled-by-default-in-the-editor/) or saving their choice as part of their user profile. In light of this change, MRW Simplified Editor does the opposite, forcing all users into Fullscreen Mode. This change will be removed as soon as WordPress can inherit the user's setting. This change can be disabled via the `mrw_block_editor_disable_settings` filter by removing the 'prevent-fullscreen' item. See the plugin page for code examples.
 
 = 2.0.2 (Jan 13, 2019) =
 * Add check for get_current_screen() to prevent errors when using TinyMCE on the front end. props @patrick-b
