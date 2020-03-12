@@ -62,6 +62,7 @@ function mrw_block_editor_js_config() {
 	$mrw_simple_js_options = array();
 
 
+
 	/*==============================
 	=            Blocks            =
 	==============================*/
@@ -137,6 +138,7 @@ function mrw_block_editor_js_config() {
 	$mrw_simple_js_options['variationsBlacklist'] = $final_style_variations_blacklist;
 
 
+
 	/*================================
 	=            Features            =
 	================================*/
@@ -174,6 +176,10 @@ function mrw_block_editor_js() {
 
 }
 
+/**
+ * return filtered array of Block Editor Features/Settings to Disable
+ * @return array every option to disable via CSS or JS
+ */
 function mrw_disabled_block_editor_settings() {
 
 	$mrw_disabled_block_editor_settings = array(
