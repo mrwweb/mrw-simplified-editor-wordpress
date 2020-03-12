@@ -45,6 +45,31 @@
 	display: none;
 }
 
+/* Style "Save Draft" button to look like a button */
+/* Styles copied from .is-secondary button class */
+.edit-post-header__settings .editor-post-save-draft {
+	white-space: nowrap;
+	color: #0075af;
+	border: 1px solid #0075af;
+	background: #f3f5f6;
+}
+/* Selectively compied from .components-button */
+.edit-post-header__settings .editor-post-saved-state {
+	display: inline-flex;
+	border: 1px solid #555d66;
+	height: 36px;
+	align-items: center;
+	padding: 0 8px;
+	border-radius: 3px;
+
+	/* not copied */
+	cursor: default;
+}
+.edit-post-header__settings .editor-post-saved-state + .editor-post-preview,
+.edit-post-header__settings .editor-post-save-draft + .editor-post-preview {
+	margin-left: 6px;
+}
+
 /* Change visual appearance of Color Contrast warning to an error. Move to top of Color Settings */
 .editor-panel-color-settings.is-opened {
 	display: flex;
