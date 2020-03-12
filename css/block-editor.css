@@ -5,7 +5,16 @@
  */
 
 /* Dropcap */
-.mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3) {
+/* WP 5.0-5.3 */
+.mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3),
+/* WP 5.4+ */
+.mrw-block-editor-no-drop-cap .components-font-size-picker + .components-toggle-control {
+	display: none;
+}
+
+/* Don't Open Links in New Tabs */
+.mrw-block-editor-no-new-tabs .components-popover__content .block-editor-link-control .block-editor-link-control__settings,
+.mrw-block-editor-no-new-tabs .block-editor-url-popover__settings .components-toggle-control {
 	display: none;
 }
 
@@ -14,7 +23,9 @@
  Hide the "Image from URL" option to discourage hotlinking and not having alt text
  */
 .mrw-block-editor-no-image-file-upload .components-form-file-upload,
-.mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container {
+.mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container,
+.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container,
+.mrw-block-editor-no-image-url .block-editor-media-replace-flow__options .components-form-file-upload + button {
 	display: none;
 }
 
@@ -29,8 +40,34 @@
 }
 
 /* Image Pixel & Percentage Sizing  */
-.mrw-block-editor-no-image-dimensions .block-library-image__dimensions {
+.mrw-block-editor-no-image-dimensions .block-library-image__dimensions,
+.mrw-block-editor-no-image-dimensions .block-editor-image-size-control {
 	display: none;
+}
+
+/* Style "Save Draft" button to look like a button */
+/* Styles copied from .is-secondary button class */
+.edit-post-header__settings .editor-post-save-draft {
+	white-space: nowrap;
+	color: #0075af;
+	border: 1px solid #0075af;
+	background: #f3f5f6;
+}
+/* Selectively compied from .components-button */
+.edit-post-header__settings .editor-post-saved-state {
+	display: inline-flex;
+	border: 1px solid #555d66;
+	height: 36px;
+	align-items: center;
+	padding: 0 8px;
+	border-radius: 3px;
+
+	/* not copied */
+	cursor: default;
+}
+.edit-post-header__settings .editor-post-saved-state + .editor-post-preview,
+.edit-post-header__settings .editor-post-save-draft + .editor-post-preview {
+	margin-left: 6px;
 }
 
 /* Change visual appearance of Color Contrast warning to an error. Move to top of Color Settings */

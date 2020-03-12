@@ -32,6 +32,28 @@ function mrw_block_editor_theme_support() {
 	if( $hide_palette ) {
 		add_theme_support( 'editor-color-palette' );
 	}
+
+	/**
+	 * Disable the custom gradient builder
+	 *
+	 * Override with remove_theme_support( 'disable-custom-gradients' ) hooked to after_setup_theme with priority 12+
+	 *
+	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-gradients
+	 */
+	add_theme_support( 'disable-custom-gradients' );
+
+	/**
+	 * Disable default color palette if the theme has not explicitly registered a palette
+	 *
+	 * Override this with mrw_block_editor_color_palette filter
+	 *
+	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-gradient-presets
+	 */
+	$theme_gradients = get_theme_support( 'editor-gradient-presets' );
+	$hide_gradients = apply_filters( 'mrw_block_editor_hide_gradient_presets', empty( $theme_gradients ) );
+	if( $hide_gradients ) {
+		add_theme_support( 'editor-gradient-presets', array() );
+	}
 	
 }
 
@@ -39,6 +61,11 @@ function mrw_block_editor_js_config() {
 
 	$mrw_simple_js_options = array();
 
+
+
+	/*==============================
+	=            Blocks            =
+	==============================*/
 	$mrw_block_blacklist = array(
 		// Core
 		'core/audio',
@@ -86,14 +113,19 @@ function mrw_block_editor_js_config() {
 	// use array_values to ensure this is passed as an array and not an object
 	$mrw_simple_js_options['blockBlacklist'] = array_values( apply_filters( 'mrw_block_blacklist', $mrw_block_blacklist ) );
 
-	// default style variations
+
+
+	/*========================================
+	=            Style Variations            =
+	========================================*/
 	$default_style_variations_blacklist = array(
-		'core/image'		=> array( 'default', 'circle-mask' ),
+		'core/image'		=> array( 'default', 'circle-mask', 'rounded' ),
 		'core/button' 		=> array( 'default', 'fill', 'squared', 'outline' ),
 		'core/quote' 		=> array( 'default', 'large' ),
 		'core/separator' 	=> array( 'default', 'wide', 'dots' ),
 		'core/pullquote' 	=> array( 'default', 'solid-color' ),
 		'core/table'		=> array( 'default', 'stripes' ),
+		'core/social-links'	=> array( 'logos-only', 'pill-shape' ),
 	);
 
 	$final_style_variations_blacklist = apply_filters( 'mrw_style_variations_blacklist', $default_style_variations_blacklist );
@@ -104,6 +136,14 @@ function mrw_block_editor_js_config() {
 	}
 
 	$mrw_simple_js_options['variationsBlacklist'] = $final_style_variations_blacklist;
+
+
+
+	/*================================
+	=            Features            =
+	================================*/
+	$mrw_simple_js_options['featureBlacklist'] = mrw_disabled_block_editor_settings();
+	
 
 	return $mrw_simple_js_options;
 
@@ -136,8 +176,11 @@ function mrw_block_editor_js() {
 
 }
 
-add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
-function mrw_block_editor_settings_admin_classes( $classes ) {
+/**
+ * return filtered array of Block Editor Features/Settings to Disable
+ * @return array every option to disable via CSS or JS
+ */
+function mrw_disabled_block_editor_settings() {
 
 	$mrw_disabled_block_editor_settings = array(
 		'drop-cap',
@@ -147,9 +190,25 @@ function mrw_block_editor_settings_admin_classes( $classes ) {
 		'heading-5',
 		'heading-6',
 		'image-dimensions',
+		'new-tabs',
 	);
 
+	// only prevent fullscreen in versions of WordPress that need it
+	global $wp_version;
+	if( version_compare( $wp_version, '5.4-beta1', '>=' ) ) {
+		$mrw_disabled_block_editor_settings[] = 'prevent-fullscreen';
+	}
+
 	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );
+
+	return $mrw_disabled_block_editor_settings;
+
+}
+
+add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
+function mrw_block_editor_settings_admin_classes( $classes ) {
+
+	$mrw_disabled_block_editor_settings = mrw_disabled_block_editor_settings();
 
 	$mrw_prefix = ' mrw-block-editor-no-';
 	foreach( $mrw_disabled_block_editor_settings as $setting ) {
