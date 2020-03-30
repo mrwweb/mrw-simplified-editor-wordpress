@@ -17,14 +17,4 @@ wp.domReady( function() {
 		});
 	});
 
-	if ( mrwEditorOptions.featureBlacklist.indexOf( 'prevent-fullscreen' ) !== -1 ) {
-
-		const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' );
-
-		if ( isFullscreenMode ) {
-		    wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' );
-		}
-
-	}
-
 });

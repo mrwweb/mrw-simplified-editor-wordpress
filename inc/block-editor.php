@@ -193,12 +193,6 @@ function mrw_disabled_block_editor_settings() {
 		'new-tabs',
 	);
 
-	// only prevent fullscreen in versions of WordPress that need it
-	global $wp_version;
-	if( version_compare( $wp_version, '5.4-beta1', '>=' ) ) {
-		$mrw_disabled_block_editor_settings[] = 'prevent-fullscreen';
-	}
-
 	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );
 
 	return $mrw_disabled_block_editor_settings;
