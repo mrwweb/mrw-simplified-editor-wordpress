@@ -268,11 +268,12 @@ function mrw_add_text_styles_example( $styles ) {
 
 == Changelog ==
 
-= 2.1.0 (DATE) =
-* WordPress 5.4 compatibility updates
-* [New] Remove default Gradient Presets, just like colors
+= 2.1.0 (Mar 30, 2020) =
+* Significant WordPress 5.4 compatibility updates/fixes
+* [New] Remove default Gradient Presets if theme does not provide them. This matches the existing behavior for Color Palettes.
 * [New] Remove majority of ways to open links in a new tab
 * [New] Style "Save Draft" button as a button for greater prominence
+* [Dev] Make `mrw_block_editor_disable_settings` filterable array available in JavaScript as `mrwEditorOptions.featureBlacklist`
 
 = 2.0.2 (Jan 13, 2019) =
 * Add check for get_current_screen() to prevent errors when using TinyMCE on the front end. props @patrick-b
