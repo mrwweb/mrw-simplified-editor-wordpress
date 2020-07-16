@@ -49,14 +49,22 @@
 /* Styles copied from .is-secondary button class */
 .edit-post-header__settings .editor-post-save-draft {
 	white-space: nowrap;
-	color: #0075af;
-	border: 1px solid #0075af;
+	border: 1px solid #a0a5aa;
 	background: #f3f5f6;
 }
-/* Selectively compied from .components-button */
+.edit-post-header__settings .editor-post-save-draft:focus:not(:disabled),
+.edit-post-header__settings .editor-post-save-draft:hover:not(:disabled) {
+	color: #0075af;
+	border-color: #0075af;
+	border-color: var(--wp-admin-theme-color-darker-10);
+	box-shadow: none;
+}
+/* Selectively copied from .components-button */
 .edit-post-header__settings .editor-post-saved-state {
 	display: inline-flex;
-	border: 1px solid #555d66;
+	color: #a0a5aa;
+	background: #f7f7f7;
+	border: 1px solid #ddd;
 	height: 36px;
 	align-items: center;
 	padding: 0 8px;
