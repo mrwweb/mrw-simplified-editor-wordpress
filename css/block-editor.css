@@ -79,21 +79,22 @@
 }
 
 /* Change visual appearance of Color Contrast warning to an error. Move to top of Color Settings */
-.editor-panel-color-settings.is-opened {
+.block-editor-panel-color-gradient-settings.is-opened {
 	display: flex;
 	flex-direction: column;
 }
-.editor-panel-color-settings .components-panel__body-title {
+.block-editor-panel-color-gradient-settings .components-panel__body-title {
 	order: -2;
 }
-.editor-panel-color-settings .editor-contrast-checker {
+.block-editor-panel-color-gradient-settings .block-editor-contrast-checker {
 	order: -1;
+	margin-top: 12px;
 	margin-bottom: 24px;
 }
-.editor-panel-color-settings .editor-contrast-checker .components-notice.is-warning {
+.block-editor-panel-color-gradient-settings .block-editor-contrast-checker .components-notice.is-warning {
 	border-left-color: #d94f4f;
 	background-color: #f9e2e2;
 }
-.edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
+.block-editor-panel-color-gradient-settings .block-editor-color-gradient-control + .block-editor-color-gradient-control {
 	margin-bottom: 0;
 }
