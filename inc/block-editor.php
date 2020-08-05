@@ -54,7 +54,31 @@ function mrw_block_editor_theme_support() {
 	if( $hide_gradients ) {
 		add_theme_support( 'editor-gradient-presets', array() );
 	}
+
+	/**
+	 * Disable core-registered block patterns
+	 *
+	 * Override with add_theme_support( 'core-block-patterns' ) hooked to after_setup_theme with priority 12+
+	 *
+	 * @see https://make.wordpress.org/core/2020/07/16/block-patterns-in-wordpress-5-5/
+	 */
+	remove_theme_support( 'core-block-patterns' );
 	
+}
+
+add_action(	'plugins_loaded', 'mrw_disable_block_directory' );
+/**
+ * Disable the block directory
+ * 
+ * @see https://github.com/WordPress/gutenberg/issues/23961#issuecomment-666683997
+ */
+function mrw_disable_block_directory() {
+
+	if( in_array( 'block-directory', mrw_disabled_block_editor_settings() ) ) {
+		remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
+		remove_action( 'enqueue_block_editor_assets', 'gutenberg_enqueue_block_editor_assets_block_directory' );
+	}
+
 }
 
 function mrw_block_editor_js_config() {
@@ -191,6 +215,7 @@ function mrw_disabled_block_editor_settings() {
 		'heading-6',
 		'image-dimensions',
 		'new-tabs',
+		'block-directory'
 	);
 
 	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );
