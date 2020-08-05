@@ -91,9 +91,9 @@ However, the new editor supports a ["Block Style Variation feature"](https://wor
 
 = Block Editor Filters =
 
-- `mrw_block_blacklist` - An array of blocks hidden by default. Add blocks to hide them or remove blocks from the array to show them.
-- `mrw_style_variations_blacklist` - Hides all default Block Style Variations. Unset either an entire block's worth of variations or a specific one.
-- `mrw_block_editor_disable_settings` - An array of Block Settings hidden by the editor. Current hidden settings:
+- `mrw_disabled_blocks` - An array of blocks hidden by default. Add blocks to hide them or remove blocks from the array to show them.
+- `mrw_disabled_style_variations` - Hides all default Block Style Variations. Unset either an entire block's worth of variations or a specific one.
+- `mrw_disabled_block_editor_settings` - An array of Block Settings hidden by the editor. Current hidden settings:
 	- `drop-cap` - Drop Cap setting for Paragraph Block
 	- `image-file-upload` - Button to upload image directly rather than through Media Library in Image, Cover, Media & Text, and Gallery Blocks.
 	- `image-url` - Button to insert image from a URL rather than uploaded to Media Library in Image, Cover, Media & Text, and Gallery Blocks.
@@ -124,16 +124,16 @@ add_filter( 'mrw_block_editor_hide_gradient_presets', '__return_true' );
 **Hide or Unhide a Block**
 
 `
-add_filter( 'mrw_block_blacklist', 'show_verse_and_hide_latest_comments' );
-function show_verse_and_hide_latest_comments( $blacklist ) {
+add_filter( 'mrw_disabled_blocks', 'show_verse_and_hide_latest_comments' );
+function show_verse_and_hide_latest_comments( $disabled_blocks ) {
 
 	// Unhide the Verse Block (hidden by default)
-	$blacklist = array_diff( $blacklist, array( 'core/verse' ) );
+	$disabled_blocks = array_diff( $disabled_blocks, array( 'core/verse' ) );
 
 	// Hide the Latest Comments block (not hidden by default)
-	$blacklist[] = 'core/latest-comments';
+	$disabled_blocks[] = 'core/latest-comments';
 
-	return $blacklist;
+	return $disabled_blocks;
 
 }
 `
@@ -141,28 +141,28 @@ function show_verse_and_hide_latest_comments( $blacklist ) {
 **Show one or some default Block Variations hidden by the plugin**
 
 `
-add_filter( 'mrw_style_variations_blacklist', 'show_circle_image_and_all_separator_styles' );
-function show_circle_image_and_all_separator_styles( $blacklist ) {
+add_filter( 'mrw_disabled_style_variations', 'show_circle_image_and_all_separator_styles' );
+function show_circle_image_and_all_separator_styles( $disabled_style_variations ) {
 
 	/*
 	STRUCTURE:
-	$blacklist = array(
+	$disabled_style_variations = array(
 		'block-1' => array( 'variation-1', 'variation-2' ),
 		'block-2' => array( 'variation-1', 'variation-2' ),
 		// etc...
 	);
 	*/
 
-	// Unhide one specific variation for a block type
-	$blacklist['core/image'] = array_diff(
-		$blacklist['core/image'],
+	// Unhide (show) one specific variation for a block type
+	$disabled_style_variations['core/image'] = array_diff(
+		$disabled_style_variations['core/image'],
 		array( 'circle-mask')
 	);
 
-	// Unhide *all* variations for a block type
-	unset( $blacklist['core/separator'] );
+	// Unhide (show) *all* variations for a block type
+	unset( $disabled_style_variations['core/separator'] );
 
-	return $blacklist;
+	return $disabled_style_variations;
 
 }
 `

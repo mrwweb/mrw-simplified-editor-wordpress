@@ -2,7 +2,7 @@
 add_action( 'after_setup_theme', 'mrw_block_editor_theme_support', 11 );
 function mrw_block_editor_theme_support() {
 
-	/**
+	/*
 	 * Disable the pixel-based font sizing
 	 *
 	 * Override with remove_theme_support( 'disable-custom-font-sizes' ) hooked to after_setup_theme with priority 12+
@@ -11,7 +11,7 @@ function mrw_block_editor_theme_support() {
 	 */
 	add_theme_support( 'disable-custom-font-sizes' );
 
-	/**
+	/*
 	 * Disable the custom color picker
 	 *
 	 * Override with remove_theme_support( 'disable-custom-colors' ) hooked to after_setup_theme with priority 12+
@@ -20,7 +20,7 @@ function mrw_block_editor_theme_support() {
 	 */
 	add_theme_support( 'disable-custom-colors' );
 
-	/**
+	/*
 	 * Disable default color palette if the theme has not explicitly registered a palette
 	 *
 	 * Override this with mrw_block_editor_color_palette filter
@@ -28,12 +28,17 @@ function mrw_block_editor_theme_support() {
 	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
 	 */
 	$theme_palette = get_theme_support( 'editor-color-palette' );
-	$hide_palette = apply_filters( 'mrw_block_editor_hide_color_palette', empty( $theme_palette ) );
+
+	$hide_palette = apply_filters(
+		'mrw_block_editor_hide_color_palette',
+		empty( $theme_palette )
+	);
+
 	if( $hide_palette ) {
 		add_theme_support( 'editor-color-palette' );
 	}
 
-	/**
+	/*
 	 * Disable the custom gradient builder
 	 *
 	 * Override with remove_theme_support( 'disable-custom-gradients' ) hooked to after_setup_theme with priority 12+
@@ -42,7 +47,7 @@ function mrw_block_editor_theme_support() {
 	 */
 	add_theme_support( 'disable-custom-gradients' );
 
-	/**
+	/*
 	 * Disable default color palette if the theme has not explicitly registered a palette
 	 *
 	 * Override this with mrw_block_editor_color_palette filter
@@ -50,12 +55,17 @@ function mrw_block_editor_theme_support() {
 	 * @see https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-gradient-presets
 	 */
 	$theme_gradients = get_theme_support( 'editor-gradient-presets' );
-	$hide_gradients = apply_filters( 'mrw_block_editor_hide_gradient_presets', empty( $theme_gradients ) );
+
+	$hide_gradients = apply_filters(
+		'mrw_block_editor_hide_gradient_presets',
+		empty( $theme_gradients )
+	);
+
 	if( $hide_gradients ) {
 		add_theme_support( 'editor-gradient-presets', array() );
 	}
 
-	/**
+	/*
 	 * Disable core-registered block patterns
 	 *
 	 * Override with add_theme_support( 'core-block-patterns' ) hooked to after_setup_theme with priority 12+
@@ -81,16 +91,13 @@ function mrw_disable_block_directory() {
 
 }
 
-function mrw_block_editor_js_config() {
+/**
+ * define default disabled style variations and allow them to be filters
+ * @return array slugs of all disabled core blocks
+ */
+function mrw_disabled_blocks() {
 
-	$mrw_simple_js_options = array();
-
-
-
-	/*==============================
-	=            Blocks            =
-	==============================*/
-	$mrw_block_blacklist = array(
+	$disabled_blocks = array(
 		// Core
 		'core/audio',
 		'core/code',
@@ -130,51 +137,132 @@ function mrw_block_editor_js_config() {
 		apply_filters( 'mce_buttons', array() ),
 		apply_filters( 'mce_buttons_2', array() )
 	);
+
 	if( ! in_array( 'wp_more', $mce_buttons ) ) {
-		$mrw_block_blacklist[] = 'core/more';
+		$disabled_blocks[] = 'core/more';
 	}
 
-	// use array_values to ensure this is passed as an array and not an object
-	$mrw_simple_js_options['blockBlacklist'] = array_values( apply_filters( 'mrw_block_blacklist', $mrw_block_blacklist ) );
+	$disabled_blocks = apply_filters_deprecated(
+		'mrw_block_blacklist',
+		array( $disabled_blocks ),
+		'2.2.0 of MRW Simplified Editor',
+		'mrw_disabled_blocks',
+		'This filter will stop functioning as soon as August 2021.'
+	);
 
+	$disabled_blocks = apply_filters( 'mrw_disabled_blocks', $disabled_blocks );
 
+	return $disabled_blocks;
 
-	/*========================================
-	=            Style Variations            =
-	========================================*/
-	$default_style_variations_blacklist = array(
+}
+
+/**
+ * define default disabled style variations and allow them to be filters
+ * @return array keyed array where keys are a block slug and value is an array containing all style variations to disable
+ */
+function mrw_disabled_style_variations() {
+
+	$disabled_style_variations = array(
 		'core/image'		=> array( 'default', 'circle-mask', 'rounded' ),
 		'core/button' 		=> array( 'default', 'fill', 'squared', 'outline' ),
 		'core/quote' 		=> array( 'default', 'large' ),
 		'core/separator' 	=> array( 'default', 'wide', 'dots' ),
 		'core/pullquote' 	=> array( 'default', 'solid-color' ),
 		'core/table'		=> array( 'default', 'stripes' ),
-		'core/social-links'	=> array( 'logos-only', 'pill-shape' ),
+		'core/social-links'	=> array( 'default', 'logos-only', 'pill-shape' ),
 	);
 
-	$final_style_variations_blacklist = apply_filters( 'mrw_style_variations_blacklist', $default_style_variations_blacklist );
+	$disabled_style_variations = apply_filters_deprecated(
+		'mrw_style_variations_blacklist',
+		array( $disabled_style_variations ),
+		'2.2.0 of MRW Simplified Editor',
+		'mrw_disabled_style_variations',
+		'This filter will stop functioning as soon as August 2021.'
+	);
 
-	// use array_values to ensure this is passed as an array and not an object
-	foreach ( $final_style_variations_blacklist as $block => $variations ) {
-		$final_style_variations_blacklist[$block] = array_values( $variations );
+	$disabled_style_variations = apply_filters(
+		'mrw_disabled_style_variations',
+		$disabled_style_variations
+	);
+
+	return $disabled_style_variations;
+
+}
+
+/**
+ * return filtered array of Block Editor Features/Settings to Disable
+ * @return array every option to disable via CSS or JS
+ */
+function mrw_disabled_block_editor_settings() {
+
+	$disabled_block_editor_settings = array(
+		'drop-cap',
+		'image-file-upload',
+		'image-url',
+		'heading-1',
+		'heading-5',
+		'heading-6',
+		'image-dimensions',
+		'new-tabs',
+		'block-directory'
+	);
+
+	$disabled_block_editor_settings = apply_filters_deprecated(
+		'mrw_block_editor_disable_settings',
+		array( $disabled_block_editor_settings ),
+		'2.2.0 of MRW Simplified Editor',
+		'mrw_disabled_block_editor_settings',
+		'This filter will stop functioning as soon as August 2021.'
+	);
+
+	$disabled_block_editor_settings = apply_filters(
+		'mrw_disabled_block_editor_settings',
+		$disabled_block_editor_settings
+	);
+
+	return $disabled_block_editor_settings;
+
+}
+
+/**
+ * prepares all plugin options (after being filtered) for use in JavaScript
+ * @return array all disabled blocks, style variations, and block editor tools
+ */
+function mrw_block_editor_js_config() {
+
+	$js_options = array();
+
+	// Note: use array_values to ensure this is passed as an array and not an object
+
+	/*==============================
+	=            Blocks            =
+	==============================*/
+	$js_options['disabledBlocks'] = array_values( mrw_disabled_blocks() );
+
+
+	/*========================================
+	=            Style Variations            =
+	========================================*/
+	$disabled_style_variations = array();
+	foreach ( mrw_disabled_style_variations() as $block => $variations ) {
+		$disabled_style_variations[$block] = array_values( $variations );
 	}
 
-	$mrw_simple_js_options['variationsBlacklist'] = $final_style_variations_blacklist;
-
+	$js_options['disabledVariations'] = $disabled_style_variations;
 
 
 	/*================================
 	=            Features            =
 	================================*/
-	$mrw_simple_js_options['featureBlacklist'] = mrw_disabled_block_editor_settings();
+	$js_options['featureSettings'] = array_values( mrw_disabled_block_editor_settings() );
 	
 
-	return $mrw_simple_js_options;
+	return $js_options;
 
 }
 
-add_action( 'enqueue_block_editor_assets', 'mrw_block_editor_js' );
-function mrw_block_editor_js() {
+add_action( 'enqueue_block_editor_assets', 'mrw_block_editor_assets' );
+function mrw_block_editor_assets() {
 
 	wp_enqueue_style(
 		'mrw-block-editor-css',
@@ -200,38 +288,19 @@ function mrw_block_editor_js() {
 
 }
 
-/**
- * return filtered array of Block Editor Features/Settings to Disable
- * @return array every option to disable via CSS or JS
- */
-function mrw_disabled_block_editor_settings() {
-
-	$mrw_disabled_block_editor_settings = array(
-		'drop-cap',
-		'image-file-upload',
-		'image-url',
-		'heading-1',
-		'heading-5',
-		'heading-6',
-		'image-dimensions',
-		'new-tabs',
-		'block-directory'
-	);
-
-	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );
-
-	return $mrw_disabled_block_editor_settings;
-
-}
-
 add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
+/**
+ * apply body classes to admin for each disabled feature
+ * @param  array $classes list of disabled features
+ * @return array
+ */
 function mrw_block_editor_settings_admin_classes( $classes ) {
 
-	$mrw_disabled_block_editor_settings = mrw_disabled_block_editor_settings();
+	$disabled_block_editor_settings = mrw_disabled_block_editor_settings();
 
-	$mrw_prefix = ' mrw-block-editor-no-';
-	foreach( $mrw_disabled_block_editor_settings as $setting ) {
-		$classes .= $mrw_prefix . sanitize_title_with_dashes( $setting );
+	$prefix = ' mrw-block-editor-no-';
+	foreach( $disabled_block_editor_settings as $setting ) {
+		$classes .= $prefix . sanitize_title_with_dashes( $setting );
 	}
 
 	return $classes;
