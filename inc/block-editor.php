@@ -191,7 +191,6 @@ function mrw_disabled_block_editor_settings() {
 		'heading-6',
 		'image-dimensions',
 		'new-tabs',
-		'line-height',
 	);
 
 	$mrw_disabled_block_editor_settings = apply_filters( 'mrw_block_editor_disable_settings', $mrw_disabled_block_editor_settings );

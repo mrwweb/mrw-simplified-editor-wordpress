@@ -12,11 +12,6 @@
 	display: none;
 }
 
-/* Disable Line Height */
-.mrw-block-editor-no-line-height .block-editor-line-height-control {
-	display: none;
-}
-
 /* Don't Open Links in New Tabs */
 .mrw-block-editor-no-new-tabs .components-popover__content .block-editor-link-control .block-editor-link-control__settings,
 .mrw-block-editor-no-new-tabs .block-editor-url-popover__settings .components-toggle-control {
