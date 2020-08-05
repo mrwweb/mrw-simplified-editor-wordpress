@@ -8,7 +8,8 @@
 /* WP 5.0-5.3 */
 .mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3),
 /* WP 5.4+ */
-.mrw-block-editor-no-drop-cap .components-font-size-picker + .components-toggle-control {
+.mrw-block-editor-no-drop-cap .components-font-size-picker + .components-toggle-control
+/* WP 5.5 😭 */ {
 	display: none;
 }
 
@@ -28,23 +29,6 @@
 .mrw-block-editor-no-image-url .block-editor-media-replace-flow__options .components-form-file-upload + button,
 .mrw-block-editor-no-image-file-upload .wp-block-gallery .block-editor-media-placeholder__upload-button {
 	display: none;
-}
-
-/* handle gallery exception */
-.mrw-block-editor-no-image-url .wp-block-gallery .components-form-file-upload,
-.mrw-block-editor-no-image-upload .wp-block-gallery .components-form-file-upload {
-	display: block;
-}
-
-/* always style the Media Library item as a primary button */
-.block-editor-media-placeholder .components-button.is-tertiary {
-	background: var(--wp-admin-theme-color);
-	color: #fff;
-	padding: 6px 12px;
-}
-.block-editor-media-placeholder .components-button.is-tertiary:hover:not(:disabled) {
-	background: var(--wp-admin-theme-color-darker-10);
-	color: #fff;
 }
 
 /* Hide Heading Levels 1, 5, and 6 */
@@ -68,6 +52,32 @@
 	display: none;
 }
 
+/* Hide "Default style" select for style variations */
+.mrw-block-editor-no-default-style-variation .block-editor-block-styles + .components-base-control {
+	display: none;
+}
+
+
+/*===================================================
+=            Media Library Button styles            =
+===================================================*/
+/* always style the Media Library item as a primary button */
+.block-editor-media-placeholder .components-button.is-tertiary {
+	background: var(--wp-admin-theme-color);
+	color: #fff;
+	padding: 6px 12px;
+}
+
+.block-editor-media-placeholder .components-button.is-tertiary:hover:not(:disabled) {
+	background: var(--wp-admin-theme-color-darker-10);
+	color: #fff;
+}
+
+/* handle gallery exception */
+.mrw-block-editor-no-image-url .wp-block-gallery .components-form-file-upload,
+.mrw-block-editor-no-image-upload .wp-block-gallery .components-form-file-upload {
+	display: block;
+}
 
 
 /*===========================================
@@ -79,6 +89,7 @@
 	border: 1px solid #a0a5aa;
 	background: #f3f5f6;
 }
+
 .edit-post-header__settings .editor-post-save-draft:focus:not(:disabled),
 .edit-post-header__settings .editor-post-save-draft:hover:not(:disabled) {
 	color: #0075af;
@@ -86,6 +97,7 @@
 	border-color: var(--wp-admin-theme-color-darker-10);
 	box-shadow: none;
 }
+
 /* Selectively copied from .components-button */
 .edit-post-header__settings .editor-post-saved-state {
 	display: inline-flex;
@@ -100,6 +112,7 @@
 	/* not copied */
 	cursor: default;
 }
+
 .edit-post-header__settings .editor-post-saved-state + .editor-post-preview,
 .edit-post-header__settings .editor-post-save-draft + .editor-post-preview {
 	margin-left: 6px;
@@ -113,18 +126,22 @@
 	display: flex;
 	flex-direction: column;
 }
+
 .block-editor-panel-color-gradient-settings .components-panel__body-title {
 	order: -2;
 }
+
 .block-editor-panel-color-gradient-settings .block-editor-contrast-checker {
 	order: -1;
 	margin-top: 12px;
 	margin-bottom: 24px;
 }
+
 .block-editor-panel-color-gradient-settings .block-editor-contrast-checker .components-notice.is-warning {
 	border-left-color: #d94f4f;
 	background-color: #f9e2e2;
 }
+
 .block-editor-panel-color-gradient-settings .block-editor-color-gradient-control + .block-editor-color-gradient-control {
 	margin-bottom: 0;
 }

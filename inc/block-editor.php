@@ -204,7 +204,8 @@ function mrw_disabled_block_editor_settings() {
 		'heading-6',
 		'image-dimensions',
 		'new-tabs',
-		'block-directory'
+		'block-directory',
+		'default-style-variation'
 	);
 
 	$disabled_block_editor_settings = apply_filters_deprecated(
