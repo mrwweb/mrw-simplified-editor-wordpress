@@ -1,0 +1,99 @@
+= 2.2.0 (Aug 5, 2020) =
+* WordPress 5.5 support
+* [NEW] WP 5.5 features disabled:
+	* Core Block Patterns
+	* Block Directory Installer
+* [NEW] Hide "Default style" select for style variations (the theme's default is the default for a reason!)
+* [Fix] Hide Headings 1, 5, and 6 in all languages, not just English
+* [Fix] Adjust "Save draft" button to show consistently and match new secondary button styles
+* [Fix] Restore more prominent color contrast errors
+* [Fix] Restore ability to edit galleries (props to Mackenzie at WSCADV for reporting this one)
+* [Regression] WordPress 5.5 makes it impossible to hide the Dropcap option
+* [Dev] **Deprecated Filters:** Remove all instances of "blacklist" from the plugin. `mrw_block_blacklist` and `mrw_style_variations_blacklist` are now deprecated in favor of `mrw_disabled_blocks` and `mrw_disabled_style_variations`. Respective object properties in JS are also renamed. Deprecate `mrw_block_editor_disable_settings` and add `mrw_disabled_block_editor_settings` for consistency. *Filters will be removed from the plugin as early as August 2021.*
+* [Dev] Refactor internal functions for managing default options
+
+= 2.1.0 (Mar 30, 2020) =
+* Significant WordPress 5.4 compatibility updates/fixes
+* [New] Remove default Gradient Presets if theme does not provide them. This matches the existing behavior for Color Palettes.
+* [New] Remove majority of ways to open links in a new tab
+* [New] Style "Save Draft" button as a button for greater prominence
+* [Dev] Make `mrw_block_editor_disable_settings` filterable array available in JavaScript as `mrwEditorOptions.featureBlacklist`
+
+= 2.0.2 (Jan 13, 2019) =
+* Add check for get_current_screen() to prevent errors when using TinyMCE on the front end. props @patrick-b
+
+= 2.0.1 (Nov 14, 2019) =
+* Fix release package. See 2.0.0 release notes.
+
+= 2.0.0 (Nov 14, 2019) =
+* [NEW] MAJOR UPDATE! Includes numerous changes to the Block Editor made using the same philosophy of encouraging editors to create semantic, portable content while letting themes make content beautiful. This update removes:
+	* **Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive.
+		* The "More" Block is shown if you previously used this plugin and had filtered the TinyMCE buttons to re-add the More button.
+	* **Embeds:** Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv.
+	* **All default Block Style Variations.**
+	* **Block Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, percentage and pixel sizing for images, and font sizing by pixel.
+	* **Image Uploads:** All images are selected from and uploaded to "Media Library."
+	* Colors: All color options unless theme explicitly defines a color palette.
+* [NEW] Calls extra attention to color contrast errors.
+* [NEW] Block Editor Filters
+	* `mrw_block_blacklist` filter allows hiding blocks from the editor in PHP.
+	* `mrw_style_variations_blacklist` filter allows hiding style variations in PHP.
+	* `mrw_block_editor_disable_settings` filter for re-enabling settings hidden by this plugin
+	* `mrw_block_editor_hide_color_palette` filter to unhide default Block Editor color palette
+
+= 1.2.0 (Nov 13, 2016) =
+* Update "Heading" list to emphasize implied hierarchy. (See [#38049](https://core.trac.wordpress.org/ticket/38049) for background and potential core inclusion.)
+* Add horizontal rule button.
+* Rename "Text Styles" to "Custom Styles" for clarity.
+* Remove Indent/Outdent buttons. (Use TAB / SHIFT + TAB for list indentation.)
+* Remove code and pre from "Other Formats". (Use `backticks` for code.)
+* Update textdomain to support language packs.
+* Escape all translations
+
+= 1.1.0 (Mar 13, 2015) =
+* Hide `wp_help` button on mobile just like WordPress 4.2 ([#31161](https://core.trac.wordpress.org/ticket/31161)).
+* Add `code` element to available "Other Formats."
+
+= 1.0.5 (Feb 13, 2015) =
+* Improved code formatting thanks to [@robneu](https://profiles.wordpress.org/fatmedia/)!
+* Add keys to the `$buttons` array filtered by `mce_buttons` for more intuitive button insertion.
+* Example of above and working with "Text Styles" submenu added as "Code Recipes" in ["Other Notes"](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other_notes/).
+* [Breaking Change] Remove `mrw_mce_style_formats` filter. It was a stupid idea and I doubt anyone's used it yet.
+* Fixed PNG mime-types for files used by repository in `/assets/`
+
+= 1.0.4 (Feb 6, 2015) =
+* Cleaned up and submitted to the repository.
+* Renamed "MRW Web Design Simple TinyMCE"
+* New readme, screenshots, etc.
+* Feb 12, 2015: No version update, but revised screenshots and improved readme.
+
+= 1.0.3 (Jan 5, 2015) =
+* Change "fullscreen" to "dfw" for Distraction Free Writing Mode support in 4.1.
+
+= 1.0.2 (Sept 16, 2014) =
+* Fix "Header" to "Heading." D'oh!
+
+= 1.0.1 (May 9, 2014) =
+* [Fix] Fix Help Icon
+
+= 1.0 (May 5, 2014) =
+* Initial release
+
+== Upgrade Notice ==
+= 2.1.0 =
+* Important WordPress 5.4 compatibility fixes. Disable default gradients and social icon style variations.
+
+= 2.0.2 =
+* Bug fix for front-end TinyMCE. (2.0.0 is a MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.)
+
+= 2.0.1 =
+* MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.
+
+= 1.1.0 =
+* Beating WordPress 4.2 to hiding `wp_help` on mobile. Adding `code` element to "Other Formats."
+
+= 1.0.5 =
+* Better formatting and inline documentation. BREAKING CHANGE: Remove `mrw_mce_style_formats` filter. I doubt you were using it.
+
+= 1.0.4 =
+* I'm impressed you had this installed already. Welcome to the beautiful world of automatic updates.

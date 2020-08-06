@@ -1,14 +1,15 @@
 /**
  * This file disables all settings that can't be otherwise turned off with a PHP or JS API.
  *
- * You can use the `mrw_block_editor_disable_settings` filter to turn change which settings are disables in a backwards-compatible way
+ * You can use the `mrw_disabled_block_editor_settings` filter to turn change which settings are disables in a backwards-compatible way
  */
 
 /* Dropcap */
 /* WP 5.0-5.3 */
 .mrw-block-editor-no-drop-cap .components-panel__body.blocks-font-size .components-toggle-control:nth-child(3),
 /* WP 5.4+ */
-.mrw-block-editor-no-drop-cap .components-font-size-picker + .components-toggle-control {
+.mrw-block-editor-no-drop-cap .components-font-size-picker + .components-toggle-control
+/* WP 5.5 😭 */ {
 	display: none;
 }
 
@@ -25,17 +26,23 @@
 .mrw-block-editor-no-image-file-upload .components-form-file-upload,
 .mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container,
 .mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container,
-.mrw-block-editor-no-image-url .block-editor-media-replace-flow__options .components-form-file-upload + button {
+.mrw-block-editor-no-image-url .block-editor-media-replace-flow__options .components-form-file-upload + button,
+.mrw-block-editor-no-image-file-upload .wp-block-gallery .block-editor-media-placeholder__upload-button {
 	display: none;
 }
 
 /* Hide Heading Levels 1, 5, and 6 */
 .mrw-block-editor-no-heading-1 .components-button[data-subscript="1"],
-.mrw-block-editor-no-heading-1 .components-button[aria-label="Heading 1"],
 .mrw-block-editor-no-heading-5 .components-button[data-subscript="5"],
-.mrw-block-editor-no-heading-5 .components-button[aria-label="Heading 5"],
 .mrw-block-editor-no-heading-6 .components-button[data-subscript="6"],
-.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"] {
+/* WP 5.2+? */
+.mrw-block-editor-no-heading-1 .components-button[aria-label="Heading 1"],
+.mrw-block-editor-no-heading-5 .components-button[aria-label="Heading 5"],
+.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"],
+/* WP 5.5! */
+.mrw-block-editor-no-heading-1 .block-library-heading-level-toolbar .components-button:nth-child(1),
+.mrw-block-editor-no-heading-5 .block-library-heading-level-toolbar .components-button:nth-child(5),
+.mrw-block-editor-no-heading-6 .block-library-heading-level-toolbar .components-button:nth-child(6) {
 	display: none;
 }
 
@@ -45,18 +52,58 @@
 	display: none;
 }
 
-/* Style "Save Draft" button to look like a button */
+/* Hide "Default style" select for style variations */
+.mrw-block-editor-no-default-style-variation .block-editor-block-styles + .components-base-control {
+	display: none;
+}
+
+
+/*===================================================
+=            Media Library Button styles            =
+===================================================*/
+/* always style the Media Library item as a primary button */
+.block-editor-media-placeholder .components-button.is-tertiary {
+	background: var(--wp-admin-theme-color);
+	color: #fff;
+	padding: 6px 12px;
+}
+
+.block-editor-media-placeholder .components-button.is-tertiary:hover:not(:disabled) {
+	background: var(--wp-admin-theme-color-darker-10);
+	color: #fff;
+}
+
+/* handle gallery exception */
+.mrw-block-editor-no-image-url .wp-block-gallery .components-form-file-upload,
+.mrw-block-editor-no-image-upload .wp-block-gallery .components-form-file-upload {
+	display: block;
+}
+
+
+/*===========================================
+=            "Save draft" Button            =
+===========================================*/
 /* Styles copied from .is-secondary button class */
 .edit-post-header__settings .editor-post-save-draft {
 	white-space: nowrap;
-	color: #0075af;
-	border: 1px solid #0075af;
+	border: 1px solid #a0a5aa;
 	background: #f3f5f6;
 }
-/* Selectively compied from .components-button */
+
+.edit-post-header__settings .editor-post-save-draft:focus:not(:disabled),
+.edit-post-header__settings .editor-post-save-draft:hover:not(:disabled) {
+	color: #0075af;
+	border-color: #0075af;
+	border-color: var(--wp-admin-theme-color-darker-10);
+	box-shadow: none;
+}
+
+/* Selectively copied from .components-button */
 .edit-post-header__settings .editor-post-saved-state {
 	display: inline-flex;
-	border: 1px solid #555d66;
+	color: #a0a5aa;
+	background: #f7f7f7;
+	border: 1px solid #ddd;
 	height: 36px;
 	align-items: center;
 	padding: 0 8px;
@@ -65,27 +112,36 @@
 	/* not copied */
 	cursor: default;
 }
+
 .edit-post-header__settings .editor-post-saved-state + .editor-post-preview,
 .edit-post-header__settings .editor-post-save-draft + .editor-post-preview {
 	margin-left: 6px;
 }
 
-/* Change visual appearance of Color Contrast warning to an error. Move to top of Color Settings */
-.editor-panel-color-settings.is-opened {
+
+/*==============================================
+=            Color Contrast Warning            =
+==============================================*/
+.block-editor-panel-color-gradient-settings.is-opened {
 	display: flex;
 	flex-direction: column;
 }
-.editor-panel-color-settings .components-panel__body-title {
+
+.block-editor-panel-color-gradient-settings .components-panel__body-title {
 	order: -2;
 }
-.editor-panel-color-settings .editor-contrast-checker {
+
+.block-editor-panel-color-gradient-settings .block-editor-contrast-checker {
 	order: -1;
+	margin-top: 12px;
 	margin-bottom: 24px;
 }
-.editor-panel-color-settings .editor-contrast-checker .components-notice.is-warning {
+
+.block-editor-panel-color-gradient-settings .block-editor-contrast-checker .components-notice.is-warning {
 	border-left-color: #d94f4f;
 	background-color: #f9e2e2;
 }
-.edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
+
+.block-editor-panel-color-gradient-settings .block-editor-color-gradient-control + .block-editor-color-gradient-control {
 	margin-bottom: 0;
 }
