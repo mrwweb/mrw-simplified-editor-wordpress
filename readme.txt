@@ -13,9 +13,7 @@ Focus editors on making great content and letting their themes make it beautiful
 
 == Description ==
 
-When publishing content with a CMS, editors should enter semantic content and then have it styles by the theme. This ensures consistent formatting and portable content.
-
-This plugin simplifies both the Block and Classic Editors to focus users on creating content, not formatting words.
+Help your CMS editors create semantic content and style it with the theme for consistent formatting and portable content. This plugin removes blocks and other styling options to help editors focus.
 
 **Developers can adjust this plugin via filters. There are no settings.**
 
@@ -25,8 +23,7 @@ This plugin simplifies both the Block and Classic Editors to focus users on crea
 
 = Block Editor Features =
 
-- **Hidden Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive
-- **Hidden Embeds:** Amazon Kindle, Animoto, Cloudup, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, VideoPress, and WordPress.tv
+- **Hidden Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, Archive, many less popular embed source (see FAQ)
 - **Removes default Block Style Variations and the "Default style" feature**
 - **Removes default Block Patterns (WP 5.5)**
 - **Removes Block Directory (WP 5.5)**
@@ -57,6 +54,10 @@ Reduce editor to a single row of buttons: "Styleselect" (Headings 2-4 and Blockq
 	- `new-tabs` - Option to open links in new tabs for links, buttons, and images
 - `mrw_block_editor_hide_color_palette` - Whether to display the default or theme color palette. Defaults to true (hide it). Will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-color-palette' )`.
 - `mrw_block_editor_hide_gradient_presets` - Whether to display the default or theme  gradient presets. Defaults to true (hide it). Will automatically change to false if theme registers a custom palette via `get_theme_support( 'editor-gradient-presets' )`.
+
+= Which embed blocks are hidden? =
+
+Amazon Kindle, Animoto, Cloudup, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, VideoPress, and WordPress.tv
 
 = Block Editor Filter Code Examples =
 
