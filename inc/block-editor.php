@@ -225,6 +225,26 @@ function mrw_disabled_block_editor_settings() {
 
 }
 
+add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
+/**
+ * Make changed to editor settings, accounting for plugin filters, via the core block_editor_settings filter
+ * 
+ * @param  array $editor_settings default editor settings
+ * @return array                  modified settings
+ *
+ * @see https://github.com/joppuyo/remove-drop-cap/blob/v1.1.0/remove-drop-cap.php#L22
+ */
+function mrw_block_editor_settings( $editor_settings ) {
+
+	$disabled_settings = mrw_disabled_block_editor_settings();
+
+	if( in_array( 'drop-cap', $disabled_settings ) ) {
+		$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
+	}
+
+	return $editor_settings;
+}
+
 /**
  * prepares all plugin options (after being filtered) for use in JavaScript
  * @return array all disabled blocks, style variations, and block editor tools
