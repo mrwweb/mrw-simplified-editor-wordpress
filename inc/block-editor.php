@@ -363,12 +363,19 @@ add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
  */
 function mrw_block_editor_settings_admin_classes( $classes ) {
 
-	$hidden_block_editor_settings = mrw_hidden_block_editor_settings();
+	$current_screen = get_current_screen();
 
-	$prefix = ' mrw-block-editor-no-';
-	foreach( $hidden_block_editor_settings as $setting ) {
-		$classes .= $prefix . sanitize_title_with_dashes( $setting );
+	if( isset( $current_screen->is_block_editor ) && (bool) $current_screen->is_block_editor ) {
+
+		$hidden_block_editor_settings = mrw_hidden_block_editor_settings();
+
+		$prefix = ' mrw-block-editor-no-';
+		foreach( $hidden_block_editor_settings as $setting ) {
+			$classes .= $prefix . sanitize_title_with_dashes( $setting );
+		}
+		
 	}
+
 
 	return $classes;
 
