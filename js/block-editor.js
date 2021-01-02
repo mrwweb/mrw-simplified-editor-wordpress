@@ -1,6 +1,6 @@
 wp.hooks.addFilter( 'blocks.registerBlockType', 'hideBlocks', ( blockSettings, blockName ) => {
 
-	if ( -1 < mrwEditorOptions.disabledBlocks.indexOf( blockName ) ) {
+	if ( -1 < mrwEditorOptions.hiddenBlocks.indexOf( blockName ) ) {
 		return Object.assign({}, blockSettings, {
 			supports: Object.assign( {}, blockSettings.supports, {inserter: false} )
 		});
@@ -11,9 +11,9 @@ wp.hooks.addFilter( 'blocks.registerBlockType', 'hideBlocks', ( blockSettings, b
 
 wp.domReady( function() {
 
-	Object.keys( mrwEditorOptions.disabledVariations ).forEach( function( block ) {
-		mrwEditorOptions.disabledVariations[block].forEach( function( variation ) {
-			wp.blocks.unregisterBlockStyle( block, variation );
+	Object.keys( mrwEditorOptions.hiddenStyles ).forEach( function( block ) {
+		mrwEditorOptions.hiddenStyles[block].forEach( function( style ) {
+			wp.blocks.unregisterBlockStyle( block, style );
 		});
 	});
 
