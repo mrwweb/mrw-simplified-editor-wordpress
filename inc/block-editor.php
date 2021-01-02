@@ -32,12 +32,21 @@ function mrw_block_editor_theme_support() {
 	 */
 	$theme_palette = get_theme_support( 'editor-color-palette' );
 
+	/**
+	 * See if the Block Editor Colors plugin is activated. In that case, let it do its thing
+	 * 
+	 * @var bool
+	 *
+	 * @see  https://wordpress.org/plugins/block-editor-colors/
+	 */
+	$block_editor_colors_plugin_is_active = in_array( 'block-editor-colors/plugin.php', (array) get_option( 'active_plugins', array() ), true );
+
 	$hide_palette = apply_filters(
 		'mrw_block_editor_hide_color_palette',
 		empty( $theme_palette )
 	);
 
-	if( $hide_palette ) {
+	if( $hide_palette && ! $block_editor_colors_plugin_is_active ) {
 		add_theme_support( 'editor-color-palette' );
 	}
 
