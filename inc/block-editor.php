@@ -179,6 +179,43 @@ function mrw_hidden_blocks() {
 
 }
 
+add_action( 'jetpack_register_gutenberg_extensions', 'mrw_jetpack_hidden_blocks', 99 );
+/**
+ * Hiden Jetpack Blocks
+ *
+ * @see  https://developer.jetpack.com/hooks/jetpack_register_gutenberg_extensions/
+ */
+function mrw_jetpack_hidden_blocks() {
+	if ( ! class_exists( 'Jetpack_Gutenberg' ) ) {
+		return;
+	}
+	
+	$jetpack_hidden_block_reason = 'Hidden by MRW Simplified Editor. Use mrw_jetpack_hidden_blocks filter to restore.';
+
+	$mrw_jetpack_hidden_blocks = apply_filters(
+		'mrw_jetpack_hidden_blocks',
+		array(
+			'markdown',
+			'rating-star',
+			'repeat-visitor',
+			'opentable',
+			'revue',
+			'eventbrite',
+			'gif',
+			'calendly',
+			'send-a-message', // required for whatsapp-button
+			'whatsapp-button',
+		)
+	);
+
+	foreach( $mrw_jetpack_hidden_blocks as $block ) {
+		Jetpack_Gutenberg::set_extension_unavailable(
+			'jetpack/' . $block,
+			$jetpack_hidden_block_reason
+		);
+	}
+}
+
 /**
  * Define default hidden block style and allow them to be filtered
  * 
@@ -373,9 +410,8 @@ function mrw_block_editor_settings_admin_classes( $classes ) {
 		foreach( $hidden_block_editor_settings as $setting ) {
 			$classes .= $prefix . sanitize_title_with_dashes( $setting );
 		}
-		
-	}
 
+	}
 
 	return $classes;
 
