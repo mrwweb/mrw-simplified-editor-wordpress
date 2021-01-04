@@ -97,5 +97,5 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.2.0 =
-* Important WordPress 5.5 compatibility fixes. Remove Core Block Patterns and Block Directory.
+= 2.3.0 =
+* Hide infrequently used Jetpack blocks. Restore hiding the Drop Cap setting for the paragraph block. Developers: See readme re: deprecated filter names.
