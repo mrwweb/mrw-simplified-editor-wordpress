@@ -1,10 +1,10 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
-Tags: Block Editor, Gutenberg, TinyMCE, Editor Styles, Editor
+Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 4.1
 Requires PHP: 5.6.20
 Tested up to: 5.6
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,6 +41,9 @@ The plugin also improves the editor by:
 
 Reduce editor to a single row of buttons: "Styleselect" (Headings 2-4 and Blockquote as well as Strikethrough, Subscript, Superscript, Preformatted, and Code), Bold, Italic, Add/Edit Link, Break Link, Horizontal Rule (added 1.2.0), Paste as Plain Text, Remove Styles, Special Characters, Undo, Redo, Help, Distraction Free Mode.
 
+= Note on WordPress version Support =
+Due to frequent changes to the block editor, features are only guaranteed for the latest version of WordPress.
+
 == Frequently Asked Questions ==
 
 = Full List of Hidden Blocks =
@@ -67,6 +70,11 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 == Changelog ==
 
+= 2.4.0 (January 7, 2021) =
+* [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them
+* [Dev] Introduce new `mrw_hidden_embeds` filter. Embeds are no long hidden via the `mrw_hidden_blocks`.
+* [Dev] Improve consistency of how filters are applied
+
 = 2.3.0 (January 3, 2021) =
 * WordPress 5.6 support confirmed
 * [New] Hide Jetpack Blocks: Markdown, Star Rating, Repeat Visitor, OpenTable, Revue, Eventbrite Tickets, GIF, Calendly, and WhatsApp Button. Adds `mrw_jetpack_hidden_blocks` filter, allowing developers to easily unhide these blocks while also making it easier to hide other Jetpack blocks!
@@ -79,23 +87,9 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 	* `mrw_disabled_block_editor_settings` ➡ `mrw_hidden_block_editor_settings`
 * [Docs] - Moved Filter references and code examples to [GitHub wiki](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/MRW-Simplified-Editor-Documentation)
 
-= 2.2.0 (Aug 5, 2020) =
-* WordPress 5.5 support
-* [NEW] WP 5.5 features disabled:
-	* Core Block Patterns
-	* Block Directory Installer
-* [NEW] Hide "Default style" select for style variations (the theme's default is the default for a reason!)
-* [Fix] Hide Headings 1, 5, and 6 in all languages, not just English
-* [Fix] Adjust "Save draft" button to show consistently and match new secondary button styles
-* [Fix] Restore more prominent color contrast errors
-* [Fix] Restore ability to edit galleries (props to Mackenzie at WSCADV for reporting this one)
-* [Regression] WordPress 5.5 makes it impossible to hide the Dropcap option
-* [Dev] **Deprecated Filters:** Remove all instances of "blacklist" from the plugin. `mrw_block_blacklist` and `mrw_style_variations_blacklist` are now deprecated in favor of `mrw_disabled_blocks` and `mrw_disabled_style_variations`. Respective object properties in JS are also renamed. Deprecate `mrw_block_editor_disable_settings` and add `mrw_disabled_block_editor_settings` for consistency. *Filters will be removed from the plugin as early as August 2021.*
-* [Dev] Refactor internal functions for managing default options
-
 = Full Changelog =
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.3.0 =
-* Hide infrequently used Jetpack blocks. Restore hiding the Drop Cap setting for the paragraph block. Developers: See readme re: deprecated filter names.
+= 2.4.0 =
+* Fix hiding of embeds which broke in WordPress 5.6
