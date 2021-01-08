@@ -1,3 +1,19 @@
+= 2.4.0 (January 7, 2021) =
+* [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them
+* [Dev] Improve consistency of how filters are applied
+
+= 2.3.0 (January 3, 2021) =
+* WordPress 5.6 support confirmed
+* [New] Hide Jetpack Blocks: Markdown, Star Rating, Repeat Visitor, OpenTable, Revue, Eventbrite Tickets, GIF, Calendly, and WhatsApp Button. Adds `mrw_jetpack_hidden_blocks` filter, allowing developers to easily unhide these blocks while also making it easier to hide other Jetpack blocks!
+* [Fix] (!!!) Hide Dropcap setting in Editor ([big props](https://github.com/mrwweb/mrw-simplified-editor-wordpress/issues/15) to @xemlock and @joppuyo on Github)
+* [Fix] Resolve notice from Block Editor Colors plugin when using a theme without a custom color palette.
+* [Fix] Only add body classes that hide editor settings on the Block Editor screen
+* [Dev] **Deprecated Filters (Sorry for doing this again, last time I foresee):** Replace "disabled" with "hidden" and "style variations" with "block styles" for improved clarity.
+	* `mrw_disabled_blocks` ➡ `mrw_hidden_blocks`
+	* `mrw_disabled_style_variations` ➡ `mrw_hidden_block_styles`
+	* `mrw_disabled_block_editor_settings` ➡ `mrw_hidden_block_editor_settings`
+* [Docs] - Moved Filter references and code examples to [GitHub wiki](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/MRW-Simplified-Editor-Documentation)
+
 = 2.2.0 (Aug 5, 2020) =
 * WordPress 5.5 support
 * [NEW] WP 5.5 features disabled:
