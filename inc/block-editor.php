@@ -129,22 +129,6 @@ function mrw_hidden_blocks() {
 		'core/rss',
 		'core/search',
 		'core/tag-cloud',
-
-		// Embeds
-		'core-embed/amazon-kindle',
-		'core-embed/animoto',
-		'core-embed/cloudup',
-		'core-embed/collegehumor',
-		'core-embed/crowdsignal',
-		'core-embed/dailymotion',
-		'core-embed/hulu',
-		'core-embed/mixcloud',
-		'core-embed/polldaddy',
-		'core-embed/reverbnation',
-		'core-embed/smugmug',
-		'core-embed/speaker',
-		'core-embed/videopress',
-		'core-embed/wordpress-tv',
 	);
 
 	// attempt to detect if More Tag button was previously made available in the classic editor before overriding the More Block
@@ -173,9 +157,34 @@ function mrw_hidden_blocks() {
 		'This filter will stop functioning as soon as January 2022.'
 	);
 
-	$hidden_blocks = apply_filters( 'mrw_hidden_blocks', $hidden_blocks );
+	return apply_filters( 'mrw_hidden_blocks', $hidden_blocks );
 
-	return $hidden_blocks;
+}
+
+/**
+ * Return list of hidden embeds
+ */
+function mrw_hidden_embeds() {
+	
+	// Embeds
+	$hidden_embeds = array(
+		'amazon-kindle',
+		'animoto',
+		'cloudup',
+		'collegehumor',
+		'crowdsignal',
+		'dailymotion',
+		'hulu',
+		'mixcloud',
+		'polldaddy',
+		'reverbnation',
+		'smugmug',
+		'speaker',
+		'videopress',
+		'wordpress-tv',
+	);
+
+	return apply_filters( 'mrw_hidden_embeds', $hidden_embeds );
 
 }
 
@@ -186,6 +195,7 @@ add_action( 'jetpack_register_gutenberg_extensions', 'mrw_jetpack_hidden_blocks'
  * @see  https://developer.jetpack.com/hooks/jetpack_register_gutenberg_extensions/
  */
 function mrw_jetpack_hidden_blocks() {
+
 	if ( ! class_exists( 'Jetpack_Gutenberg' ) ) {
 		return;
 	}
@@ -214,6 +224,7 @@ function mrw_jetpack_hidden_blocks() {
 			$jetpack_hidden_block_reason
 		);
 	}
+
 }
 
 /**
@@ -249,12 +260,7 @@ function mrw_hidden_block_styles() {
 		'This filter will stop functioning as soon as January 2022.'
 	);
 
-	$hidden_styles = apply_filters(
-		'mrw_hidden_block_styles',
-		$hidden_styles
-	);
-
-	return $hidden_styles;
+	return apply_filters( 'mrw_hidden_block_styles', $hidden_styles	);
 
 }
 
@@ -294,12 +300,7 @@ function mrw_hidden_block_editor_settings() {
 		'This filter will stop functioning as soon as January 2022.'
 	);
 
-	$hidden_block_editor_settings = apply_filters(
-		'mrw_hidden_block_editor_settings',
-		$hidden_block_editor_settings
-	);
-
-	return $hidden_block_editor_settings;
+	return apply_filters( 'mrw_hidden_block_editor_settings', $hidden_block_editor_settings );
 
 }
 
@@ -321,6 +322,7 @@ function mrw_block_editor_settings( $editor_settings ) {
 	}
 
 	return $editor_settings;
+
 }
 
 /**
@@ -332,7 +334,7 @@ function mrw_block_editor_js_config() {
 
 	$js_options = array();
 
-	// Note: use array_values to ensure this is passed as an array and not an object
+	// Note: using array_values to ensure this is passed as an array and not an object
 
 	/*==============================
 	=            Blocks            =
@@ -341,8 +343,13 @@ function mrw_block_editor_js_config() {
 
 
 	/*========================================
-	=            Style Variations            =
+	=            Embed Variations            =
 	========================================*/
+	$js_options['hiddenEmbeds'] = array_values( mrw_hidden_embeds() );
+
+	/*====================================
+	=            Block Styles            =
+	======================================*/
 	$hidden_style_variations = array();
 	foreach ( mrw_hidden_block_styles() as $block => $styles ) {
 		$hidden_styles[$block] = array_values( $styles );
@@ -350,12 +357,10 @@ function mrw_block_editor_js_config() {
 
 	$js_options['hiddenStyles'] = $hidden_styles;
 
-
 	/*================================
 	=            Features            =
 	================================*/
 	$js_options['hiddenSettings'] = array_values( mrw_hidden_block_editor_settings() );
-	
 
 	return $js_options;
 
