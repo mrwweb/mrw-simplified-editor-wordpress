@@ -1,7 +1,7 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
-Requires at least: 4.1
+Requires at least: 5.8
 Requires PHP: 5.6.20
 Tested up to: 5.6
 Stable tag: 2.4.0
@@ -48,7 +48,7 @@ Due to frequent changes to the block editor, features are only guaranteed for th
 
 = Full List of Hidden Blocks =
 
-**Hidden Core Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, Archive
+**Hidden Core Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Shortcode, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, Archives, Latest Comments, and (New in 5.8) all Site- and Query-related blocks.
 
 **Hidden Core Embeds:** Amazon Kindle, Animoto, Cloudup, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, VideoPress, and WordPress.tv
 
@@ -69,6 +69,14 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 2. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin.
 
 == Changelog ==
+
+= 2.5.0 (August , 2021) =
+* Requires WordPress 5.8 for full featureset.
+* [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`.
+* [New] Hide shortcode block since it works in a paragraph block anyway.
+* [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these
+* [New] Hide all new Site and Query-related blocks (e.g. Query Loop, Post Title, Site Logo, etc.)
+* [New] Add new filters `mrw_hidden_core_blocks`, `mrw_hidden_widget_blocks`, `mrw_hidden_query_blocks`, and `mrw_hidden_post_blocks` that can be used to unhide entire group of related blocks with `__return_empty_array()`.
 
 = 2.4.0 (January 7, 2021) =
 * [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them

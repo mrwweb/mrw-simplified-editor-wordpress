@@ -1,5 +1,6 @@
 = 2.4.0 (January 7, 2021) =
 * [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them
+* [Dev] Introduce new `mrw_hidden_embeds` filter. Embeds are no long hidden via the `mrw_hidden_blocks`.
 * [Dev] Improve consistency of how filters are applied
 
 = 2.3.0 (January 3, 2021) =

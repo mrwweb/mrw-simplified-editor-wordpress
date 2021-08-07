@@ -112,8 +112,7 @@ function mrw_hide_block_directory() {
  */
 function mrw_hidden_blocks() {
 
-	$hidden_blocks = array(
-		// Core
+	$hidden_core_blocks = apply_filters( 'mrw_hidden_core_blocks', array(
 		'core/audio',
 		'core/code',
 		'core/nextpage',
@@ -122,13 +121,43 @@ function mrw_hidden_blocks() {
 		'core/table',
 		'core/verse',
 		'core/video',
+		'core/shortcode',
+	) );
 
-		// Widgets
-		'core/archive',
+	$hidden_widgets = apply_filters( 'mrw_hidden_widget_blocks', array(
+		'core/archives',
 		'core/calendar',
 		'core/rss',
 		'core/search',
 		'core/tag-cloud',
+		'core/latest-comments',
+		'core/categories',
+	) );
+
+	$hidden_query_blocks = apply_filters( 'mrw_hidden_query_blocks', array(
+		'core/query',
+		'core/query-title',
+		'core/post-title',
+		'core/post-content',
+		'core/post-date',
+		'core/post-excerpt',
+		'core/post-featured-image',
+		'core/post-terms',
+		'core/page-list',
+	) );
+
+	$hidden_site_blocks = apply_filters( 'mrw_hidden_site_blocks', array(
+		'core/site-logo',
+		'core/site-tagline',
+		'core/site-title',
+		'core/loginout',
+	) );
+
+	$hidden_blocks = array_merge(
+		$hidden_core_blocks,
+		$hidden_widgets,
+		$hidden_query_blocks,
+		$hidden_site_blocks,
 	);
 
 	// attempt to detect if More Tag button was previously made available in the classic editor before overriding the More Block
@@ -304,7 +333,7 @@ function mrw_hidden_block_editor_settings() {
 
 }
 
-add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
+add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings' );
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
  * 
