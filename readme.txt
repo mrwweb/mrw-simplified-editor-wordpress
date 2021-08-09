@@ -23,7 +23,7 @@ Help your CMS editors create semantic content and style it with the theme for co
 
 This plugin greatly simplifies the block editor by **hiding** all of the following features. Filters are provided for developers to adjust what is hidden (including making it easier to hide blocks).
 
-- **Infrequently Used Core Blocks:** Verse, Table, Audio, Video, Code, More, Nextpage, Spacer, *and more*. See [FAQ for full list of hidden blocks](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/#faq).
+- **Infrequently Used Core Blocks** such as Verse, Table, Audio, Video, etc., and all Query- and Site-related blocks. See [FAQ for full list of hidden blocks](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/#faq).
 - **Block Styles and the "Default style" feature**
 - **Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, font sizing by pixel, open links in new tabs (mostly hidden)
 - **Default Color & gradient settings** (Custom theme palettes/settings are never hidden)
@@ -48,11 +48,21 @@ Due to frequent changes to the block editor, features are only guaranteed for th
 
 = Full List of Hidden Blocks =
 
-**Hidden Core Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, Shortcode, Spacer, Calendar, Tag Cloud, Search, RSS, Audio, Video, Archives, Latest Comments, and (New in 5.8) all Site- and Query-related blocks.
+**Hidden Core Blocks:**
 
-**Hidden Core Embeds:** Amazon Kindle, Animoto, Cloudup, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, VideoPress, and WordPress.tv
+- **Text & Media Blocks:** Audio, Code, Next Page, Preformatted, Shortcode, Spacer, Table, Verse, Video
+- **Widget Blocks:** Archives, Calendar, Categories, Latest Comments, RSS, Search, Tag Cloud
+- **Query-Related Blocks**: Query, Archive Title (Query Title), Post Title, Post Content, Post Date, Post Excerpt, Post Featured Image, Post Tags & Categories (Post Terms)
+Page List
+- **FSE Blocks:** Login/Out, Page List, Site Logo, Site Tagline, Site Title
 
-**Hidden Jetpack Blocks:** Markdown, Star Rating, Repeat Visitor, OpenTable, Revue, Eventbrite Tickets, GIF, Calendly, and WhatsApp Button
+**Hidden Core Embeds:**
+
+- Amazon Kindle, Animoto, Cloudup, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, VideoPress, and WordPress.tv
+
+**Hidden Jetpack Blocks:**
+
+- Markdown, Star Rating, Repeat Visitor, OpenTable, Revue, Eventbrite Tickets, GIF, Calendly, and WhatsApp Button
 
 = Plugin Filters =
 

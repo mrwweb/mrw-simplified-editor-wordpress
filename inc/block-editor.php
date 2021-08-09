@@ -129,11 +129,11 @@ function mrw_hidden_blocks() {
 		'core/code',
 		'core/nextpage',
 		'core/preformatted',
+		'core/shortcode',
 		'core/spacer',
 		'core/table',
 		'core/verse',
 		'core/video',
-		'core/shortcode',
 	) );
 
 	/**
@@ -143,11 +143,11 @@ function mrw_hidden_blocks() {
 	$hidden_widgets = apply_filters( 'mrw_hidden_widget_blocks', array(
 		'core/archives',
 		'core/calendar',
+		'core/categories',
+		'core/latest-comments',
 		'core/rss',
 		'core/search',
 		'core/tag-cloud',
-		'core/latest-comments',
-		'core/categories',
 	) );
 
 	/**
@@ -163,7 +163,6 @@ function mrw_hidden_blocks() {
 		'core/post-excerpt',
 		'core/post-featured-image',
 		'core/post-terms',
-		'core/page-list',
 	) );
 
 	/**
@@ -171,10 +170,11 @@ function mrw_hidden_blocks() {
 	 * @since 2.5.0
 	 */
 	$hidden_site_blocks = apply_filters( 'mrw_hidden_site_blocks', array(
+		'core/loginout',
+		'core/page-list',
 		'core/site-logo',
 		'core/site-tagline',
 		'core/site-title',
-		'core/loginout',
 	) );
 
 	$hidden_blocks = array_merge(
