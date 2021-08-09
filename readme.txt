@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 5.8
 Requires PHP: 5.6.20
 Tested up to: 5.6
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ Focus editors on making great content and letting their themes make it beautiful
 
 Help your CMS editors create semantic content and style it with the theme for consistent formatting and portable content. This plugin removes blocks and other styling options to help editors focus.
 
-> I built this plugin for use on client sites. I hopes you'll find it useful! **This is an opinionated plugin.** Read an in-depth reasoning behind the decisions made by this plugin in the post ["A WordPress Formatting Manifesto."](http://mrwweb.com/wordpress-formatting-manifesto/)
+> I built this plugin for use on client sites. I hope you'll find it useful! **This is an opinionated plugin.** Read an in-depth reasoning behind the decisions made by this plugin in the post ["A WordPress Formatting Manifesto."](http://mrwweb.com/wordpress-formatting-manifesto/) If you find it compelling, then you'll probably like this plugin!
 
 [Contribute on Github.](https://github.com/mrwweb/mrw-simplified-editor-wordpress/)
 
@@ -39,7 +39,7 @@ The plugin also improves the editor by:
 
 = Classic Editor / Classic Block Features =
 
-Reduce editor to a single row of buttons: "Styleselect" (Headings 2-4 and Blockquote as well as Strikethrough, Subscript, Superscript, Preformatted, and Code), Bold, Italic, Add/Edit Link, Break Link, Horizontal Rule (added 1.2.0), Paste as Plain Text, Remove Styles, Special Characters, Undo, Redo, Help, Distraction Free Mode.
+Reduces editor to a single row of buttons: "Styleselect" (Headings 2-4 and Blockquote as well as Strikethrough, Subscript, Superscript, Preformatted, and Code), Bold, Italic, Add/Edit Link, Break Link, Horizontal Rule, Paste as Plain Text, Remove Styles, Special Characters, Undo, Redo, Help, Distraction Free Mode.
 
 = Note on WordPress version Support =
 Due to frequent changes to the block editor, features are only guaranteed for the latest version of WordPress.
@@ -76,18 +76,18 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
-2. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin.
+2. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin in the Classic Editor.
 
 == Changelog ==
 
-= 2.5.0 (August , 2021) =
-* Requires WordPress 5.8 for full featureset.
-* [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`.
-* [New] Hide shortcode block since it works in a paragraph block anyway.
+= 2.5.0 (August 16, 2021) =
+* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default
+* [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
+* [New] Hide Shortcode block since shortcodes work in a Paragraph block
 * [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these
-* [New] Hide all new Site and Query-related blocks (e.g. Query Loop, Post Title, Site Logo, etc.)
+* [New] Hide all new Full Site Editing/FSE and Query-related blocks (e.g. Query Loop, Post Title, Site Logo, etc.)
 * [New] Add new filters `mrw_hidden_core_blocks`, `mrw_hidden_widget_blocks`, `mrw_hidden_query_blocks`, and `mrw_hidden_post_blocks` that can be used to unhide entire group of related blocks with `__return_empty_array()`.
-* [Fix] Rehide `drop-cap` after change in WordPress settings array.
+* [Fix] Re-hide `drop-cap` after change in WordPress settings array.
 
 = 2.4.0 (January 7, 2021) =
 * [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them
@@ -110,5 +110,5 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.4.0 =
-* Fix hiding of embeds which broke in WordPress 5.6
+= 2.5.0 =
+* WordPress 5.8 support and fixes, more hidden blocks by default
