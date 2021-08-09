@@ -77,6 +77,7 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these
 * [New] Hide all new Site and Query-related blocks (e.g. Query Loop, Post Title, Site Logo, etc.)
 * [New] Add new filters `mrw_hidden_core_blocks`, `mrw_hidden_widget_blocks`, `mrw_hidden_query_blocks`, and `mrw_hidden_post_blocks` that can be used to unhide entire group of related blocks with `__return_empty_array()`.
+* [Fix] Rehide `drop-cap` after change in WordPress settings array.
 
 = 2.4.0 (January 7, 2021) =
 * [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them

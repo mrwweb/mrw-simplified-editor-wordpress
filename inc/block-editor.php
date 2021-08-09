@@ -41,6 +41,10 @@ function mrw_block_editor_theme_support() {
 	 */
 	$block_editor_colors_plugin_is_active = in_array( 'block-editor-colors/plugin.php', (array) get_option( 'active_plugins', array() ), true );
 
+	/**
+	 * mrw_block_editor_hide_color_palette filter
+	 * @since 2.0.0
+	 */
 	$hide_palette = apply_filters(
 		'mrw_block_editor_hide_color_palette',
 		empty( $theme_palette )
@@ -68,6 +72,10 @@ function mrw_block_editor_theme_support() {
 	 */
 	$theme_gradients = get_theme_support( 'editor-gradient-presets' );
 
+	/**
+	 * mrw_block_editor_hide_gradient_presets filter
+	 * @since 2.1.0
+	 */
 	$hide_gradients = apply_filters(
 		'mrw_block_editor_hide_gradient_presets',
 		empty( $theme_gradients )
@@ -112,6 +120,10 @@ function mrw_hide_block_directory() {
  */
 function mrw_hidden_blocks() {
 
+	/**
+	 * mrw_hidden_core_blocks filter
+	 * @since 2.5.0
+	 */
 	$hidden_core_blocks = apply_filters( 'mrw_hidden_core_blocks', array(
 		'core/audio',
 		'core/code',
@@ -124,6 +136,10 @@ function mrw_hidden_blocks() {
 		'core/shortcode',
 	) );
 
+	/**
+	 * mrw_hidden_widget_blocks filter
+	 * @since 2.5.0
+	 */
 	$hidden_widgets = apply_filters( 'mrw_hidden_widget_blocks', array(
 		'core/archives',
 		'core/calendar',
@@ -134,6 +150,10 @@ function mrw_hidden_blocks() {
 		'core/categories',
 	) );
 
+	/**
+	 * mrw_hidden_query_blocks filter
+	 * @since 2.5.0
+	 */
 	$hidden_query_blocks = apply_filters( 'mrw_hidden_query_blocks', array(
 		'core/query',
 		'core/query-title',
@@ -146,6 +166,10 @@ function mrw_hidden_blocks() {
 		'core/page-list',
 	) );
 
+	/**
+	 * mrw_hidden_site_blocks filter
+	 * @since 2.5.0
+	 */
 	$hidden_site_blocks = apply_filters( 'mrw_hidden_site_blocks', array(
 		'core/site-logo',
 		'core/site-tagline',
@@ -186,6 +210,10 @@ function mrw_hidden_blocks() {
 		'This filter will stop functioning as soon as January 2022.'
 	);
 
+	/**
+	 * mrw_hidden_blocks filter
+	 * @since 2.3.0
+	 */
 	return apply_filters( 'mrw_hidden_blocks', $hidden_blocks );
 
 }
@@ -194,8 +222,7 @@ function mrw_hidden_blocks() {
  * Return list of hidden embeds
  */
 function mrw_hidden_embeds() {
-	
-	// Embeds
+
 	$hidden_embeds = array(
 		'amazon-kindle',
 		'animoto',
@@ -213,6 +240,10 @@ function mrw_hidden_embeds() {
 		'wordpress-tv',
 	);
 
+	/**
+	 * mrw_hidden_embeds filter
+	 * @since 2.4.0
+	 */
 	return apply_filters( 'mrw_hidden_embeds', $hidden_embeds );
 
 }
@@ -231,6 +262,10 @@ function mrw_jetpack_hidden_blocks() {
 	
 	$jetpack_hidden_block_reason = 'Hidden by MRW Simplified Editor. Use mrw_jetpack_hidden_blocks filter to restore.';
 
+	/**
+	 * mrw_jetpack_hidden_blocks filter
+	 * @since 2.3.0
+	 */
 	$mrw_jetpack_hidden_blocks = apply_filters(
 		'mrw_jetpack_hidden_blocks',
 		array(
@@ -289,6 +324,10 @@ function mrw_hidden_block_styles() {
 		'This filter will stop functioning as soon as January 2022.'
 	);
 
+	/**
+	 * mrw_hidden_block_styles filter
+	 * @since 2.3.0
+	 */
 	return apply_filters( 'mrw_hidden_block_styles', $hidden_styles	);
 
 }
@@ -329,11 +368,19 @@ function mrw_hidden_block_editor_settings() {
 		'This filter will stop functioning as soon as January 2022.'
 	);
 
+	/**
+	 * mrw_hidden_core_blocks filter
+	 * @since 2.3.0
+	 */
 	return apply_filters( 'mrw_hidden_block_editor_settings', $hidden_block_editor_settings );
 
 }
 
-add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings' );
+if( version_compare( get_bloginfo( 'version' ), '5.8', '<' ) ) {
+	add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
+} else {
+	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings' );
+}
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
  * 
@@ -347,7 +394,10 @@ function mrw_block_editor_settings( $editor_settings ) {
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
 	if( in_array( 'drop-cap', $hidden_settings ) ) {
+		// WP 5.6+
 		$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
+		// WP 5.8+
+		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
 	}
 
 	return $editor_settings;
