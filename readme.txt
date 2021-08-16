@@ -3,7 +3,7 @@ Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 4.1
 Requires PHP: 5.6.20
-Tested up to: 5.6
+Tested up to: 5.8
 Stable tag: 2.5.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
