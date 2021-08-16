@@ -1,5 +1,5 @@
 = 2.5.0 (August 16, 2021) =
-* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default
+* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
 * [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
 * [New] Hide Shortcode block since shortcodes work in a Paragraph block
 * [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these

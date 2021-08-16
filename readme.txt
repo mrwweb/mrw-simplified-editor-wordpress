@@ -1,7 +1,7 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
-Requires at least: 5.8
+Requires at least: 4.1
 Requires PHP: 5.6.20
 Tested up to: 5.6
 Stable tag: 2.5.0
@@ -13,7 +13,7 @@ Focus editors on making great content and letting their themes make it beautiful
 
 == Description ==
 
-Help your CMS editors create semantic content and style it with the theme for consistent formatting and portable content. This plugin removes blocks and other styling options to help editors focus.
+Help your site's editors create semantic content and style it with the theme for consistent formatting and portable content. This plugin removes blocks and other styling options to help editors focus.
 
 > I built this plugin for use on client sites. I hope you'll find it useful! **This is an opinionated plugin.** Read an in-depth reasoning behind the decisions made by this plugin in the post ["A WordPress Formatting Manifesto."](http://mrwweb.com/wordpress-formatting-manifesto/) If you find it compelling, then you'll probably like this plugin!
 
@@ -21,11 +21,11 @@ Help your CMS editors create semantic content and style it with the theme for co
 
 = Block Editor Features =
 
-This plugin greatly simplifies the block editor by **hiding** all of the following features. Filters are provided for developers to adjust what is hidden (including making it easier to hide blocks).
+This plugin greatly simplifies the block editor by **hiding** all of the following features. Filters are provided for developers to adjust what is hidden (including making it easier to hide additional blocks).
 
 - **Infrequently Used Core Blocks** such as Verse, Table, Audio, Video, etc., and all Query- and Site-related blocks. See [FAQ for full list of hidden blocks](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/#faq).
-- **Block Styles and the "Default style" feature**
-- **Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, font sizing by pixel, open links in new tabs (mostly hidden)
+- **All Core Block Styles and the "Default style" feature**
+- **Some Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, font sizing by pixel, open links in new tabs (mostly hidden)
 - **Default Color & gradient settings** (Custom theme palettes/settings are never hidden)
 - **Block Patterns (WP 5.5+)**
 - **Block Directory (WP 5.5+)**
@@ -34,8 +34,8 @@ This plugin greatly simplifies the block editor by **hiding** all of the followi
 
 The plugin also improves the editor by:
 
-- **Increase prominence of contrast errors**
-- **Styles "Save draft" as a button**
+- **Increasing prominence of contrast errors**
+- **Styling "Save draft" as a button**
 
 = Classic Editor / Classic Block Features =
 
@@ -76,12 +76,12 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
-2. The "Classic" block of the WordPress 5.0 block editor reflects the impact of this plugin in the Classic Editor.
+2. The "Classic" block of the WordPress block editor also reflects the impact of this plugin in the Classic Editor.
 
 == Changelog ==
 
 = 2.5.0 (August 16, 2021) =
-* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default
+* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
 * [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
 * [New] Hide Shortcode block since shortcodes work in a Paragraph block
 * [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these
@@ -111,4 +111,4 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 == Upgrade Notice ==
 = 2.5.0 =
-* WordPress 5.8 support and fixes, more hidden blocks by default
+* WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
