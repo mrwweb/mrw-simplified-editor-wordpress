@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 5.2
 Requires PHP: 5.6.20
 Tested up to: 5.8
-Stable tag: 2.5.0
+Stable tag: 2.6.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,11 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 == Changelog ==
 
+= 2.6.0 (November 12, 2021) =
+* [New] Hide Button block Border Radius setting by default. Show by removing `border-radius` from the array in the `mrw_hidden_block_editor_settings` filter.
+* [Dev] Improve documentation of options that trigger hiding editor features with CSS in `block-editor.css`.
+* [Dev] Use is_wp_compatible_version() for version comparison
+
 = 2.5.0 (August 16, 2021) =
 * tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
 * [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
@@ -89,26 +94,9 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [New] Add new filters `mrw_hidden_core_blocks`, `mrw_hidden_widget_blocks`, `mrw_hidden_query_blocks`, and `mrw_hidden_post_blocks` that can be used to unhide entire group of related blocks with `__return_empty_array()`.
 * [Fix] Re-hide `drop-cap` after change in WordPress settings array.
 
-= 2.4.0 (January 7, 2021) =
-* [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them
-* [Dev] Introduce new `mrw_hidden_embeds` filter. Embeds are no long hidden via the `mrw_hidden_blocks`.
-* [Dev] Improve consistency of how filters are applied
-
-= 2.3.0 (January 3, 2021) =
-* WordPress 5.6 support confirmed
-* [New] Hide Jetpack Blocks: Markdown, Star Rating, Repeat Visitor, OpenTable, Revue, Eventbrite Tickets, GIF, Calendly, and WhatsApp Button. Adds `mrw_jetpack_hidden_blocks` filter, allowing developers to easily unhide these blocks while also making it easier to hide other Jetpack blocks!
-* [Fix] (!!!) Hide Dropcap setting in Editor ([big props](https://github.com/mrwweb/mrw-simplified-editor-wordpress/issues/15) to @xemlock and @joppuyo on Github)
-* [Fix] Resolve notice from Block Editor Colors plugin when using a theme without a custom color palette.
-* [Fix] Only add body classes that hide editor settings on the Block Editor screen
-* [Dev] **Deprecated Filters (Sorry for doing this again, last time I foresee):** Replace "disabled" with "hidden" and "style variations" with "block styles" for improved clarity.
-	* `mrw_disabled_blocks` ➡ `mrw_hidden_blocks`
-	* `mrw_disabled_style_variations` ➡ `mrw_hidden_block_styles`
-	* `mrw_disabled_block_editor_settings` ➡ `mrw_hidden_block_editor_settings`
-* [Docs] - Moved Filter references and code examples to [GitHub wiki](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/MRW-Simplified-Editor-Documentation)
-
 = Full Changelog =
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.5.0 =
-* WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
+= 2.6.0 =
+* Button block Border Radius now hidden by default

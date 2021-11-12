@@ -1,3 +1,8 @@
+= 2.6.0 (November 12, 2021) =
+* [New] Hide Button block Border Radius setting by default. Show by removing `border-radius` from the array in the `mrw_hidden_block_editor_settings` filter.
+* [Dev] Improve documentation of options that trigger hiding editor features with CSS in `block-editor.css`.
+* [Dev] Use is_wp_compatible_version() for version comparison
+
 = 2.5.0 (August 16, 2021) =
 * tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
 * [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
