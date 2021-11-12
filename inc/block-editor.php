@@ -340,16 +340,17 @@ function mrw_hidden_block_styles() {
 function mrw_hidden_block_editor_settings() {
 
 	$hidden_block_editor_settings = array(
+		'block-directory',
+		'border-radius',
+		'default-style-variation',
 		'drop-cap',
-		'image-file-upload',
-		'image-url',
 		'heading-1',
 		'heading-5',
 		'heading-6',
 		'image-dimensions',
+		'image-file-upload',
+		'image-url',
 		'new-tabs',
-		'block-directory',
-		'default-style-variation'
 	);
 
 	$hidden_block_editor_settings = apply_filters_deprecated(
@@ -379,7 +380,7 @@ function mrw_hidden_block_editor_settings() {
 if( version_compare( get_bloginfo( 'version' ), '5.8', '<' ) ) {
 	add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
 } else {
-	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings' );
+	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 10, 2 );
 }
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
@@ -389,7 +390,7 @@ if( version_compare( get_bloginfo( 'version' ), '5.8', '<' ) ) {
  *
  * @see https://github.com/joppuyo/remove-drop-cap/blob/v1.1.0/remove-drop-cap.php#L22
  */
-function mrw_block_editor_settings( $editor_settings ) {
+function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
@@ -398,6 +399,10 @@ function mrw_block_editor_settings( $editor_settings ) {
 		$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
 		// WP 5.8+
 		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
+	}
+
+	if( in_array( 'border-radius', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;	
 	}
 
 	return $editor_settings;
