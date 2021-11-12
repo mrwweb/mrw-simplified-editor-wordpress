@@ -377,10 +377,10 @@ function mrw_hidden_block_editor_settings() {
 
 }
 
-if( version_compare( get_bloginfo( 'version' ), '5.8', '<' ) ) {
-	add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
-} else {
+if( is_wp_version_compatible( '5.8' ) ) {
 	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 10, 2 );
+} else {
+	add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
 }
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
@@ -395,10 +395,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
 	if( in_array( 'drop-cap', $hidden_settings ) ) {
-		// WP 5.6+
-		$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
-		// WP 5.8+
-		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
+		if( is_wp_version_compatible( '5.8' ) ) {
+			$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
+		} elseif( is_wp_version_compatible( '5.6' ) ) {
+			$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
+		}
 	}
 
 	if( in_array( 'border-radius', $hidden_settings) ) {
