@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 5.2
 Requires PHP: 5.6.20
 Tested up to: 5.8
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,9 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 == Changelog ==
 
+= 2.6.1 (November 22, 2021) = 
+* [Fix] Resolve fatal error on editor screen in WordPress versions before 5.8
+
 = 2.6.0 (November 12, 2021) =
 * [New] Hide Button block Border Radius setting by default. Show by removing `border-radius` from the array in the `mrw_hidden_block_editor_settings` filter.
 * [Dev] Improve documentation of options that trigger hiding editor features with CSS in `block-editor.css`.
@@ -98,5 +101,5 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.6.0 =
-* Button block Border Radius now hidden by default
+= 2.6.1 =
+* Fix error in WP versions before 5.8. Button block Border Radius now hidden by default in v2.6.0.

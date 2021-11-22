@@ -380,7 +380,7 @@ function mrw_hidden_block_editor_settings() {
 if( is_wp_version_compatible( '5.8' ) ) {
 	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 10, 2 );
 } else {
-	add_filter( 'block_editor_settings', 'mrw_block_editor_settings' );
+	add_filter( 'block_editor_settings', 'mrw_block_editor_settings', 10, 2 );
 }
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
