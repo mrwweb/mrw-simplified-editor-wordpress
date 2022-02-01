@@ -163,9 +163,7 @@ function mrw_hidden_blocks() {
 		'core/post-excerpt',
 		'core/post-featured-image',
 		'core/post-terms',
-		'core/post-navigation-link',
 		'core/post-author',
-		'core/post-comments',
 		'core/term-description',
 	) );
 
@@ -179,7 +177,9 @@ function mrw_hidden_blocks() {
 		'core/site-logo',
 		'core/site-tagline',
 		'core/site-title',
+		'core/post-navigation-link',
 		'core/navigation',
+		'core/post-comments',
 	) );
 
 	$hidden_blocks = array_merge(
