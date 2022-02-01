@@ -122,6 +122,9 @@ function mrw_hidden_blocks() {
 
 	/**
 	 * mrw_hidden_core_blocks filter
+	 *
+	 * Allows showing all hidden "Core" blocks by removing them from the hidden list. Use __return_empty_array to unhide all blocks.
+	 * 
 	 * @since 2.5.0
 	 */
 	$hidden_core_blocks = apply_filters( 'mrw_hidden_core_blocks', array(
@@ -138,6 +141,9 @@ function mrw_hidden_blocks() {
 
 	/**
 	 * mrw_hidden_widget_blocks filter
+	 *
+	 * Allows showing all hidden "Widget" blocks by removing them from the hidden list. Use __return_empty_array to unhide all blocks.
+	 * 
 	 * @since 2.5.0
 	 */
 	$hidden_widgets = apply_filters( 'mrw_hidden_widget_blocks', array(
@@ -152,6 +158,9 @@ function mrw_hidden_blocks() {
 
 	/**
 	 * mrw_hidden_query_blocks filter
+	 *
+	 * Allows showing all hidden "Query" and "Post" blocks by removing them from the hidden list. Use __return_empty_array to unhide all blocks.
+	 * 
 	 * @since 2.5.0
 	 */
 	$hidden_query_blocks = apply_filters( 'mrw_hidden_query_blocks', array(
@@ -169,6 +178,9 @@ function mrw_hidden_blocks() {
 
 	/**
 	 * mrw_hidden_site_blocks filter
+	 *
+	 * Allows showing all hidden "Site"/"Theme" blocks by removing them from the hidden list. Use __return_empty_array to unhide all blocks.
+	 * 
 	 * @since 2.5.0
 	 */
 	$hidden_site_blocks = apply_filters( 'mrw_hidden_site_blocks', array(
