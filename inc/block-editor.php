@@ -242,6 +242,7 @@ function mrw_hidden_embeds() {
 		'smugmug',
 		'speaker',
 		'videopress',
+		'wolfram-cloud',
 		'wordpress-tv',
 	);
 
