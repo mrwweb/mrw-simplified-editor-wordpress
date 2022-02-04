@@ -28,7 +28,7 @@
 
 /*
  Hide Heading Levels 1, 5, and 6
- Options: heading-1, heading-5, heading-6
+ Filter values: heading-1, heading-5, heading-6
  */
 .mrw-block-editor-no-heading-1 .components-button[data-subscript="1"],
 .mrw-block-editor-no-heading-5 .components-button[data-subscript="5"],

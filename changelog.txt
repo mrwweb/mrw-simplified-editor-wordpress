@@ -1,3 +1,11 @@
+= 2.7.0 (February 4, 2022) =
+* [New] Hide new blocks added in WordPress 5.9: Navigation, Post Pagination, Post Author, Post Comments, Term Description, Wolfram Cloud Embed
+* [Dev] Improve inline documentation of new `mrw_hidden_*_blocks` filters added in Simplified Editor 2.5.0
+* [Preview] Version 2.8 will continue to hide new settings added in WordPress 5.9: default border controls on pullquote, new typopgraphy settings (e.g. line height, letter spacing), and default padding controls on Group, Cover, and Columns unless themes explicitly opt-in.
+
+= 2.6.1 (November 22, 2021) = 
+* [Fix] Resolve fatal error on editor screen in WordPress versions before 5.8
+
 = 2.6.0 (November 12, 2021) =
 * [New] Hide Button block Border Radius setting by default. Show by removing `border-radius` from the array in the `mrw_hidden_block_editor_settings` filter.
 * [Dev] Improve documentation of options that trigger hiding editor features with CSS in `block-editor.css`.
