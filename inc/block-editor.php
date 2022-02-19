@@ -413,18 +413,17 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
+	/* Drop Cap */
 	if( in_array( 'drop-cap', $hidden_settings ) ) {
-		if( is_wp_version_compatible( '5.8' ) ) {
-			$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
-		} elseif( is_wp_version_compatible( '5.6' ) ) {
-			$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
-		}
+		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
 	}
 
+	/* Button Border Radius */
 	if( in_array( 'border-radius', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;	
 	}
 
+	/* Line Height */
 	if( in_array( 'line-height', $hidden_settings) ) {
 		$editor_settings['enableCustomLineHeight'] = false;
 	}
