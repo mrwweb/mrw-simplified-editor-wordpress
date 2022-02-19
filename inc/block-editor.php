@@ -268,7 +268,7 @@ function mrw_hidden_embeds() {
 
 add_action( 'jetpack_register_gutenberg_extensions', 'mrw_jetpack_hidden_blocks', 99 );
 /**
- * Hiden Jetpack Blocks
+ * Hidden Jetpack Blocks
  *
  * @see  https://developer.jetpack.com/hooks/jetpack_register_gutenberg_extensions/
  */
