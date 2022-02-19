@@ -373,6 +373,7 @@ function mrw_hidden_block_editor_settings() {
 		'letter-spacing',
 		'line-height',
 		'new-tabs',
+		'padding',
 		'text-transform',
 	);
 
@@ -443,13 +444,17 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	}
 
 	/* Font Weight */
-	if( in_array( 'text-transform', $hidden_settings) ) {
+	if( in_array( 'font-weight', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontWeight'] = false;
 	}
 
 	/* Font Style */
-	if( in_array( 'text-transform', $hidden_settings) ) {
+	if( in_array( 'font-style', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
+	}
+
+	if( in_array( 'padding', $hidden_settings) ) {
+		$editor_settings['enableCustomSpacing'] = false;
 	}
 
 	return $editor_settings;
