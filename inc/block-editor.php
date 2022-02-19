@@ -359,6 +359,7 @@ function mrw_hidden_block_editor_settings() {
 
 	$hidden_block_editor_settings = array(
 		'block-directory',
+		'border',
 		'border-radius',
 		'default-style-variation',
 		'drop-cap',
@@ -374,6 +375,7 @@ function mrw_hidden_block_editor_settings() {
 		'line-height',
 		'new-tabs',
 		'padding',
+		'pullquote-border',
 		'text-transform',
 	);
 
@@ -453,8 +455,19 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
 	}
 
+	/* Padding */
 	if( in_array( 'padding', $hidden_settings) ) {
 		$editor_settings['enableCustomSpacing'] = false;
+	}
+
+	/* Border */
+	if( in_array( 'border', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['border'] = [];
+	}
+
+	/* Border Pullquote */
+	if( in_array( 'pullquote-border', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['blocks']['core/pullquote']['border'] = [];
 	}
 
 	return $editor_settings;
