@@ -376,6 +376,7 @@ function mrw_hidden_block_editor_settings() {
 		'new-tabs',
 		'padding',
 		'pullquote-border',
+		'spacing',
 		'text-transform',
 	);
 
@@ -468,6 +469,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Border Pullquote */
 	if( in_array( 'pullquote-border', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/pullquote']['border'] = [];
+	}
+
+	/* Gap and Margin */
+	if( in_array( 'spacing', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['spacing'] = [];
 	}
 
 	return $editor_settings;
