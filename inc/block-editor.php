@@ -369,6 +369,7 @@ function mrw_hidden_block_editor_settings() {
 		'image-file-upload',
 		'image-url',
 		'new-tabs',
+		'line-height',
 	);
 
 	$hidden_block_editor_settings = apply_filters_deprecated(
@@ -422,6 +423,10 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	if( in_array( 'border-radius', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;	
+	}
+
+	if( in_array( 'line-height', $hidden_settings) ) {
+		$editor_settings['enableCustomLineHeight'] = false;
 	}
 
 	return $editor_settings;
