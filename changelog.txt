@@ -1,3 +1,11 @@
+= 2.8.0 (February 21, 2022) =
+* [New] Hide many new default block controls added in WordPress 5.9. All options can be enabled with the [mrw_hidden_block_editor_settings filter](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/Filter-Reference).
+	* Text Formatting: line-height, font-weight, letter-spacing, and text-transform
+	* Spacing: gap, margin, padding
+	* Borders: General, pull-quote
+* [Remove] Remove support for hiding paragraph block dropcap setting in WordPress 5.6 and earlier
+* [Remove] Remove support for all old versions of `mrw_*` filters using the terms "blacklist" and "disabled"
+
 = 2.7.0 (February 4, 2022) =
 * [New] Hide new blocks added in WordPress 5.9: Navigation, Post Pagination, Post Author, Post Comments, Term Description, Wolfram Cloud Embed
 * [Dev] Improve inline documentation of new `mrw_hidden_*_blocks` filters added in Simplified Editor 2.5.0
