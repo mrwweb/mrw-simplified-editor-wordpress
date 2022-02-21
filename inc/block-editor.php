@@ -211,22 +211,6 @@ function mrw_hidden_blocks() {
 		$hidden_blocks[] = 'core/more';
 	}
 
-	$hidden_blocks = apply_filters_deprecated(
-		'mrw_block_blacklist',
-		array( $hidden_blocks ),
-		'2.2.0 of MRW Simplified Editor',
-		'mrw_hidden_blocks',
-		'This filter will stop functioning as soon as August 2021.'
-	);
-
-	$hidden_blocks = apply_filters_deprecated(
-		'mrw_disabled_blocks',
-		array( $hidden_blocks ),
-		'2.3.0 of MRW Simplified Editor',
-		'mrw_hidden_blocks',
-		'This filter will stop functioning as soon as January 2022.'
-	);
-
 	/**
 	 * mrw_hidden_blocks filter
 	 * @since 2.3.0
@@ -268,7 +252,7 @@ function mrw_hidden_embeds() {
 
 add_action( 'jetpack_register_gutenberg_extensions', 'mrw_jetpack_hidden_blocks', 99 );
 /**
- * Hiden Jetpack Blocks
+ * Hidden Jetpack Blocks
  *
  * @see  https://developer.jetpack.com/hooks/jetpack_register_gutenberg_extensions/
  */
@@ -326,22 +310,6 @@ function mrw_hidden_block_styles() {
 		'core/social-links'	=> array( 'default', 'logos-only', 'pill-shape' ),
 	);
 
-	$hidden_styles = apply_filters_deprecated(
-		'mrw_style_variations_blacklist',
-		array( $hidden_styles ),
-		'2.2.0 of MRW Simplified Editor',
-		'mrw_hidden_block_styles',
-		'This filter will stop functioning as soon as August 2021.'
-	);
-
-	$hidden_styles = apply_filters_deprecated(
-		'mrw_disabled_style_variations',
-		array( $hidden_styles ),
-		'2.3.0 of MRW Simplified Editor',
-		'mrw_hidden_block_styles',
-		'This filter will stop functioning as soon as January 2022.'
-	);
-
 	/**
 	 * mrw_hidden_block_styles filter
 	 * @since 2.3.0
@@ -359,32 +327,25 @@ function mrw_hidden_block_editor_settings() {
 
 	$hidden_block_editor_settings = array(
 		'block-directory',
+		'border',
 		'border-radius',
 		'default-style-variation',
 		'drop-cap',
+		'font-weight',
+		'font-style',
 		'heading-1',
 		'heading-5',
 		'heading-6',
 		'image-dimensions',
 		'image-file-upload',
 		'image-url',
+		'letter-spacing',
+		'line-height',
 		'new-tabs',
-	);
-
-	$hidden_block_editor_settings = apply_filters_deprecated(
-		'mrw_block_editor_disable_settings',
-		array( $hidden_block_editor_settings ),
-		'2.2.0 of MRW Simplified Editor',
-		'mrw_hidden_block_editor_settings',
-		'This filter will stop functioning as soon as August 2021.'
-	);
-
-	$hidden_block_editor_settings = apply_filters_deprecated(
-		'mrw_disabled_block_editor_settings',
-		array( $hidden_block_editor_settings ),
-		'2.3.0 of MRW Simplified Editor',
-		'mrw_hidden_block_editor_settings',
-		'This filter will stop functioning as soon as January 2022.'
+		'padding',
+		'pullquote-border',
+		'spacing',
+		'text-transform',
 	);
 
 	/**
@@ -412,16 +373,59 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
+	/* Drop Cap */
 	if( in_array( 'drop-cap', $hidden_settings ) ) {
-		if( is_wp_version_compatible( '5.8' ) ) {
-			$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
-		} elseif( is_wp_version_compatible( '5.6' ) ) {
-			$editor_settings['__experimentalFeatures']['global']['typography']['dropCap'] = false;
-		}
+		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
 	}
 
+	/* Button Border Radius */
 	if( in_array( 'border-radius', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;	
+	}
+
+	/* Line Height */
+	if( in_array( 'line-height', $hidden_settings) ) {
+		$editor_settings['enableCustomLineHeight'] = false;
+	}
+
+	/* Letter Spacing */
+	if( in_array( 'letter-spacing', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
+	}
+
+	/* Text Transform */
+	if( in_array( 'text-transform', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['textTransform'] = false;
+	}
+
+	/* Font Weight */
+	if( in_array( 'font-weight', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['fontWeight'] = false;
+	}
+
+	/* Font Style */
+	if( in_array( 'font-style', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
+	}
+
+	/* Padding */
+	if( in_array( 'padding', $hidden_settings) ) {
+		$editor_settings['enableCustomSpacing'] = false;
+	}
+
+	/* Border */
+	if( in_array( 'border', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['border'] = [];
+	}
+
+	/* Border Pullquote */
+	if( in_array( 'pullquote-border', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['blocks']['core/pullquote']['border'] = [];
+	}
+
+	/* Gap and Margin */
+	if( in_array( 'spacing', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['spacing'] = [];
 	}
 
 	return $editor_settings;

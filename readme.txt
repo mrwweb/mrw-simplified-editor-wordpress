@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 5.2
 Requires PHP: 5.6.20
 Tested up to: 5.9
-Stable tag: 2.7.0
+Stable tag: 2.8.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -79,6 +79,14 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 2. The "Classic" block of the WordPress block editor also reflects the impact of this plugin in the Classic Editor.
 
 == Changelog ==
+
+= 2.8.0 (February 21, 2022) =
+* [New] Hide many new default block controls added in WordPress 5.9. All options can be enabled with the [mrw_hidden_block_editor_settings filter](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/Filter-Reference).
+	* Text Formatting: line-height, font-weight, letter-spacing, and text-transform
+	* Spacing: gap, margin, padding
+	* Borders: General, pull-quote
+* [Remove] Remove support for hiding paragraph block dropcap setting in WordPress 5.6 and earlier
+* [Remove] Remove support for all old versions of `mrw_*` filters using the terms "blacklist" and "disabled"
 
 = 2.7.0 (February 4, 2022) =
 * [New] Hide new blocks added in WordPress 5.9: Navigation, Post Pagination, Post Author, Post Comments, Term Description, Wolfram Cloud Embed
