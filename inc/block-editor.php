@@ -211,22 +211,6 @@ function mrw_hidden_blocks() {
 		$hidden_blocks[] = 'core/more';
 	}
 
-	$hidden_blocks = apply_filters_deprecated(
-		'mrw_block_blacklist',
-		array( $hidden_blocks ),
-		'2.2.0 of MRW Simplified Editor',
-		'mrw_hidden_blocks',
-		'This filter will stop functioning as soon as August 2021.'
-	);
-
-	$hidden_blocks = apply_filters_deprecated(
-		'mrw_disabled_blocks',
-		array( $hidden_blocks ),
-		'2.3.0 of MRW Simplified Editor',
-		'mrw_hidden_blocks',
-		'This filter will stop functioning as soon as January 2022.'
-	);
-
 	/**
 	 * mrw_hidden_blocks filter
 	 * @since 2.3.0
@@ -326,22 +310,6 @@ function mrw_hidden_block_styles() {
 		'core/social-links'	=> array( 'default', 'logos-only', 'pill-shape' ),
 	);
 
-	$hidden_styles = apply_filters_deprecated(
-		'mrw_style_variations_blacklist',
-		array( $hidden_styles ),
-		'2.2.0 of MRW Simplified Editor',
-		'mrw_hidden_block_styles',
-		'This filter will stop functioning as soon as August 2021.'
-	);
-
-	$hidden_styles = apply_filters_deprecated(
-		'mrw_disabled_style_variations',
-		array( $hidden_styles ),
-		'2.3.0 of MRW Simplified Editor',
-		'mrw_hidden_block_styles',
-		'This filter will stop functioning as soon as January 2022.'
-	);
-
 	/**
 	 * mrw_hidden_block_styles filter
 	 * @since 2.3.0
@@ -378,22 +346,6 @@ function mrw_hidden_block_editor_settings() {
 		'pullquote-border',
 		'spacing',
 		'text-transform',
-	);
-
-	$hidden_block_editor_settings = apply_filters_deprecated(
-		'mrw_block_editor_disable_settings',
-		array( $hidden_block_editor_settings ),
-		'2.2.0 of MRW Simplified Editor',
-		'mrw_hidden_block_editor_settings',
-		'This filter will stop functioning as soon as August 2021.'
-	);
-
-	$hidden_block_editor_settings = apply_filters_deprecated(
-		'mrw_disabled_block_editor_settings',
-		array( $hidden_block_editor_settings ),
-		'2.3.0 of MRW Simplified Editor',
-		'mrw_hidden_block_editor_settings',
-		'This filter will stop functioning as soon as January 2022.'
 	);
 
 	/**
