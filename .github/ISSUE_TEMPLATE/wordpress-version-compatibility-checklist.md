@@ -22,6 +22,7 @@ Open issues for any that aren't.
 - [ ] Core gradients
 - [ ] Custom gradient picker
 - [ ] Custom font sizes
+- [ ] Red contrast warning above color pickers
 - [ ] Hidden Block Settings
     - [ ] Border (general)
     - [ ] Padding
