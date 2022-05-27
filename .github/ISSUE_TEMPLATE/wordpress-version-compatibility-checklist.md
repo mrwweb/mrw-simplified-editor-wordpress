@@ -3,7 +3,7 @@ name: WordPress Version Compatibility Checklist
 about: A checklist of all current features to assist in testing again new major WordPress
   versions
 title: WordPress 6.X Compatibility
-labels: Testing
+labels: Testing, wp-compat
 assignees: ''
 
 ---
