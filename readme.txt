@@ -54,7 +54,7 @@ Due to frequent changes to the block editor, features are only guaranteed for th
 - **Widget Blocks:** Archives, Calendar, Categories, Latest Comments, RSS, Search, Tag Cloud
 - **Query-Related Blocks**: Query, Archive Title (Query Title), Post Title, Post Content, Post Author, Post Date, Post Excerpt, Post Featured Image, Post Tags & Categories (Post Terms), Term Description
 Page List
-- **FSE Blocks:** Login/Out, Page List, Site Logo, Site Tagline, Site Title, Navigation, Next Post, Previous Post, Post Comments
+- **FSE Blocks:** Login/Out, Page List, Site Logo, Site Tagline, Site Title, Navigation, Next Post, Previous Post, Post Comments, Comments Query, Read More, Avatar, Post Author Biography, Post Comments Form
 
 **Hidden Core Embeds:**
 
