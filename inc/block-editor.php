@@ -385,7 +385,10 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	/* Button Border Radius */
 	if( in_array( 'border-radius', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;	
+		/* WordPress < 6.0 */
+		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;
+		/* WordPress 6.0+ */
+		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;	
 	}
 
 	/* Line Height */
