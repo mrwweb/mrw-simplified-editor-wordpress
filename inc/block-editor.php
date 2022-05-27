@@ -334,6 +334,7 @@ function mrw_hidden_block_editor_settings() {
 		'block-directory',
 		'border',
 		'border-radius',
+		'default-color-palette',
 		'default-style-variation',
 		'drop-cap',
 		'font-weight',
@@ -362,7 +363,7 @@ function mrw_hidden_block_editor_settings() {
 }
 
 if( is_wp_version_compatible( '5.8' ) ) {
-	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 10, 2 );
+	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
 } else {
 	add_filter( 'block_editor_settings', 'mrw_block_editor_settings', 10, 2 );
 }
@@ -377,6 +378,11 @@ if( is_wp_version_compatible( '5.8' ) ) {
 function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	$hidden_settings = mrw_hidden_block_editor_settings();
+
+	/* Default Color Pallete */
+	if( in_array( 'default-color-palette', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['color']['defaultPalette'] = false;
+	}
 
 	/* Drop Cap */
 	if( in_array( 'drop-cap', $hidden_settings ) ) {
