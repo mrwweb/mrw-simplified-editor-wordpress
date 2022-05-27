@@ -126,26 +126,29 @@
 /*==============================================
 =            Color Contrast Warning            =
 ==============================================*/
-.block-editor-panel-color-gradient-settings.is-opened {
+/* WP 5.9 */
+.block-editor-panel-color-gradient-settings.is-opened,
+/* WP 6.0 */
+.color-block-support-panel__inner-wrapper.color-block-support-panel__inner-wrapper.color-block-support-panel__inner-wrapper {
 	display: flex;
 	flex-direction: column;
 }
 
-.block-editor-panel-color-gradient-settings .components-panel__body-title {
+.components-panel__body-title {
 	order: -2;
 }
 
-.block-editor-panel-color-gradient-settings .block-editor-contrast-checker {
+.block-editor-contrast-checker.block-editor-contrast-checker {
 	order: -1;
 	margin-top: 12px;
 	margin-bottom: 24px;
 }
 
-.block-editor-panel-color-gradient-settings .block-editor-contrast-checker .components-notice.is-warning {
+.block-editor-contrast-checker .components-notice.is-warning {
 	border-left-color: #d94f4f;
 	background-color: #f9e2e2;
 }
 
-.block-editor-panel-color-gradient-settings .block-editor-color-gradient-control + .block-editor-color-gradient-control {
+.block-editor-color-gradient-control + .block-editor-color-gradient-control {
 	margin-bottom: 0;
 }
