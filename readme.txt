@@ -3,8 +3,8 @@ Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 5.2
 Requires PHP: 5.6.20
-Tested up to: 5.9
-Stable tag: 2.8.0
+Tested up to: 6.0
+Stable tag: 2.9.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -79,6 +79,12 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 2. The "Classic" block of the WordPress block editor also reflects the impact of this plugin in the Classic Editor.
 
 == Changelog ==
+= 2.9.0 (May 27, 2022) =
+- WordPress 6.0 compatibility fixes: hide new blocks, fix regressions
+- [New] Hide the default color palette which was re-added by default in WP 5.8. Can be shown by removing `default-color-palette` value from `mrw_hidden_block_editor_settings` filter
+- [New] Hide Avatar, Read More, Comments Query Loop, Post Comments Form, and Post Author Biography blocks
+- [Fix] Hide Border Radius in WP 5.9 and 6.0
+- [Fix] Prominent contrast error changes in WP 6.0
 
 = 2.8.0 (February 21, 2022) =
 * [New] Hide many new default block controls added in WordPress 5.9. All options can be enabled with the [mrw_hidden_block_editor_settings filter](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/Filter-Reference).
@@ -93,26 +99,9 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Dev] Improve inline documentation of new `mrw_hidden_*_blocks` filters added in Simplified Editor 2.5.0
 * [Preview] Version 2.8 will continue to hide new settings added in WordPress 5.9: default border controls on pullquote, new typopgraphy settings (e.g. line height, letter spacing), and default padding controls on Group, Cover, and Columns unless themes explicitly opt-in.
 
-= 2.6.1 (November 22, 2021) = 
-* [Fix] Resolve fatal error on editor screen in WordPress versions before 5.8
-
-= 2.6.0 (November 12, 2021) =
-* [New] Hide Button block Border Radius setting by default. Show by removing `border-radius` from the array in the `mrw_hidden_block_editor_settings` filter.
-* [Dev] Improve documentation of options that trigger hiding editor features with CSS in `block-editor.css`.
-* [Dev] Use is_wp_compatible_version() for version comparison
-
-= 2.5.0 (August 16, 2021) =
-* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
-* [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
-* [New] Hide Shortcode block since shortcodes work in a Paragraph block
-* [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these
-* [New] Hide all new Full Site Editing/FSE and Query-related blocks (e.g. Query Loop, Post Title, Site Logo, etc.)
-* [New] Add new filters `mrw_hidden_core_blocks`, `mrw_hidden_widget_blocks`, `mrw_hidden_query_blocks`, and `mrw_hidden_post_blocks` that can be used to unhide entire group of related blocks with `__return_empty_array()`.
-* [Fix] Re-hide `drop-cap` after change in WordPress settings array.
-
 = Full Changelog =
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.7.0 =
-* Hide new blocks added in WordPress 5.9.
+= 2.9.0 =
+* WP 6.0 Compatibility - More hidden blocks, hide default palette, fixes

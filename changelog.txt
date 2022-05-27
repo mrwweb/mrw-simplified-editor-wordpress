@@ -1,3 +1,10 @@
+= 2.9.0 (May 27, 2022) =
+- WordPress 6.0 compatibility fixes: hide new blocks, fix regressions
+- [New] Hide the default color palette which was re-added by default in WP 5.8. Can be shown by removing `default-color-palette` value from `mrw_hidden_block_editor_settings` filter
+- [New] Hide Avatar, Read More, Comments Query Loop, Post Comments Form, and Post Author Biography blocks
+- [Fix] Hide Border Radius in WP 5.9 and 6.0
+- [Fix] Prominent contrast error changes in WP 6.0
+
 = 2.8.0 (February 21, 2022) =
 * [New] Hide many new default block controls added in WordPress 5.9. All options can be enabled with the [mrw_hidden_block_editor_settings filter](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/Filter-Reference).
 	* Text Formatting: line-height, font-weight, letter-spacing, and text-transform
