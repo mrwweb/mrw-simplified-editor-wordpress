@@ -380,6 +380,19 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
+	/* Border */
+	if( in_array( 'border', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['border'] = [];
+	}
+
+	/* Border Radius, Button */
+	if( in_array( 'border-radius', $hidden_settings) ) {
+		/* WordPress < 6.0 */
+		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;
+		/* WordPress 6.0+ */
+		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;	
+	}
+
 	/* Default Color Pallete */
 	if( in_array( 'default-color-palette', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['color']['defaultPalette'] = false;
@@ -390,32 +403,9 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
 	}
 
-	/* Button Border Radius */
-	if( in_array( 'border-radius', $hidden_settings) ) {
-		/* WordPress < 6.0 */
-		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;
-		/* WordPress 6.0+ */
-		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;	
-	}
-
-	/* Line Height */
-	if( in_array( 'line-height', $hidden_settings) ) {
-		$editor_settings['enableCustomLineHeight'] = false;
-	}
-
-	/* Letter Spacing */
-	if( in_array( 'letter-spacing', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
-	}
-
-	/* Text Transform */
-	if( in_array( 'text-transform', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['typography']['textTransform'] = false;
-	}
-
-	/* Text Decoration */
-	if( in_array( 'text-decoration', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
+	/* Font Style */
+	if( in_array( 'font-style', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
 	}
 
 	/* Font Weight */
@@ -423,9 +413,19 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontWeight'] = false;
 	}
 
-	/* Font Style */
-	if( in_array( 'font-style', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
+	/* Gap and Margin */
+	if( in_array( 'spacing', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['spacing'] = [];
+	}
+
+	/* Letter Spacing */
+	if( in_array( 'letter-spacing', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
+	}
+
+	/* Line Height */
+	if( in_array( 'line-height', $hidden_settings) ) {
+		$editor_settings['enableCustomLineHeight'] = false;
 	}
 
 	/* Padding */
@@ -433,19 +433,19 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 		$editor_settings['enableCustomSpacing'] = false;
 	}
 
-	/* Border */
-	if( in_array( 'border', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['border'] = [];
-	}
-
-	/* Border Pullquote */
+	/* Pullquote Border */
 	if( in_array( 'pullquote-border', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/pullquote']['border'] = [];
 	}
 
-	/* Gap and Margin */
-	if( in_array( 'spacing', $hidden_settings) ) {
-		$editor_settings['__experimentalFeatures']['spacing'] = [];
+	/* Text Decoration */
+	if( in_array( 'text-decoration', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
+	}
+
+	/* Text Transform */
+	if( in_array( 'text-transform', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['textTransform'] = false;
 	}
 
 	return $editor_settings;
