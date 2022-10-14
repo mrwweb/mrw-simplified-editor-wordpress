@@ -351,6 +351,7 @@ function mrw_hidden_block_editor_settings() {
 		'padding',
 		'pullquote-border',
 		'spacing',
+		'text-decoration',
 		'text-transform',
 	);
 
@@ -410,6 +411,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Text Transform */
 	if( in_array( 'text-transform', $hidden_settings) ) {
 		$editor_settings['__experimentalFeatures']['typography']['textTransform'] = false;
+	}
+
+	/* Text Decoration */
+	if( in_array( 'text-decoration', $hidden_settings) ) {
+		$editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
 	}
 
 	/* Font Weight */
