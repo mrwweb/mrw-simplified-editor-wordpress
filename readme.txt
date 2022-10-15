@@ -3,8 +3,8 @@ Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 5.2
 Requires PHP: 5.6.20
-Tested up to: 6.0
-Stable tag: 2.9.0
+Tested up to: 6.1
+Stable tag: 2.10.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ This plugin greatly simplifies the block editor by **hiding** all of the followi
 
 - **Infrequently Used Core Blocks** such as Verse, Table, Audio, Video, etc., and all Query- and Site-related blocks. See FAQ for [full list of hidden blocks](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/#faq).
 - **All Core Block Styles and the "Default style" feature**
-- **Some Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, font sizing by pixel, open links in new tabs (mostly hidden)
+- **Some Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, font sizing by pixel, open links in new tabs (mostly hidden), duotone, text styles like line-height and letter spacing, etc.
 - **Default Color & gradient settings** (Custom theme palettes/settings are never hidden)
 - **Core Block Patterns (WP 5.5+)**
 - **Block Directory (WP 5.5+)**
@@ -79,6 +79,11 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 2. The "Classic" block of the WordPress block editor also reflects the impact of this plugin in the Classic Editor.
 
 == Changelog ==
+= 2.10.0 (October 15, 2022) =
+- Tested up to WordPress 6.1
+- Hide new Text Decoration settings by default (enable via `text-decoration` in  `mrw_hidden_block_editor_settings`)
+- Hide image duotone setting (enable via `duotone` in `mrw_hidden_block_editor_settings`)
+
 = 2.9.0 (May 27, 2022) =
 - WordPress 6.0 compatibility fixes: hide new blocks, fix regressions
 - [New] Hide the default color palette which was re-added by default in WP 5.8. Can be shown by removing `default-color-palette` value from `mrw_hidden_block_editor_settings` filter

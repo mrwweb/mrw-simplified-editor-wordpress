@@ -1,3 +1,8 @@
+= 2.10.0 (October 15, 2022) =
+- Tested up to WordPress 6.1
+- Hide new Text Decoration settings by default (enable via `text-decoration` in  `mrw_hidden_block_editor_settings`)
+- Hide image duotone setting (enable via `duotone` in `mrw_hidden_block_editor_settings`)
+
 = 2.9.0 (May 27, 2022) =
 - WordPress 6.0 compatibility fixes: hide new blocks, fix regressions
 - [New] Hide the default color palette which was re-added by default in WP 5.8. Can be shown by removing `default-color-palette` value from `mrw_hidden_block_editor_settings` filter
