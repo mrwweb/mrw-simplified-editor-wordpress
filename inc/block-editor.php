@@ -337,6 +337,7 @@ function mrw_hidden_block_editor_settings() {
 		'default-color-palette',
 		'default-style-variation',
 		'drop-cap',
+		'duotone',
 		'font-weight',
 		'font-style',
 		'heading-1',
@@ -401,6 +402,12 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Drop Cap */
 	if( in_array( 'drop-cap', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
+	}
+
+	/* Duotone */
+	if( in_array( 'duotone', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['color']['duotone'] = null;
+		$editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
 	}
 
 	/* Font Style */
