@@ -158,6 +158,7 @@ function mrw_hidden_blocks() {
 		'core/calendar',
 		'core/categories',
 		'core/latest-comments',
+		'core/legacy-widget',
 		'core/rss',
 		'core/search',
 		'core/tag-cloud',
