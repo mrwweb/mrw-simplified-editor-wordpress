@@ -120,6 +120,9 @@ function mrw_hide_block_directory() {
  */
 function mrw_hidden_blocks() {
 
+	$current_screen = get_current_screen();
+	$context = $current_screen->id;
+
 	/**
 	 * mrw_hidden_core_blocks filter
 	 *
@@ -141,7 +144,7 @@ function mrw_hidden_blocks() {
 		'core/verse',
 		'core/video',
 		'videopress/video', // jetpack
-	) );
+	), $context );
 
 	/**
 	 * mrw_hidden_widget_blocks filter
@@ -158,7 +161,7 @@ function mrw_hidden_blocks() {
 		'core/rss',
 		'core/search',
 		'core/tag-cloud',
-	) );
+	), $context );
 
 	/**
 	 * mrw_hidden_query_blocks filter
@@ -181,7 +184,7 @@ function mrw_hidden_blocks() {
 		'core/post-author-biography',
 		'core/read-more',
 		'core/term-description',
-	) );
+	), $context );
 
 	/**
 	 * mrw_hidden_site_blocks filter
@@ -203,7 +206,7 @@ function mrw_hidden_blocks() {
 		'core/post-comments',
 		'core/post-comments-form',
 		'core/post-navigation-link',
-	) );
+	), $context );
 
 	$hidden_blocks = array_merge(
 		$hidden_core_blocks,
@@ -226,8 +229,21 @@ function mrw_hidden_blocks() {
 	 * mrw_hidden_blocks filter
 	 * @since 2.3.0
 	 */
-	return apply_filters( 'mrw_hidden_blocks', $hidden_blocks );
+	return apply_filters( 'mrw_hidden_blocks', $hidden_blocks, $context );
 
+}
+
+add_filter( 'mrw_hidden_site_blocks', 'mrw_show_blocks_in_site_editor', 0, 2 );
+add_filter( 'mrw_hidden_query_blocks', 'mrw_show_blocks_in_site_editor', 0, 2 );
+/**
+ * Show all Query- and Post-related blocks in the Site Editor
+ */
+function mrw_show_blocks_in_site_editor( $blocks, $context ) {
+	if( $context === 'site-editor' ) {
+		$blocks = array();
+	}
+
+	return $blocks;
 }
 
 /**
