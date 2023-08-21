@@ -383,7 +383,7 @@ function mrw_hidden_block_editor_settings() {
 		'image-file-upload',
 		'image-url',
 		'justification-group',
-		'layout-width-height',
+		'layout-width',
 		'letter-spacing',
 		'line-height',
 		'min-height-group',
