@@ -140,6 +140,7 @@ function mrw_hidden_blocks() {
 		'core/table',
 		'core/verse',
 		'core/video',
+		'videopress/video', // jetpack
 	) );
 
 	/**
@@ -242,10 +243,12 @@ function mrw_hidden_embeds() {
 		'crowdsignal',
 		'dailymotion',
 		'hulu',
+		'jetpack/pinterest',
 		'mixcloud',
 		'pocket-casts',
 		'polldaddy',
 		'reverbnation',
+		'smartframe', // jetpack
 		'smugmug',
 		'speaker',
 		'videopress',
@@ -275,24 +278,33 @@ function mrw_jetpack_hidden_blocks() {
 	
 	$jetpack_hidden_block_reason = 'Hidden by MRW Simplified Editor. Use mrw_jetpack_hidden_blocks filter to restore.';
 
+	$jetpack_hidden_content_blocks = array(
+		'ai-assistant',
+		'calendly',
+		'contact-form',
+		'donations',
+		'eventbrite',
+		'gif',
+		'markdown',
+		'opentable',
+		'payments-intro',
+		'premium-content/container',
+		'rating-star',
+		'repeat-visitor',
+		'revue',
+		'send-a-message', // required for whatsapp-button
+		'story',
+		'tock',
+		'whatsapp-button',
+	);
+
 	/**
 	 * mrw_jetpack_hidden_blocks filter
 	 * @since 2.3.0
 	 */
 	$mrw_jetpack_hidden_blocks = apply_filters(
 		'mrw_jetpack_hidden_blocks',
-		array(
-			'markdown',
-			'rating-star',
-			'repeat-visitor',
-			'opentable',
-			'revue',
-			'eventbrite',
-			'gif',
-			'calendly',
-			'send-a-message', // required for whatsapp-button
-			'whatsapp-button',
-		)
+		$jetpack_hidden_content_blocks
 	);
 
 	foreach( $mrw_jetpack_hidden_blocks as $block ) {
