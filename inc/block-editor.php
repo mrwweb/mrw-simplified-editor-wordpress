@@ -130,6 +130,9 @@ function mrw_hidden_blocks() {
 	$hidden_core_blocks = apply_filters( 'mrw_hidden_core_blocks', array(
 		'core/audio',
 		'core/code',
+		'core/details',
+		'core/footnotes',
+		'core/freeform',
 		'core/nextpage',
 		'core/preformatted',
 		'core/shortcode',
@@ -187,6 +190,7 @@ function mrw_hidden_blocks() {
 	 * @since 2.5.0
 	 */
 	$hidden_site_blocks = apply_filters( 'mrw_hidden_site_blocks', array(
+		'core/comments',
 		'core/comments-query-loop',
 		'core/loginout',
 		'core/page-list',
@@ -194,6 +198,7 @@ function mrw_hidden_blocks() {
 		'core/site-tagline',
 		'core/site-title',
 		'core/navigation',
+		'core/post-author-name',
 		'core/post-comments',
 		'core/post-comments-form',
 		'core/post-navigation-link',
@@ -238,6 +243,7 @@ function mrw_hidden_embeds() {
 		'dailymotion',
 		'hulu',
 		'mixcloud',
+		'pocket-casts',
 		'polldaddy',
 		'reverbnation',
 		'smugmug',
