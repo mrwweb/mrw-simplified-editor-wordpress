@@ -53,6 +53,21 @@
 	display: none;
 }
 
+/*
+ Hide the "Content" and "Wide" sizes for Group and Cover blocks
+*/
+.mrw-block-editor-no-layout-width-height .block-editor-hooks__layout-controls,
+.mrw-block-editor-no-layout-width-height .block-editor-hooks__layout-controls-helptext {
+	display: none;
+}
+
+/*
+ Hide the Justification settings in the group block
+*/
+.mrw-block-editor-no-justification-group .block-editor-hooks__layout-controls-helptext + div {
+	display: none;
+}
+
 
 /*===================================================
 =            Media Library Button styles            =

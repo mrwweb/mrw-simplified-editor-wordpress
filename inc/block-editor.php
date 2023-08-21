@@ -380,6 +380,8 @@ function mrw_hidden_block_editor_settings() {
 		'image-dimensions',
 		'image-file-upload',
 		'image-url',
+		'justification-group',
+		'layout-width-height',
 		'letter-spacing',
 		'line-height',
 		'min-height-group',
@@ -410,8 +412,6 @@ add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
  * @see https://github.com/joppuyo/remove-drop-cap/blob/v1.1.0/remove-drop-cap.php#L22
  */
 function mrw_block_editor_settings( $editor_settings, $context ) {
-
-	error_log(print_r($editor_settings, true));
 
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
