@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 6.0
 Requires PHP: 5.6.20
 Tested up to: 6.3
-Stable tag: 2.11.0
+Stable tag: 2.11.1
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -87,6 +87,7 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 - [Fix] WordPress 6.3 compatibility (re-hide media upload buttons, default gradients, comments block)
 - [Fix] "getBlockVariations(…) is undefined warning in Widget and Site Editors
 - [Meta] Removed "Formerly MRW Web Design Simple TinyMCE" now that the block editor is 4.5 years old!
+- 2.11.1: Change `layout-width-height` value in the `mrw_hidden_block_editor_settings` filter to be accurate `layout-width`.
 
 = 2.10.0 (October 15, 2022) =
 - Tested up to WordPress 6.1
