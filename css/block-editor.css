@@ -1,7 +1,7 @@
 /**
  * This file disables all settings that can't be otherwise turned off with a PHP or JS API.
  *
- * You can use the `mrw_disabled_block_editor_settings` filter to turn change which settings are disables in a backwards-compatible way
+ * You can use the `mrw_hidden_block_editor_settings` filter to turn change which settings are disables in a backwards-compatible way
  */
 
 /*
@@ -32,15 +32,7 @@
  */
 .mrw-block-editor-no-heading-1 .components-button[data-subscript="1"],
 .mrw-block-editor-no-heading-5 .components-button[data-subscript="5"],
-.mrw-block-editor-no-heading-6 .components-button[data-subscript="6"],
-/* WP 5.2+? */
-.mrw-block-editor-no-heading-1 .components-button[aria-label="Heading 1"],
-.mrw-block-editor-no-heading-5 .components-button[aria-label="Heading 5"],
-.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"],
-/* WP 5.5! */
-.mrw-block-editor-no-heading-1 .block-library-heading-level-toolbar .components-button:nth-child(1),
-.mrw-block-editor-no-heading-5 .block-library-heading-level-toolbar .components-button:nth-child(5),
-.mrw-block-editor-no-heading-6 .block-library-heading-level-toolbar .components-button:nth-child(6) {
+.mrw-block-editor-no-heading-6 .components-button[data-subscript="6"] {
 	display: none;
 }
 
@@ -126,8 +118,6 @@
 /*==============================================
 =            Color Contrast Warning            =
 ==============================================*/
-/* WP 5.9 */
-.block-editor-panel-color-gradient-settings.is-opened,
 /* WP 6.0 */
 .color-block-support-panel__inner-wrapper.color-block-support-panel__inner-wrapper.color-block-support-panel__inner-wrapper {
 	display: flex;

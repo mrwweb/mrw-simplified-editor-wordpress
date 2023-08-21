@@ -398,11 +398,7 @@ function mrw_hidden_block_editor_settings() {
 
 }
 
-if( is_wp_version_compatible( '5.8' ) ) {
-	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
-} else {
-	add_filter( 'block_editor_settings', 'mrw_block_editor_settings', 10, 2 );
-}
+add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
  * 
@@ -422,9 +418,6 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	/* Border Radius, Button */
 	if( in_array( 'border-radius', $hidden_settings) ) {
-		/* WordPress < 6.0 */
-		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;
-		/* WordPress 6.0+ */
 		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;	
 	}
 

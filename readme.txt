@@ -1,7 +1,7 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
-Requires at least: 5.2
+Requires at least: 6.0
 Requires PHP: 5.6.20
 Tested up to: 6.1
 Stable tag: 2.10.0
