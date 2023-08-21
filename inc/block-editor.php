@@ -554,6 +554,30 @@ add_action( 'enqueue_block_editor_assets', 'mrw_block_editor_assets' );
  */
 function mrw_block_editor_assets() {
 
+	/**
+	 * Ensure the correct dependencies depending on the editor being used
+	 * 
+	 * Thank you Sally CJ! https://wordpress.stackexchange.com/a/413631/9844
+	 */
+	$script_dependencies = array( 'wp-blocks', 'wp-dom-ready' );
+	$screen = get_current_screen();
+	$context = $screen ? $screen->id : '';
+	switch( $context ) {
+		case 'widgets':
+			$script_dependencies[] = 'wp-edit-widgets';
+			break;
+		case 'site-editor':
+			$script_dependencies[] = 'wp-edit-site';
+			break;
+		case 'page':	
+		case 'post':
+			$script_dependencies[] = 'wp-edit-post';
+			break;
+		default:
+			$script_dependencies[] = 'wp-edit-post';
+			break;
+	}
+
 	wp_enqueue_style(
 		'mrw-block-editor-css',
 		plugins_url( 'css/block-editor.css', dirname(__FILE__) ),
@@ -564,7 +588,7 @@ function mrw_block_editor_assets() {
 	wp_register_script(
 		'mrw-block-editor-js',
 		plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
-		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+		$script_dependencies,
 		'2.0.0'
 	);
 
