@@ -1,9 +1,9 @@
 <?php
 /*
-* Plugin Name: MRW Simplified Editor (formerly MRW Web Design Simple TinyMCE)
+* Plugin Name: MRW Simplified Editor
 * Plugin URI: https://MRWweb.com/wordpress-plugins/mrw-web-design-simple-tinymce/
-* Description: Streamlines the Block Editor and Classic Editor with only the critical features for consistent semantic formatting.
-* Version: 2.10.0
+* Description: Streamlines the WordPress editor to focus users on consistent formatting and semantic content.
+* Version: 2.11.0
 * Author: Mark Root-Wiley
 * Author URI: https://MRWweb.com
 * Text Domain: mrw-web-design-simple-tinymce

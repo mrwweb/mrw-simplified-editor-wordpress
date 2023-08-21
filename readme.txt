@@ -1,10 +1,10 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
-Requires at least: 5.2
+Requires at least: 6.0
 Requires PHP: 5.6.20
-Tested up to: 6.1
-Stable tag: 2.10.0
+Tested up to: 6.3
+Stable tag: 2.11.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -76,9 +76,18 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
-2. The "Classic" block of the WordPress block editor also reflects the impact of this plugin in the Classic Editor.
-
 == Changelog ==
+= 2.11.0 (August 21, 2023) =
+- **Requires WordPress 6.0**. Legacy code removed
+- [New] Show all Post- and Query-related blocks in the Site Editor
+- [New] Hide Classic (aka freeform), Details, Footnotes, Comments, and Post Author blocks
+- [New] Hide Group / Cover width settings and Group child blocks Justification settings and min-height setting (does not impact Cover min-height setting). Can be shown with `mrw_hidden_block_editor_settings` filter.
+- [Dev] The `mrw_hidden_blocks` and all `mrw_hidden_*_blocks` filters now support a second `$context` parameter that contains the current screen's ID so you can target the block editor (`post`), site editor (`site-editor`), or widget editor (`widgets`).
+- [New] New Jetpack blocks hidden including AI Assistance, all form blocks, and payment-related blocks
+- [Fix] WordPress 6.3 compatibility (re-hide media upload buttons, default gradients, comments block)
+- [Fix] "getBlockVariations(…) is undefined warning in Widget and Site Editors
+- [Meta] Removed "Formerly MRW Web Design Simple TinyMCE" now that the block editor is 4.5 years old!
+
 = 2.10.0 (October 15, 2022) =
 - Tested up to WordPress 6.1
 - Hide new Text Decoration settings by default (enable via `text-decoration` in  `mrw_hidden_block_editor_settings`)
@@ -108,5 +117,5 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.9.0 =
-* WP 6.0 Compatibility - More hidden blocks, hide default palette, fixes
+= 2.11.0 =
+* WP 6.3 Compatibility + Relevant blocks visible in the style editor.

@@ -120,6 +120,9 @@ function mrw_hide_block_directory() {
  */
 function mrw_hidden_blocks() {
 
+	$current_screen = get_current_screen();
+	$context = $current_screen->id;
+
 	/**
 	 * mrw_hidden_core_blocks filter
 	 *
@@ -130,6 +133,9 @@ function mrw_hidden_blocks() {
 	$hidden_core_blocks = apply_filters( 'mrw_hidden_core_blocks', array(
 		'core/audio',
 		'core/code',
+		'core/details',
+		'core/footnotes',
+		'core/freeform',
 		'core/nextpage',
 		'core/preformatted',
 		'core/shortcode',
@@ -137,7 +143,8 @@ function mrw_hidden_blocks() {
 		'core/table',
 		'core/verse',
 		'core/video',
-	) );
+		'videopress/video', // jetpack
+	), $context );
 
 	/**
 	 * mrw_hidden_widget_blocks filter
@@ -151,10 +158,11 @@ function mrw_hidden_blocks() {
 		'core/calendar',
 		'core/categories',
 		'core/latest-comments',
+		'core/legacy-widget',
 		'core/rss',
 		'core/search',
 		'core/tag-cloud',
-	) );
+	), $context );
 
 	/**
 	 * mrw_hidden_query_blocks filter
@@ -177,7 +185,7 @@ function mrw_hidden_blocks() {
 		'core/post-author-biography',
 		'core/read-more',
 		'core/term-description',
-	) );
+	), $context );
 
 	/**
 	 * mrw_hidden_site_blocks filter
@@ -187,6 +195,7 @@ function mrw_hidden_blocks() {
 	 * @since 2.5.0
 	 */
 	$hidden_site_blocks = apply_filters( 'mrw_hidden_site_blocks', array(
+		'core/comments',
 		'core/comments-query-loop',
 		'core/loginout',
 		'core/page-list',
@@ -194,10 +203,11 @@ function mrw_hidden_blocks() {
 		'core/site-tagline',
 		'core/site-title',
 		'core/navigation',
+		'core/post-author-name',
 		'core/post-comments',
 		'core/post-comments-form',
 		'core/post-navigation-link',
-	) );
+	), $context );
 
 	$hidden_blocks = array_merge(
 		$hidden_core_blocks,
@@ -220,8 +230,21 @@ function mrw_hidden_blocks() {
 	 * mrw_hidden_blocks filter
 	 * @since 2.3.0
 	 */
-	return apply_filters( 'mrw_hidden_blocks', $hidden_blocks );
+	return apply_filters( 'mrw_hidden_blocks', $hidden_blocks, $context );
 
+}
+
+add_filter( 'mrw_hidden_site_blocks', 'mrw_show_blocks_in_site_editor', 0, 2 );
+add_filter( 'mrw_hidden_query_blocks', 'mrw_show_blocks_in_site_editor', 0, 2 );
+/**
+ * Show all Query- and Post-related blocks in the Site Editor
+ */
+function mrw_show_blocks_in_site_editor( $blocks, $context ) {
+	if( $context === 'site-editor' ) {
+		$blocks = array();
+	}
+
+	return $blocks;
 }
 
 /**
@@ -237,9 +260,12 @@ function mrw_hidden_embeds() {
 		'crowdsignal',
 		'dailymotion',
 		'hulu',
+		'jetpack/pinterest',
 		'mixcloud',
+		'pocket-casts',
 		'polldaddy',
 		'reverbnation',
+		'smartframe', // jetpack
 		'smugmug',
 		'speaker',
 		'videopress',
@@ -269,24 +295,33 @@ function mrw_jetpack_hidden_blocks() {
 	
 	$jetpack_hidden_block_reason = 'Hidden by MRW Simplified Editor. Use mrw_jetpack_hidden_blocks filter to restore.';
 
+	$jetpack_hidden_content_blocks = array(
+		'ai-assistant',
+		'calendly',
+		'contact-form',
+		'donations',
+		'eventbrite',
+		'gif',
+		'markdown',
+		'opentable',
+		'payments-intro',
+		'premium-content/container',
+		'rating-star',
+		'repeat-visitor',
+		'revue',
+		'send-a-message', // required for whatsapp-button
+		'story',
+		'tock',
+		'whatsapp-button',
+	);
+
 	/**
 	 * mrw_jetpack_hidden_blocks filter
 	 * @since 2.3.0
 	 */
 	$mrw_jetpack_hidden_blocks = apply_filters(
 		'mrw_jetpack_hidden_blocks',
-		array(
-			'markdown',
-			'rating-star',
-			'repeat-visitor',
-			'opentable',
-			'revue',
-			'eventbrite',
-			'gif',
-			'calendly',
-			'send-a-message', // required for whatsapp-button
-			'whatsapp-button',
-		)
+		$jetpack_hidden_content_blocks
 	);
 
 	foreach( $mrw_jetpack_hidden_blocks as $block ) {
@@ -335,6 +370,7 @@ function mrw_hidden_block_editor_settings() {
 		'border',
 		'border-radius',
 		'default-color-palette',
+		'default-gradients',
 		'default-style-variation',
 		'drop-cap',
 		'duotone',
@@ -346,12 +382,16 @@ function mrw_hidden_block_editor_settings() {
 		'image-dimensions',
 		'image-file-upload',
 		'image-url',
+		'justification-group',
+		'layout-width-height',
 		'letter-spacing',
 		'line-height',
+		'min-height-group',
 		'new-tabs',
 		'padding',
 		'pullquote-border',
 		'spacing',
+		'sticky-position',
 		'text-decoration',
 		'text-transform',
 	);
@@ -364,11 +404,7 @@ function mrw_hidden_block_editor_settings() {
 
 }
 
-if( is_wp_version_compatible( '5.8' ) ) {
-	add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
-} else {
-	add_filter( 'block_editor_settings', 'mrw_block_editor_settings', 10, 2 );
-}
+add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
  * 
@@ -382,21 +418,23 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	$hidden_settings = mrw_hidden_block_editor_settings();
 
 	/* Border */
-	if( in_array( 'border', $hidden_settings) ) {
+	if( in_array( 'border', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['border'] = [];
 	}
 
 	/* Border Radius, Button */
-	if( in_array( 'border-radius', $hidden_settings) ) {
-		/* WordPress < 6.0 */
-		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['customRadius'] = false;
-		/* WordPress 6.0+ */
+	if( in_array( 'border-radius', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;	
 	}
 
 	/* Default Color Pallete */
 	if( in_array( 'default-color-palette', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['color']['defaultPalette'] = false;
+	}
+	
+	/* Default Gradients */
+	if( in_array( 'default-gradients', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['color']['defaultGradients'] = false;
 	}
 
 	/* Drop Cap */
@@ -411,48 +449,58 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	}
 
 	/* Font Style */
-	if( in_array( 'font-style', $hidden_settings) ) {
+	if( in_array( 'font-style', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
 	}
 
 	/* Font Weight */
-	if( in_array( 'font-weight', $hidden_settings) ) {
+	if( in_array( 'font-weight', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontWeight'] = false;
 	}
 
 	/* Gap and Margin */
-	if( in_array( 'spacing', $hidden_settings) ) {
+	if( in_array( 'spacing', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['spacing'] = [];
 	}
 
 	/* Letter Spacing */
-	if( in_array( 'letter-spacing', $hidden_settings) ) {
+	if( in_array( 'letter-spacing', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
 	}
 
 	/* Line Height */
-	if( in_array( 'line-height', $hidden_settings) ) {
+	if( in_array( 'line-height', $hidden_settings ) ) {
 		$editor_settings['enableCustomLineHeight'] = false;
 	}
 
 	/* Padding */
-	if( in_array( 'padding', $hidden_settings) ) {
+	if( in_array( 'padding', $hidden_settings ) ) {
 		$editor_settings['enableCustomSpacing'] = false;
 	}
 
 	/* Pullquote Border */
-	if( in_array( 'pullquote-border', $hidden_settings) ) {
+	if( in_array( 'pullquote-border', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/pullquote']['border'] = [];
 	}
 
 	/* Text Decoration */
-	if( in_array( 'text-decoration', $hidden_settings) ) {
+	if( in_array( 'text-decoration', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
 	}
 
 	/* Text Transform */
-	if( in_array( 'text-transform', $hidden_settings) ) {
+	if( in_array( 'text-transform', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['textTransform'] = false;
+	}
+
+	/* Min Height on the Group block (not the cover block) */
+	if( in_array( 'min-height-group', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['dimensions']['minHeight'] = false;
+	}
+
+	/* Position Sticky */
+	if( in_array( 'sticky-position', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['position']['sticky'] = false;
 	}
 
 	return $editor_settings;
@@ -506,6 +554,30 @@ add_action( 'enqueue_block_editor_assets', 'mrw_block_editor_assets' );
  */
 function mrw_block_editor_assets() {
 
+	/**
+	 * Ensure the correct dependencies depending on the editor being used
+	 * 
+	 * Thank you Sally CJ! https://wordpress.stackexchange.com/a/413631/9844
+	 */
+	$script_dependencies = array( 'wp-blocks', 'wp-dom-ready' );
+	$screen = get_current_screen();
+	$context = $screen ? $screen->id : '';
+	switch( $context ) {
+		case 'widgets':
+			$script_dependencies[] = 'wp-edit-widgets';
+			break;
+		case 'site-editor':
+			$script_dependencies[] = 'wp-edit-site';
+			break;
+		case 'page':	
+		case 'post':
+			$script_dependencies[] = 'wp-edit-post';
+			break;
+		default:
+			$script_dependencies[] = 'wp-edit-post';
+			break;
+	}
+
 	wp_enqueue_style(
 		'mrw-block-editor-css',
 		plugins_url( 'css/block-editor.css', dirname(__FILE__) ),
@@ -516,7 +588,7 @@ function mrw_block_editor_assets() {
 	wp_register_script(
 		'mrw-block-editor-js',
 		plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
-		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+		$script_dependencies,
 		'2.0.0'
 	);
 
