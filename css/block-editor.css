@@ -9,7 +9,8 @@
  Filter Value: new-tabs
  */
 .mrw-block-editor-no-new-tabs .components-popover__content .block-editor-link-control .block-editor-link-control__settings,
-.mrw-block-editor-no-new-tabs .block-editor-url-popover__settings .components-toggle-control {
+.mrw-block-editor-no-new-tabs .block-editor-url-popover__settings .components-toggle-control,
+.mrw-block-editor-no-new-tabs .block-editor-link-control__drawer-toggle {
 	display: none;
 }
 
@@ -18,11 +19,8 @@
  Hide the "Image from URL" option to discourage hotlinking and not having alt text
  Filter Value: image-file-upload
  */
-.mrw-block-editor-no-image-file-upload .components-form-file-upload,
-.mrw-block-editor-no-image-url .editor-media-placeholder__url-input-container,
-.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container,
-.mrw-block-editor-no-image-url .block-editor-media-replace-flow__options .components-form-file-upload + button,
-.mrw-block-editor-no-image-file-upload .wp-block-gallery .block-editor-media-placeholder__upload-button {
+.mrw-block-editor-no-image-file-upload .block-editor-media-placeholder__upload-button,
+.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container {
 	display: none;
 }
 
@@ -30,15 +28,17 @@
  Hide Heading Levels 1, 5, and 6
  Filter values: heading-1, heading-5, heading-6
  */
-.mrw-block-editor-no-heading-1 .components-button[data-subscript="1"],
-.mrw-block-editor-no-heading-5 .components-button[data-subscript="5"],
-.mrw-block-editor-no-heading-6 .components-button[data-subscript="6"] {
+.mrw-block-editor-no-heading-1 .components-button[aria-label="Heading 1"],
+.mrw-block-editor-no-heading-5 .components-button[aria-label="Heading 5"],
+.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"] {
 	display: none;
 }
 
 /* 
  Image Pixel & Percentage Sizing
  Filter Value: image-dimensions
+
+ Not working in WordPress 6.3+
  */
 .mrw-block-editor-no-image-dimensions .block-library-image__dimensions,
 .mrw-block-editor-no-image-dimensions .block-editor-image-size-control {
@@ -88,6 +88,12 @@
 .mrw-block-editor-no-image-url .wp-block-gallery .components-form-file-upload,
 .mrw-block-editor-no-image-upload .wp-block-gallery .components-form-file-upload {
 	display: block;
+}
+
+/* Never show "upload" and "from URL" options in WordPress 6.3+ when editor is in iframe */
+.block-editor-media-placeholder__upload-button,
+.block-editor-media-placeholder__url-input-container {
+	display: none;
 }
 
 
