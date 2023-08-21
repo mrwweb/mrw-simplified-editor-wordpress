@@ -369,6 +369,7 @@ function mrw_hidden_block_editor_settings() {
 		'border',
 		'border-radius',
 		'default-color-palette',
+		'default-gradients',
 		'default-style-variation',
 		'drop-cap',
 		'duotone',
@@ -428,6 +429,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Default Color Pallete */
 	if( in_array( 'default-color-palette', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['color']['defaultPalette'] = false;
+	}
+	
+	/* Default Gradients */
+	if( in_array( 'default-gradients', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['color']['defaultGradients'] = false;
 	}
 
 	/* Drop Cap */
