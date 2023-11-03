@@ -1,3 +1,25 @@
+= 2.12.0 (November 3, 2023) =
+- WordPress 6.4 compatibility
+- Fix error that hid custom theme duotone options
+- Fully hide Footnotes inserter unless the block is unhidden via `mrw_hidden_blocks` filter
+- Hide "Highlight", "Inline Image", "Inline Code", and "Keyboard" toolbar inline formats. Can be re-enabled via `mrw_hidden_block_editor_settings` filter.
+- Hide "Upload" option in "Replace" media menu
+- Remove background color options from Cover block placeholder
+- Hide new Background Image option on Group block
+- Hide new "Text Orientation" / writing mode option
+
+= 2.11.0 (August 21, 2023) =
+- **Requires WordPress 6.0**. Legacy code removed
+- [New] Show all Post- and Query-related blocks in the Site Editor
+- [New] Hide Classic (aka freeform), Details, Footnotes, Comments, and Post Author blocks
+- [New] Hide Group / Cover width settings and Group child blocks Justification settings and min-height setting (does not impact Cover min-height setting). Can be shown with `mrw_hidden_block_editor_settings` filter.
+- [Dev] The `mrw_hidden_blocks` and all `mrw_hidden_*_blocks` filters now support a second `$context` parameter that contains the current screen's ID so you can target the block editor (`post`), site editor (`site-editor`), or widget editor (`widgets`).
+- [New] New Jetpack blocks hidden including AI Assistance, all form blocks, and payment-related blocks
+- [Fix] WordPress 6.3 compatibility (re-hide media upload buttons, default gradients, comments block)
+- [Fix] "getBlockVariations(…) is undefined warning in Widget and Site Editors
+- [Meta] Removed "Formerly MRW Web Design Simple TinyMCE" now that the block editor is 4.5 years old!
+- 2.11.1: Change `layout-width-height` value in the `mrw_hidden_block_editor_settings` filter to be accurate `layout-width`.
+
 = 2.10.0 (October 15, 2022) =
 - Tested up to WordPress 6.1
 - Hide new Text Decoration settings by default (enable via `text-decoration` in  `mrw_hidden_block_editor_settings`)

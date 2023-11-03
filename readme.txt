@@ -3,8 +3,8 @@ Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 6.0
 Requires PHP: 5.6.20
-Tested up to: 6.3
-Stable tag: 2.11.1
+Tested up to: 6.4
+Stable tag: 2.12.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,8 +25,8 @@ This plugin greatly simplifies the block editor by **hiding** all of the followi
 
 - **Infrequently Used Core Blocks** such as Verse, Table, Audio, Video, etc., and all Query- and Site-related blocks. See FAQ for [full list of hidden blocks](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/#faq).
 - **All Core Block Styles and the "Default style" feature**
-- **Some Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, image percentage and pixel sizing, font sizing by pixel, open links in new tabs (mostly hidden), duotone, text styles like line-height and letter spacing, etc.
-- **Default Color & gradient settings** (Custom theme palettes/settings are never hidden)
+- **Some Block Editor Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, font sizing by pixel, open links in new tabs (mostly hidden), duotone, text styles like line-height and letter spacing, inline formats including Highlight and Inline Image, etc.
+- **Default color, gradient, and duotone settings** (Custom theme palettes/settings are never hidden)
 - **Core Block Patterns (WP 5.5+)**
 - **Block Directory (WP 5.5+)**
 - **Infrequently Used Jetpack Blocks** - See [FAQ for full list of hidden blocks](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/#faq).
@@ -50,7 +50,7 @@ Due to frequent changes to the block editor, features are only guaranteed for th
 
 **Hidden Core Blocks:**
 
-- **Text & Media Blocks:** Audio, Code, Next Page, Preformatted, Shortcode, Spacer, Table, Verse, Video
+- **Text & Media Blocks:** Audio, Classic/Freeform, Code, Details, Footnotes, Next Page, Preformatted, Shortcode, Spacer, Table, Verse, Video
 - **Widget Blocks:** Archives, Calendar, Categories, Latest Comments, RSS, Search, Tag Cloud
 - **Query-Related Blocks**: Query, Archive Title (Query Title), Post Title, Post Content, Post Author, Post Date, Post Excerpt, Post Featured Image, Post Tags & Categories (Post Terms), Term Description
 Page List
@@ -77,6 +77,16 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
 == Changelog ==
+= 2.12.0 (November 3, 2023) =
+- WordPress 6.4 compatibility
+- Fix error that hid custom theme duotone options
+- Fully hide Footnotes inserter unless the block is unhidden via `mrw_hidden_blocks` filter
+- Hide "Highlight", "Inline Image", "Inline Code", and "Keyboard" toolbar inline formats. Can be re-enabled via `mrw_hidden_block_editor_settings` filter.
+- Hide "Upload" option in "Replace" media menu
+- Remove background color options from Cover block placeholder
+- Hide new Background Image option on Group block
+- Hide new "Text Orientation" / writing mode option
+
 = 2.11.0 (August 21, 2023) =
 - **Requires WordPress 6.0**. Legacy code removed
 - [New] Show all Post- and Query-related blocks in the Site Editor
@@ -89,34 +99,9 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 - [Meta] Removed "Formerly MRW Web Design Simple TinyMCE" now that the block editor is 4.5 years old!
 - 2.11.1: Change `layout-width-height` value in the `mrw_hidden_block_editor_settings` filter to be accurate `layout-width`.
 
-= 2.10.0 (October 15, 2022) =
-- Tested up to WordPress 6.1
-- Hide new Text Decoration settings by default (enable via `text-decoration` in  `mrw_hidden_block_editor_settings`)
-- Hide image duotone setting (enable via `duotone` in `mrw_hidden_block_editor_settings`)
-
-= 2.9.0 (May 27, 2022) =
-- WordPress 6.0 compatibility fixes: hide new blocks, fix regressions
-- [New] Hide the default color palette which was re-added by default in WP 5.8. Can be shown by removing `default-color-palette` value from `mrw_hidden_block_editor_settings` filter
-- [New] Hide Avatar, Read More, Comments Query Loop, Post Comments Form, and Post Author Biography blocks
-- [Fix] Hide Border Radius in WP 5.9 and 6.0
-- [Fix] Prominent contrast error changes in WP 6.0
-
-= 2.8.0 (February 21, 2022) =
-* [New] Hide many new default block controls added in WordPress 5.9. All options can be enabled with the [mrw_hidden_block_editor_settings filter](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/Filter-Reference).
-	* Text Formatting: line-height, font-weight, letter-spacing, and text-transform
-	* Spacing: gap, margin, padding
-	* Borders: General, pull-quote
-* [Remove] Remove support for hiding paragraph block dropcap setting in WordPress 5.6 and earlier
-* [Remove] Remove support for all old versions of `mrw_*` filters using the terms "blacklist" and "disabled"
-
-= 2.7.0 (February 4, 2022) =
-* [New] Hide new blocks added in WordPress 5.9: Navigation, Post Pagination, Post Author, Post Comments, Term Description, Wolfram Cloud Embed
-* [Dev] Improve inline documentation of new `mrw_hidden_*_blocks` filters added in Simplified Editor 2.5.0
-* [Preview] Version 2.8 will continue to hide new settings added in WordPress 5.9: default border controls on pullquote, new typopgraphy settings (e.g. line height, letter spacing), and default padding controls on Group, Cover, and Columns unless themes explicitly opt-in.
-
 = Full Changelog =
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.11.0 =
-* WP 6.3 Compatibility + Relevant blocks visible in the style editor.
+= 2.12.0 =
+* WP 6.4 Compatibility + hide various inline formats and placeholder options
