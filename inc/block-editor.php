@@ -501,7 +501,6 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	/* Text Orientation */
 	if( in_array( 'text-orientation', $hidden_settings ) ) {
-		error_log(print_r($editor_settings, true));
 		$editor_settings['__experimentalFeatures']['typography']['writingMode'] = false;
 	}
 
