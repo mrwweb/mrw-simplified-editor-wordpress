@@ -36,4 +36,21 @@ wp.domReady( function() {
 
 	});
 
+	/* Remove Inline Footnote inserted in block toolbar if Footnote block is hidden */
+	if( mrwEditorOptions.hiddenBlocks.indexOf( 'core/footnotes' ) ) {
+		wp.richText.unregisterFormatType( 'core/footnote' );
+	}
+	if( mrwEditorOptions.hiddenSettings.indexOf('highlight' ) ) {
+		wp.richText.unregisterFormatType( 'core/text-color');
+	}
+	if( mrwEditorOptions.hiddenSettings.indexOf('inline-image' ) ) {
+		wp.richText.unregisterFormatType( 'core/image' );
+	}
+	if( mrwEditorOptions.hiddenSettings.indexOf('inline-code' ) ) {
+		wp.richText.unregisterFormatType( 'core/code' );
+	}
+	if( mrwEditorOptions.hiddenSettings.indexOf('keyboard' ) ) {
+		wp.richText.unregisterFormatType( 'core/keyboard' );
+	}
+
 });

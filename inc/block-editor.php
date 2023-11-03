@@ -379,10 +379,15 @@ function mrw_hidden_block_editor_settings() {
 		'heading-1',
 		'heading-5',
 		'heading-6',
+		'highlight',
+		'image-background',
 		'image-dimensions',
 		'image-file-upload',
 		'image-url',
+		'inline-code',
+		'inline-image',
 		'justification-group',
+		'keyboard',
 		'layout-width',
 		'letter-spacing',
 		'line-height',
@@ -393,6 +398,7 @@ function mrw_hidden_block_editor_settings() {
 		'spacing',
 		'sticky-position',
 		'text-decoration',
+		'text-orientation',
 		'text-transform',
 	);
 
@@ -444,7 +450,7 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	/* Duotone */
 	if( in_array( 'duotone', $hidden_settings ) ) {
-		$editor_settings['__experimentalFeatures']['color']['duotone'] = null;
+		$editor_settings['__experimentalFeatures']['color']['defaultDuotone'] = false;
 		$editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
 	}
 
@@ -461,6 +467,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Gap and Margin */
 	if( in_array( 'spacing', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['spacing'] = [];
+	}
+
+	/* Image Background (just Group for not, not including Cover) */
+	if( in_array( 'image-background', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['background']['backgroundImage'] = false;	
 	}
 
 	/* Letter Spacing */
@@ -486,6 +497,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Text Decoration */
 	if( in_array( 'text-decoration', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
+	}
+
+	/* Text Orientation */
+	if( in_array( 'text-orientation', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['typography']['writingMode'] = false;
 	}
 
 	/* Text Transform */
