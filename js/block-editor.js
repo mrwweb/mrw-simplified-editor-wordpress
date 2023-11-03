@@ -36,4 +36,9 @@ wp.domReady( function() {
 
 	});
 
+	/* Remove Inline Footnote inserted in block toolbar if Footnote block is hidden */
+	if( mrwEditorOptions.hiddenBlocks.indexOf( 'core/footnotes' ) ) {
+		wp.richText.unregisterFormatType('core/footnote');
+	}
+
 });
