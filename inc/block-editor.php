@@ -379,6 +379,7 @@ function mrw_hidden_block_editor_settings() {
 		'heading-1',
 		'heading-5',
 		'heading-6',
+		'image-background',
 		'image-dimensions',
 		'image-file-upload',
 		'image-url',
@@ -462,6 +463,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Gap and Margin */
 	if( in_array( 'spacing', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['spacing'] = [];
+	}
+
+	/* Image Background (just Group for not, not including Cover) */
+	if( in_array( 'image-background', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['background']['backgroundImage'] = false;	
 	}
 
 	/* Letter Spacing */
