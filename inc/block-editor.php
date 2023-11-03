@@ -446,7 +446,7 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 
 	/* Duotone */
 	if( in_array( 'duotone', $hidden_settings ) ) {
-		$editor_settings['__experimentalFeatures']['color']['duotone'] = null;
+		$editor_settings['__experimentalFeatures']['color']['defaultDuotone'] = false;
 		$editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
 	}
 
