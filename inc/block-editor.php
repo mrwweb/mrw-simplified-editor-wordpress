@@ -393,6 +393,7 @@ function mrw_hidden_block_editor_settings() {
 		'spacing',
 		'sticky-position',
 		'text-decoration',
+		'text-orientation',
 		'text-transform',
 	);
 
@@ -486,6 +487,12 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Text Decoration */
 	if( in_array( 'text-decoration', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
+	}
+
+	/* Text Orientation */
+	if( in_array( 'text-orientation', $hidden_settings ) ) {
+		error_log(print_r($editor_settings, true));
+		$editor_settings['__experimentalFeatures']['typography']['writingMode'] = false;
 	}
 
 	/* Text Transform */
