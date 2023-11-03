@@ -69,7 +69,7 @@
 }
 
 /*===================================================
-=            Media Library Button styles            =
+=         Always use Media Library in Flows         =
 ===================================================*/
 /*
  Hide color options in cover placeholder
@@ -78,6 +78,7 @@
 .wp-block-cover__placeholder-background-options {
 	display: none;
 }
+
 
 /* always style the Media Library item as a primary button */
 .block-editor-media-placeholder .components-button.is-tertiary {
@@ -99,7 +100,8 @@
 
 /* Never show "upload" and "from URL" options in WordPress 6.3+ when editor is in iframe */
 .block-editor-media-placeholder__upload-button,
-.block-editor-media-placeholder__url-input-container {
+.block-editor-media-placeholder__url-input-container,
+.block-editor-media-replace-flow__media-upload-menu .components-form-file-upload {
 	display: none;
 }
 
