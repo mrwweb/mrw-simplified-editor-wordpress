@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 6.0
 Requires PHP: 5.6.20
 Tested up to: 6.4
-Stable tag: 2.12.0
+Stable tag: 2.12.1
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,6 +77,9 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
 == Changelog ==
+= 2.12.1 (November 30, 2023) =
+- Fix ability to unhide newly-hidden inline formats (Footnote, highlight, inline image, inline code, and keyboard)
+
 = 2.12.0 (November 3, 2023) =
 - WordPress 6.4 compatibility
 - Fix error that hid custom theme duotone options
@@ -103,5 +106,5 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.12.0 =
-* WP 6.4 Compatibility + hide various inline formats and placeholder options
+= 2.12.1 =
+* v2.12.0 - WP 6.4 Compatibility + hide various inline formats and placeholder options
