@@ -1,5 +1,7 @@
 /*
- * Hide Blocks
+ * Hide blocks from the inserter
+ *
+ * Unregistering them crashes the editor if they are present in existing content
  */
 wp.hooks.addFilter( 'blocks.registerBlockType', 'hideBlocks', ( blockSettings, blockName ) => {
 
@@ -19,7 +21,7 @@ wp.domReady( function() {
 	 */
 	wp.blocks.getBlockVariations('core/embed').forEach(function (embed) {
 
-		if ( -1 !== mrwEditorOptions.hiddenEmbeds.indexOf(embed.name) ) {
+		if ( -1 < mrwEditorOptions.hiddenEmbeds.indexOf(embed.name) ) {
 			wp.blocks.unregisterBlockVariation('core/embed', embed.name );
 		}
 
@@ -36,20 +38,25 @@ wp.domReady( function() {
 
 	});
 
-	/* Remove Inline Footnote inserted in block toolbar if Footnote block is hidden */
-	if( mrwEditorOptions.hiddenBlocks.indexOf( 'core/footnotes' ) ) {
+	/* Remove Inline Footnote insert button in block toolbar if Footnote block is hidden */
+	if( -1 < mrwEditorOptions.hiddenBlocks.indexOf( 'core/footnotes' ) ) {
 		wp.richText.unregisterFormatType( 'core/footnote' );
 	}
-	if( mrwEditorOptions.hiddenSettings.indexOf('highlight' ) ) {
-		wp.richText.unregisterFormatType( 'core/text-color');
+
+	/* Remove other inline formatting options */
+	if( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'highlight' ) ) {
+		wp.richText.unregisterFormatType( 'core/text-color' );
 	}
-	if( mrwEditorOptions.hiddenSettings.indexOf('inline-image' ) ) {
+
+	if( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'inline-image' ) ) {
 		wp.richText.unregisterFormatType( 'core/image' );
 	}
-	if( mrwEditorOptions.hiddenSettings.indexOf('inline-code' ) ) {
+
+	if( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'inline-code' ) ) {
 		wp.richText.unregisterFormatType( 'core/code' );
 	}
-	if( mrwEditorOptions.hiddenSettings.indexOf('keyboard' ) ) {
+
+	if( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'keyboard' ) ) {
 		wp.richText.unregisterFormatType( 'core/keyboard' );
 	}
 
