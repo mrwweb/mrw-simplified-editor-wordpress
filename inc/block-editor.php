@@ -395,6 +395,7 @@ function mrw_hidden_block_editor_settings() {
 		'new-tabs',
 		'padding',
 		'pullquote-border',
+		'shadow',
 		'spacing',
 		'sticky-position',
 		'text-decoration',
@@ -492,6 +493,11 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
 	/* Pullquote Border */
 	if( in_array( 'pullquote-border', $hidden_settings ) ) {
 		$editor_settings['__experimentalFeatures']['blocks']['core/pullquote']['border'] = [];
+	}
+
+	/* Shadow */
+	if( in_array( 'shadow', $hidden_settings ) ) {
+		$editor_settings['__experimentalFeatures']['shadow']['defaultPresets'] = false;
 	}
 
 	/* Text Decoration */
