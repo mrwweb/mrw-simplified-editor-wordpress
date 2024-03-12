@@ -30,7 +30,11 @@
  */
 .mrw-block-editor-no-heading-1 .components-button[aria-label="Heading 1"],
 .mrw-block-editor-no-heading-5 .components-button[aria-label="Heading 5"],
-.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"] {
+.mrw-block-editor-no-heading-6 .components-button[aria-label="Heading 6"],
+/* WP6.5+ */
+.mrw-block-editor-no-heading-1 .block-library-heading-level-dropdown .components-button:nth-child(1),
+.mrw-block-editor-no-heading-5 .block-library-heading-level-dropdown .components-button:nth-child(5),
+.mrw-block-editor-no-heading-6 .block-library-heading-level-dropdown .components-button:nth-child(6) {
 	display: none;
 }
 

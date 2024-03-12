@@ -3,8 +3,8 @@ Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 6.0
 Requires PHP: 5.6.20
-Tested up to: 6.4
-Stable tag: 2.12.1
+Tested up to: 6.5
+Stable tag: 2.13.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,6 +77,11 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
 == Changelog ==
+= 2.13.0 (March 12, 2024, Released on a train somewhere between Seattle and Portland 🚆) =
+- [New] Hide new default box-shadows design feature. Should not interfere with theme-defined shadows. Enable default shadows via `mrw_hidden_block_editor_settings` filter.
+- [Fix] Hide Headings 1, 5, and 6 in WordPress 6.5+
+- Add new `blueprint.json` file to support plugin repository playground feature
+
 = 2.12.1 (November 30, 2023) =
 - Fix ability to unhide newly-hidden inline formats (Footnote, highlight, inline image, inline code, and keyboard)
 
