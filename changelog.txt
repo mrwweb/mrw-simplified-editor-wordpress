@@ -1,3 +1,8 @@
+= 2.13.0 (March 12, 2024, Released on a train somewhere between Seattle and Portland 🚆) =
+- [New] Hide new default box-shadows design feature. Should not interfere with theme-defined shadows. Enable default shadows via `mrw_hidden_block_editor_settings` filter.
+- [Fix] Hide Headings 1, 5, and 6 in WordPress 6.5+
+- Add new `blueprint.json` file to support plugin repository playground feature
+
 = 2.12.1 (November 30, 2023) =
 - Fix ability to unhide newly-hidden inline formats (Footnote, highlight, inline image, inline code, and keyboard)
 
