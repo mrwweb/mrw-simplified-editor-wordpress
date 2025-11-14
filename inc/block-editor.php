@@ -554,7 +554,6 @@ function mrw_block_editor_js_config() {
 	/*====================================
 	=            Block Styles            =
 	======================================*/
-	$hidden_style_variations = array();
 	foreach ( mrw_hidden_block_styles() as $block => $styles ) {
 		$hidden_styles[$block] = array_values( $styles );
 	}
