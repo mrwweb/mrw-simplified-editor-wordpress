@@ -131,11 +131,14 @@ function mrw_hidden_blocks() {
 	 * @since 2.5.0
 	 */
 	$hidden_core_blocks = apply_filters( 'mrw_hidden_core_blocks', array(
+		'core/accordion',
 		'core/audio',
 		'core/code',
 		'core/details',
 		'core/footnotes',
 		'core/freeform',
+		'core/latest-posts',
+		'core/math',
 		'core/nextpage',
 		'core/preformatted',
 		'core/shortcode',
@@ -176,6 +179,8 @@ function mrw_hidden_blocks() {
 		'core/query',
 		'core/query-title',
 		'core/post-title',
+		'core/post-comments-count',
+		'core/post-comments-link',
 		'core/post-content',
 		'core/post-date',
 		'core/post-excerpt',
@@ -184,7 +189,11 @@ function mrw_hidden_blocks() {
 		'core/post-author',
 		'core/post-author-biography',
 		'core/read-more',
+		'core/term-count',
+		'core/term-name',
 		'core/term-description',
+		'core/terms-query',
+		'core/post-time-to-read',
 	), $context );
 
 	/**
@@ -374,6 +383,8 @@ function mrw_hidden_block_editor_settings() {
 		'default-style-variation',
 		'drop-cap',
 		'duotone',
+		'fit-text-heading',
+		'fit-text-paragraph',
 		'font-weight',
 		'font-style',
 		'heading-1',
