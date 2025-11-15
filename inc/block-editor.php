@@ -216,6 +216,7 @@ function mrw_hidden_blocks() {
 		'core/post-comments',
 		'core/post-comments-form',
 		'core/post-navigation-link',
+		'core/template-part',
 	), $context );
 
 	$hidden_blocks = array_merge(
