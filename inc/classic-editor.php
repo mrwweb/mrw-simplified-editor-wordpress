@@ -74,7 +74,7 @@ function mrw_mce_init( $args ) {
 			'format' => 'h3',
 		),
 		array(
-			'title'  => esc_attr__( '–– Heading 4', 'En dash used to imply heading hierarchy', 'mrw-web-design-simple-tinymce' ),
+			'title'  => esc_attr_x( '–– Heading 4', 'En dash used to imply heading hierarchy', 'mrw-web-design-simple-tinymce' ),
 			'format' => 'h4',
 		),
 		array(
