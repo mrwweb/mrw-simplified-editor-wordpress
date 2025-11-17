@@ -19,12 +19,8 @@ wp.domReady( function() {
 	/*
 	 * Hide Embed Variations
 	 */
-	wp.blocks.getBlockVariations('core/embed').forEach(function (embed) {
-
-		if ( -1 < mrwEditorOptions.hiddenEmbeds.indexOf(embed.name) ) {
-			wp.blocks.unregisterBlockVariation('core/embed', embed.name );
-		}
-
+	mrwEditorOptions.hiddenEmbeds.forEach((embed) => {
+		wp.blocks.unregisterBlockVariation('core/embed', embed);
 	});
 
 	/*
