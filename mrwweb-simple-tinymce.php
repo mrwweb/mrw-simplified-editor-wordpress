@@ -8,6 +8,8 @@
 * Author URI: https://MRWweb.com
 * Text Domain: mrw-web-design-simple-tinymce
 * License: GPLv2 or later
+* GitHub Plugin URI: mrwweb/mrw-simplified-editor-wordpress
+* Primary Branch: release
 */
 
 DEFINE( 'MRW_SIMPLIFIED_EDITOR_VERSION', '2.14.0' );
