@@ -6,7 +6,7 @@ Requires PHP: 5.6.20
 Tested up to: 6.9
 Stable tag: 2.14.0
 Donate link: https://www.paypal.me/rootwiley
-License: GPLv3 or later
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Focus editors on making great content and letting their themes make it beautiful by removing block editor features.
