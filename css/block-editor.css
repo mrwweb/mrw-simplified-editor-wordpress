@@ -25,6 +25,14 @@
 }
 
 /*
+ Hide the "Text over image" toolbar button when the Cover block is not in the inserter
+ Only works for English sites :'(
+ */
+.mrw-block-editor-no-cover-block .block-editor-block-toolbar .components-button[aria-label="Add text over image"] {
+	display: none;
+}
+
+/*
  Hide Heading Levels 1, 5, and 6
  Filter values: heading-1, heading-5, heading-6
  */

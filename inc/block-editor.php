@@ -703,15 +703,21 @@ function mrw_block_editor_settings_admin_classes( $classes ) {
 	$current_screen = get_current_screen();
 
 	if( isset( $current_screen->is_block_editor ) && (bool) $current_screen->is_block_editor ) {
-
-		$hidden_block_editor_settings = mrw_hidden_block_editor_settings();
-
 		$prefix = ' mrw-block-editor-no-';
+		$hidden_block_editor_settings = mrw_hidden_block_editor_settings();
+		$hidden_blocks = mrw_hidden_blocks();
+		
 		foreach( $hidden_block_editor_settings as $setting ) {
 			$classes .= $prefix . sanitize_title_with_dashes( $setting );
 		}
 
+		if( in_array( 'core/cover', $hidden_blocks ) ) {
+			$classes .= $prefix . 'cover-block';
+		}
+
 	}
+
+
 
 	return $classes;
 
