@@ -1,10 +1,10 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
-Requires at least: 6.0
+Requires at least: 6.5
 Requires PHP: 5.6.20
-Tested up to: 6.5
-Stable tag: 2.13.0
+Tested up to: 6.9
+Stable tag: 2.14.0
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
