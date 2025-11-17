@@ -131,7 +131,7 @@ function mrw_mce_init( $args ) {
 		);
 	}
 
-	$args['style_formats'] = json_encode( $style_formats );
+	$args['style_formats'] = wp_json_encode( $style_formats );
 
 	return $args;
 }
