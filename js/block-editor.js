@@ -24,6 +24,13 @@ wp.domReady( function() {
 	});
 
 	/*
+	 * Hide Social Links
+	 */
+	mrwEditorOptions.hiddenSocialLinks.forEach((link) => {
+		wp.blocks.unregisterBlockVariation('core/social-link', link);
+	});
+
+	/*
 	 * Hide Block Styles
 	 */
 	Object.keys( mrwEditorOptions.hiddenStyles ).forEach( function( block ) {

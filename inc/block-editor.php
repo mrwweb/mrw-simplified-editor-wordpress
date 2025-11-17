@@ -291,6 +291,43 @@ function mrw_hidden_embeds() {
 
 }
 
+/**
+ * Return list of hidden social links
+ */
+function mrw_hidden_social_links() {
+
+	$hidden_social_links = array(
+		'amazon',
+		'bandcamp',
+		'behance',
+		'behance',
+		'codepen',
+		'deviantart',
+		'discord',
+		'dribbble',
+		'dropbox',
+		'etsy',
+		'fivehundredpx',
+		'foursquare',
+		'goodreads',
+		'gravatar',
+		'lastfm',
+		'medium',
+		'meetup',
+		'pocket',
+		'twitch',
+		'vk',
+		'yelp',
+	);
+
+	/**
+	 * mrw_hidden_social_links filter
+	 * @since 2.14.0
+	 */
+	return apply_filters( 'mrw_hidden_social_links', $hidden_social_links );
+
+}
+
 add_action( 'jetpack_register_gutenberg_extensions', 'mrw_jetpack_hidden_blocks', 99 );
 /**
  * Hidden Jetpack Blocks
@@ -559,11 +596,15 @@ function mrw_block_editor_js_config() {
 	==============================*/
 	$js_options['hiddenBlocks'] = array_values( mrw_hidden_blocks() );
 
-
 	/*========================================
 	=            Embed Variations            =
 	========================================*/
 	$js_options['hiddenEmbeds'] = array_values( mrw_hidden_embeds() );
+
+	/*========================================
+	=            Social Links                =
+	========================================*/
+	$js_options['hiddenSocialLinks'] = array_values( mrw_hidden_social_links() );
 
 	/*====================================
 	=            Block Styles            =
@@ -617,14 +658,14 @@ function mrw_block_editor_assets() {
 		'mrw-block-editor-css',
 		plugins_url( 'css/block-editor.css', dirname(__FILE__) ),
 		array(),
-		'2.0.0'
+		MRW_SIMPLIFIED_EDITOR_VERSION
 	);
 
 	wp_register_script(
 		'mrw-block-editor-js',
 		plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
 		$script_dependencies,
-		'2.0.0'
+		MRW_SIMPLIFIED_EDITOR_VERSION
 	);
 
 	wp_localize_script(
@@ -635,6 +676,18 @@ function mrw_block_editor_assets() {
 
 	wp_enqueue_script( 'mrw-block-editor-js' );
 
+}
+
+add_action( 'enqueue_block_assets', 'mrw_block_styles' );
+function mrw_block_styles() {
+	if( is_admin() ) {
+		wp_enqueue_style(
+			'mrw-blocks-css',
+			plugins_url( 'css/blocks.css', dirname(__FILE__) ),
+			array(),
+			MRW_SIMPLIFIED_EDITOR_VERSION
+		);
+	}
 }
 
 add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
