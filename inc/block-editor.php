@@ -665,7 +665,8 @@ function mrw_block_editor_assets() {
 		'mrw-block-editor-js',
 		plugins_url( 'js/block-editor.js', dirname(__FILE__) ),
 		$script_dependencies,
-		MRW_SIMPLIFIED_EDITOR_VERSION
+		MRW_SIMPLIFIED_EDITOR_VERSION,
+		array( 'in_footer' => true )
 	);
 
 	wp_localize_script(
