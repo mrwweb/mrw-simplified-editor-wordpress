@@ -1,3 +1,19 @@
+= 2.14.0 (November 18, 2025)
+
+- New minimum supported version: WordPress 6.5
+- [WordPres 6.9] Hide new blocks: Accordion, Math, Term Query, Time to Read, Word Count. Use `mrw_hidden_blocks` to show.
+- [WordPres 6.9] Hide "Fit Text" block variations in WordPres 6.9: Use `mrw_hidden_block_editor_settings` filter to show.
+- Hide lesser-used social links like 500px, Amazon, last.fm, Pocket (RIP), etc. Use `mrw_hidden_social_links` to show hidden links or hide additional ones.
+- Hide Template Part embeds in the post editor context since they literally can't be embedded. Hopefully this gets [solved in WordPress](https://github.com/WordPress/gutenberg/issues/67797) eventually.
+- Hide Goodreads and Nextdoor blocks in Jetpack
+- Resolve warning about correctly loading block styles in editor to prepare for iframed editor in WP 7.0.
+- Dev: Resolve Plugin Check warnings.
+- Dev: Introduce namespaces to reduce risk of naming collisions.
+- Dev: Improve how block variations are unregistered.
+- Dev: Update deprecated properties in `blueprint.json`
+- Dev: Miscellaneous code cleanup
+- Fix incorrect license listed in `readme.txt` to match link and plugin header (GPL2 and above)
+
 = 2.13.0 (March 12, 2024, Released on a train somewhere between Seattle and Portland 🚆) =
 - [New] Hide new default box-shadows design feature. Should not interfere with theme-defined shadows. Enable default shadows via `mrw_hidden_block_editor_settings` filter.
 - [Fix] Hide Headings 1, 5, and 6 in WordPress 6.5+
