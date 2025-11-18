@@ -1,12 +1,12 @@
 === MRW Simplified Editor ===
 Contributors: mrwweb
 Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
-Requires at least: 6.0
+Requires at least: 6.5
 Requires PHP: 5.6.20
-Tested up to: 6.5
-Stable tag: 2.13.0
+Tested up to: 6.9
+Stable tag: 2.14.0
 Donate link: https://www.paypal.me/rootwiley
-License: GPLv3 or later
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Focus editors on making great content and letting their themes make it beautiful by removing block editor features.
@@ -77,6 +77,23 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
 == Changelog ==
+= 2.14.0 (November 18, 2025)
+
+- New minimum supported version: WordPress 6.5
+- [WordPress 6.9] Hide new blocks: Accordion, Math, Term Query, Time to Read, Word Count. Use `mrw_hidden_blocks` to show.
+- [WordPress 6.9] Hide "Fit Text" block variations in WordPres 6.9: Use `mrw_hidden_block_editor_settings` filter to show.
+- Hide lesser-used social links like 500px, Amazon, last.fm, Pocket (RIP), etc. Use `mrw_hidden_social_links` to show hidden links or hide additional ones.
+- Hide Template Part embeds in the post editor context since they literally can't be embedded. Hopefully this gets [solved in WordPress](https://github.com/WordPress/gutenberg/issues/67797) eventually.
+- Update hidden buttons in image placeholders to show "Use Featured Image" option for Media & Text block and display Media Library in the primary button style.
+- Hide Goodreads and Nextdoor blocks in Jetpack
+- Resolve warning about correctly loading block styles in editor to prepare for iframed editor in WP 7.0.
+- Dev: Resolve Plugin Check warnings.
+- Dev: Introduce namespaces to reduce risk of naming collisions.
+- Dev: Improve how block variations are unregistered.
+- Dev: Update deprecated properties in `blueprint.json`
+- Dev: Miscellaneous code cleanup
+- Fix incorrect license listed in `readme.txt` to match link and plugin header (GPL2 and above)
+
 = 2.13.0 (March 12, 2024, Released on a train somewhere between Seattle and Portland 🚆) =
 - [New] Hide new default box-shadows design feature. Should not interfere with theme-defined shadows. Enable default shadows via `mrw_hidden_block_editor_settings` filter.
 - [Fix] Hide Headings 1, 5, and 6 in WordPress 6.5+
@@ -111,5 +128,5 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 * [Changelog on Github](https://github.com/mrwweb/mrw-simplified-editor-wordpress/blob/master/changelog.txt)
 
 == Upgrade Notice ==
-= 2.12.1 =
-* v2.12.0 - WP 6.4 Compatibility + hide various inline formats and placeholder options
+= 2.14.0 =
+* WordPress 6.9 compatiblity: Hide new blocks. Hide less-used social links.

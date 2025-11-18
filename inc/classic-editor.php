@@ -1,5 +1,7 @@
 <?php
-add_filter( 'mce_buttons', 'mrw_mce_buttons_1', 0 );
+namespace MRW\SimplifiedEditor;
+
+add_filter( 'mce_buttons', __NAMESPACE__ . '\mce_buttons_1', 0 );
 /**
  * Remove formatting buttons that cause more trouble than they're worth.
  * Merge remaining buttons onto first row.
@@ -10,7 +12,7 @@ add_filter( 'mce_buttons', 'mrw_mce_buttons_1', 0 );
  * @return array the modified TinyMCE buttons
  * @see    http://codex.wordpress.org/TinyMCE_Custom_Buttons
  */
-function mrw_mce_buttons_1( $buttons ) {
+function mce_buttons_1( $buttons ) {
 
 	$buttons = array(
 		0 => 'styleselect',
@@ -45,7 +47,7 @@ function mrw_mce_buttons_1( $buttons ) {
 // Disable second row of TinyMCE buttons
 add_filter( 'mce_buttons_2', '__return_empty_array', 0 );
 
-add_filter( 'tiny_mce_before_init', 'mrw_mce_init', 0 );
+add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\mce_init', 0 );
 /**
  * Customize the WordPress TinyMCE editor.
  *
@@ -59,7 +61,7 @@ add_filter( 'tiny_mce_before_init', 'mrw_mce_init', 0 );
  * @return $args array modified TinyMCE arguments
  * @see    http://wordpress.stackexchange.com/a/128950/9844
  */
-function mrw_mce_init( $args ) {
+function mce_init( $args ) {
 	$style_formats = array(
 		array(
 			'title'  => esc_attr__( 'Paragraph', 'mrw-web-design-simple-tinymce' ),
@@ -74,7 +76,7 @@ function mrw_mce_init( $args ) {
 			'format' => 'h3',
 		),
 		array(
-			'title'  => esc_attr__( '–– Heading 4', 'En dash used to imply heading hierarchy', 'mrw-web-design-simple-tinymce' ),
+			'title'  => esc_attr_x( '–– Heading 4', 'En dash used to imply heading hierarchy', 'mrw-web-design-simple-tinymce' ),
 			'format' => 'h4',
 		),
 		array(
@@ -131,7 +133,7 @@ function mrw_mce_init( $args ) {
 		);
 	}
 
-	$args['style_formats'] = json_encode( $style_formats );
+	$args['style_formats'] = wp_json_encode( $style_formats );
 
 	return $args;
 }

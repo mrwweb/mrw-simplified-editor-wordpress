@@ -19,12 +19,15 @@ wp.domReady( function() {
 	/*
 	 * Hide Embed Variations
 	 */
-	wp.blocks.getBlockVariations('core/embed').forEach(function (embed) {
+	mrwEditorOptions.hiddenEmbeds.forEach((embed) => {
+		wp.blocks.unregisterBlockVariation('core/embed', embed);
+	});
 
-		if ( -1 < mrwEditorOptions.hiddenEmbeds.indexOf(embed.name) ) {
-			wp.blocks.unregisterBlockVariation('core/embed', embed.name );
-		}
-
+	/*
+	 * Hide Social Links
+	 */
+	mrwEditorOptions.hiddenSocialLinks.forEach((link) => {
+		wp.blocks.unregisterBlockVariation('core/social-link', link);
 	});
 
 	/*
@@ -37,6 +40,14 @@ wp.domReady( function() {
 		});
 
 	});
+
+	/* Hide Fit Text Blocks */
+	if( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'fit-text-paragraph' ) ) {
+		wp.blocks.unregisterBlockVariation( 'core/paragraph', 'stretchy-paragraph' );
+	}
+	if( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'fit-text-heading' ) ) {
+		wp.blocks.unregisterBlockVariation( 'core/heading', 'stretchy-heading' );
+	}
 
 	/* Remove Inline Footnote insert button in block toolbar if Footnote block is hidden */
 	if( -1 < mrwEditorOptions.hiddenBlocks.indexOf( 'core/footnotes' ) ) {
