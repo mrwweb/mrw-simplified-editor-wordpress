@@ -1,9 +1,9 @@
 <?php
-add_action( 'after_setup_theme', 'mrw_block_editor_theme_support', 11 );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\block_editor_theme_support', 11 );
 /**
  * Make modifications to editor that can be made using default add_theme_support() calls
  */
-function mrw_block_editor_theme_support() {
+function block_editor_theme_support() {
 
 	/*
 	 * Remove pixel-based font sizing
@@ -96,15 +96,15 @@ function mrw_block_editor_theme_support() {
 	
 }
 
-add_action(	'plugins_loaded', 'mrw_hide_block_directory' );
+add_action(	'plugins_loaded', __NAMESPACE__ . '\hide_block_directory' );
 /**
  * Hide the block directory
  * 
  * @see https://github.com/WordPress/gutenberg/issues/23961#issuecomment-666683997
  */
-function mrw_hide_block_directory() {
+function hide_block_directory() {
 
-	if( in_array( 'block-directory', mrw_hidden_block_editor_settings() ) ) {
+	if( in_array( 'block-directory', hidden_block_editor_settings() ) ) {
 		remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
 		remove_action( 'enqueue_block_editor_assets', 'gutenberg_enqueue_block_editor_assets_block_directory' );
 	}
@@ -118,7 +118,7 @@ function mrw_hide_block_directory() {
  * 
  * @return array slugs of all hidden core blocks
  */
-function mrw_hidden_blocks() {
+function hidden_blocks() {
 
 	$current_screen = get_current_screen();
 	$context = $current_screen->id;
@@ -244,12 +244,12 @@ function mrw_hidden_blocks() {
 
 }
 
-add_filter( 'mrw_hidden_site_blocks', 'mrw_show_blocks_in_site_editor', 0, 2 );
-add_filter( 'mrw_hidden_query_blocks', 'mrw_show_blocks_in_site_editor', 0, 2 );
+add_filter( 'mrw_hidden_site_blocks', __NAMESPACE__ . '\show_blocks_in_site_editor', 0, 2 );
+add_filter( 'mrw_hidden_query_blocks', __NAMESPACE__ . '\show_blocks_in_site_editor', 0, 2 );
 /**
  * Show all Query- and Post-related blocks in the Site Editor
  */
-function mrw_show_blocks_in_site_editor( $blocks, $context ) {
+function show_blocks_in_site_editor( $blocks, $context ) {
 	if( $context === 'site-editor' ) {
 		$blocks = array();
 	}
@@ -260,7 +260,7 @@ function mrw_show_blocks_in_site_editor( $blocks, $context ) {
 /**
  * Return list of hidden embeds
  */
-function mrw_hidden_embeds() {
+function hidden_embeds() {
 
 	$hidden_embeds = array(
 		'amazon-kindle',
@@ -294,7 +294,7 @@ function mrw_hidden_embeds() {
 /**
  * Return list of hidden social links
  */
-function mrw_hidden_social_links() {
+function hidden_social_links() {
 
 	$hidden_social_links = array(
 		'amazon',
@@ -328,13 +328,13 @@ function mrw_hidden_social_links() {
 
 }
 
-add_action( 'jetpack_register_gutenberg_extensions', 'mrw_jetpack_hidden_blocks', 99 );
+add_action( 'jetpack_register_gutenberg_extensions', __NAMESPACE__ . '\jetpack_hidden_blocks', 99 );
 /**
  * Hidden Jetpack Blocks
  *
  * @see  https://developer.jetpack.com/hooks/jetpack_register_gutenberg_extensions/
  */
-function mrw_jetpack_hidden_blocks() {
+function jetpack_hidden_blocks() {
 
 	if ( ! class_exists( 'Jetpack_Gutenberg' ) ) {
 		return;
@@ -387,7 +387,7 @@ function mrw_jetpack_hidden_blocks() {
  * 
  * @return array keyed array where keys are a block slug and value is an array containing all block style to remove
  */
-function mrw_hidden_block_styles() {
+function hidden_block_styles() {
 
 	$hidden_styles = array(
 		'core/image'		=> array( 'default', 'circle-mask', 'rounded' ),
@@ -412,7 +412,7 @@ function mrw_hidden_block_styles() {
  * 
  * @return array every option to hide via CSS or JS
  */
-function mrw_hidden_block_editor_settings() {
+function hidden_block_editor_settings() {
 
 	$hidden_block_editor_settings = array(
 		'block-directory',
@@ -462,7 +462,7 @@ function mrw_hidden_block_editor_settings() {
 
 }
 
-add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
+add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\block_editor_settings', 99, 2 );
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
  * 
@@ -471,9 +471,9 @@ add_filter( 'block_editor_settings_all', 'mrw_block_editor_settings', 99, 2 );
  *
  * @see https://github.com/joppuyo/remove-drop-cap/blob/v1.1.0/remove-drop-cap.php#L22
  */
-function mrw_block_editor_settings( $editor_settings, $context ) {
+function block_editor_settings( $editor_settings, $context ) {
 
-	$hidden_settings = mrw_hidden_block_editor_settings();
+	$hidden_settings = hidden_block_editor_settings();
 
 	/* Border */
 	if( in_array( 'border', $hidden_settings ) ) {
@@ -585,7 +585,7 @@ function mrw_block_editor_settings( $editor_settings, $context ) {
  * 
  * @return array all hidden blocks, block styles, and block editor settings
  */
-function mrw_block_editor_js_config() {
+function block_editor_js_config() {
 
 	$js_options = array();
 
@@ -594,22 +594,22 @@ function mrw_block_editor_js_config() {
 	/*==============================
 	=            Blocks            =
 	==============================*/
-	$js_options['hiddenBlocks'] = array_values( mrw_hidden_blocks() );
+	$js_options['hiddenBlocks'] = array_values( hidden_blocks() );
 
 	/*========================================
 	=            Embed Variations            =
 	========================================*/
-	$js_options['hiddenEmbeds'] = array_values( mrw_hidden_embeds() );
+	$js_options['hiddenEmbeds'] = array_values( hidden_embeds() );
 
 	/*========================================
 	=            Social Links                =
 	========================================*/
-	$js_options['hiddenSocialLinks'] = array_values( mrw_hidden_social_links() );
+	$js_options['hiddenSocialLinks'] = array_values( hidden_social_links() );
 
 	/*====================================
 	=            Block Styles            =
 	======================================*/
-	foreach ( mrw_hidden_block_styles() as $block => $styles ) {
+	foreach ( hidden_block_styles() as $block => $styles ) {
 		$hidden_styles[$block] = array_values( $styles );
 	}
 
@@ -618,17 +618,17 @@ function mrw_block_editor_js_config() {
 	/*================================
 	=            Features            =
 	================================*/
-	$js_options['hiddenSettings'] = array_values( mrw_hidden_block_editor_settings() );
+	$js_options['hiddenSettings'] = array_values( hidden_block_editor_settings() );
 
 	return $js_options;
 
 }
 
-add_action( 'enqueue_block_editor_assets', 'mrw_block_editor_assets' );
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\block_editor_assets' );
 /**
  * Enqueue CSS and JS files that modify/hide block editor settings in the admin
  */
-function mrw_block_editor_assets() {
+function block_editor_assets() {
 
 	/**
 	 * Ensure the correct dependencies depending on the editor being used
@@ -672,15 +672,15 @@ function mrw_block_editor_assets() {
 	wp_localize_script(
 		'mrw-block-editor-js',
 		'mrwEditorOptions',
-		mrw_block_editor_js_config()
+		block_editor_js_config()
 	);
 
 	wp_enqueue_script( 'mrw-block-editor-js' );
 
 }
 
-add_action( 'enqueue_block_assets', 'mrw_block_styles' );
-function mrw_block_styles() {
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\block_styles' );
+function block_styles() {
 	if( is_admin() ) {
 		wp_enqueue_style(
 			'mrw-blocks-css',
@@ -691,21 +691,21 @@ function mrw_block_styles() {
 	}
 }
 
-add_action( 'admin_body_class', 'mrw_block_editor_settings_admin_classes' );
+add_action( 'admin_body_class', __NAMESPACE__ . '\block_editor_settings_admin_classes' );
 /**
  * Apply body classes to admin for each features that are hidden via CSS
  * 
  * @param  array $classes list of hidden features
  * @return array
  */
-function mrw_block_editor_settings_admin_classes( $classes ) {
+function block_editor_settings_admin_classes( $classes ) {
 
 	$current_screen = get_current_screen();
 
 	if( isset( $current_screen->is_block_editor ) && (bool) $current_screen->is_block_editor ) {
 		$prefix = ' mrw-block-editor-no-';
-		$hidden_block_editor_settings = mrw_hidden_block_editor_settings();
-		$hidden_blocks = mrw_hidden_blocks();
+		$hidden_block_editor_settings = hidden_block_editor_settings();
+		$hidden_blocks = hidden_blocks();
 		
 		foreach( $hidden_block_editor_settings as $setting ) {
 			$classes .= $prefix . sanitize_title_with_dashes( $setting );
