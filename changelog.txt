@@ -6,6 +6,7 @@
 - Hide lesser-used social links like 500px, Amazon, last.fm, Pocket (RIP), etc. Use `mrw_hidden_social_links` to show hidden links or hide additional ones.
 - Hide Template Part embeds in the post editor context since they literally can't be embedded. Hopefully this gets [solved in WordPress](https://github.com/WordPress/gutenberg/issues/67797) eventually.
 - Update hidden buttons in image placeholders to show "Use Featured Image" option for Media & Text block and display Media Library in the primary button style.
+- Hide "text over image" toolbar button when the Cover block is hidden
 - Hide Goodreads and Nextdoor blocks in Jetpack
 - Resolve warning about correctly loading block styles in editor to prepare for iframed editor in WP 7.0.
 - Dev: Resolve Plugin Check warnings.
