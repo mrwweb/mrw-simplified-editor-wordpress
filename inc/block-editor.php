@@ -502,7 +502,17 @@ function filter_block_type_metadata( $metadata ) {
 	if ( in_array( 'text-indent', $hidden_settings, true ) ) {
 		$metadata['supports']['typography']['textIndent'] = false;
 	}
+
+	/* Fit Text in WP7.0+ */
+	if ( $metadata['name'] === 'core/paragraph' && in_array( 'fit-text-paragraph', $hidden_settings, true ) ) {
+		$metadata['supports']['typography']['fitText'] = false;
+	}
 	
+	/* Fit Text in WP7.0+ */
+	if ( $metadata['name'] === 'core/heading' && in_array( 'fit-text-heading', $hidden_settings, true ) ) {
+		$metadata['supports']['typography']['fitText'] = false;
+	}
+
 	return $metadata;
 }
 
