@@ -436,6 +436,7 @@ function hidden_block_editor_settings() {
 		'block-directory',
 		'border',
 		'border-radius',
+		'custom-css',
 		'default-color-palette',
 		'default-gradients',
 		'default-style-variation',
@@ -478,6 +479,21 @@ function hidden_block_editor_settings() {
 	 * @since 2.3.0
 	 */
 	return apply_filters( 'mrw_hidden_block_editor_settings', $hidden_block_editor_settings );
+}
+
+add_filter( 'block_type_metadata', __NAMESPACE__ . '\filter_block_type_metadata', 99 );
+/**
+ * Filters the metadata provided for registering a block type.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array Metadata for registering a block type.
+ */
+function filter_block_type_metadata( $metadata ) {
+	$hidden_settings = hidden_block_editor_settings();
+	if ( in_array( 'custom-css', $hidden_settings, true ) ) {
+        $metadata['supports']['customCSS'] = false;
+    }
+	return $metadata;
 }
 
 add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\block_editor_settings', 99, 2 );
