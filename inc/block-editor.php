@@ -470,6 +470,7 @@ function hidden_block_editor_settings() {
 		'spacing',
 		'sticky-position',
 		'text-decoration',
+		'text-indent',
 		'text-orientation',
 		'text-transform',
 	);
@@ -491,9 +492,17 @@ add_filter( 'block_type_metadata', __NAMESPACE__ . '\filter_block_type_metadata'
  */
 function filter_block_type_metadata( $metadata ) {
 	$hidden_settings = hidden_block_editor_settings();
+
+	/* Custom CSS */
 	if ( in_array( 'custom-css', $hidden_settings, true ) ) {
         $metadata['supports']['customCSS'] = false;
     }
+
+	/* Text Indent */
+	if ( in_array( 'text-indent', $hidden_settings, true ) ) {
+		$metadata['supports']['typography']['textIndent'] = false;
+	}
+	
 	return $metadata;
 }
 
