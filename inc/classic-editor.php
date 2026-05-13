@@ -1,4 +1,7 @@
 <?php
+/**
+ * Classic Editor modifications
+ */
 namespace MRW\SimplifiedEditor;
 
 add_filter( 'mce_buttons', __NAMESPACE__ . '\mce_buttons_1', 0 );
@@ -8,15 +11,15 @@ add_filter( 'mce_buttons', __NAMESPACE__ . '\mce_buttons_1', 0 );
  *
  * @since  1.0.0
  * @access public
- * @param  $buttons array the default TinyMCE buttons
+ * @param  array $buttons the default TinyMCE buttons *
  * @return array the modified TinyMCE buttons
  * @see    http://codex.wordpress.org/TinyMCE_Custom_Buttons
  */
 function mce_buttons_1( $buttons ) {
 
 	$buttons = array(
-		0 => 'styleselect',
-		5 => 'bold',
+		0  => 'styleselect',
+		5  => 'bold',
 		10 => 'italic',
 		15 => 'link',
 		20 => 'unlink',
@@ -32,13 +35,13 @@ function mce_buttons_1( $buttons ) {
 	);
 
 	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
-	if( $screen && isset( $screen->is_block_editor ) && $screen->is_block_editor ) {
+	if ( $screen && isset( $screen->is_block_editor ) && $screen->is_block_editor ) {
 		$buttons[1000] = 'wp_add_media';
 		unset( $buttons[75] );
 	}
 
 	if ( ! wp_is_mobile() ) {
-		$buttons[70] = 'wp_help'; 
+		$buttons[70] = 'wp_help';
 	}
 
 	return $buttons;
@@ -57,8 +60,8 @@ add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\mce_init', 0 );
  *
  * @since  1.0.0
  * @access public
- * @param  $args array existing TinyMCE arguments
- * @return $args array modified TinyMCE arguments
+ * @param  array $args existing TinyMCE arguments
+ * @return array $args modified TinyMCE arguments
  * @see    http://wordpress.stackexchange.com/a/128950/9844
  */
 function mce_init( $args ) {
@@ -108,16 +111,16 @@ function mce_init( $args ) {
 
 	/**
 	 * Filter to add styles to "Text Styles" submenu in `styleselect`.
-	 * 
+	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @param array $text_styles array of arrays, each defining a style
-	 * 
+	 *
 	 * @see http://wordpress.stackexchange.com/a/128950/9844
 	 */
 	$text_styles = array();
 	$text_styles = apply_filters( 'mrw_mce_text_style', $text_styles );
-	if ( ! empty( $text_styles) ) {
+	if ( ! empty( $text_styles ) ) {
 		// Define the "Text Style" submenu
 		$text_styles = array(
 			'title' => esc_attr__( 'Custom Styles', 'mrw-web-design-simple-tinymce' ),

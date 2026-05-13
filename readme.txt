@@ -77,6 +77,10 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
 == Changelog ==
+= 2.15.0 (TBD) =
+
+* Code and comment quality improvements including strict comparison in all filters that use `in_array()` such as `mrw_hidden_blocks`.
+
 = 2.14.0 (November 18, 2025)
 
 - New minimum supported version: WordPress 6.5
