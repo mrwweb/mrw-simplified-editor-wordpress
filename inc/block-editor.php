@@ -214,6 +214,7 @@ function hidden_blocks() {
 	$hidden_site_blocks = apply_filters(
 		'mrw_hidden_site_blocks',
 		array(
+			'core/breadcrumbs',
 			'core/comments',
 			'core/comments-query-loop',
 			'core/loginout',
