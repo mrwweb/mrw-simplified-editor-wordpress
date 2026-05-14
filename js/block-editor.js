@@ -11,6 +11,29 @@ wp.hooks.addFilter( 'blocks.registerBlockType', 'hideBlocks', ( blockSettings, b
 		});
 	}
 
+	if ( blockName === 'core/heading' && Array.isArray( blockSettings.variations ) ) {
+		const hiddenLevels = [];
+		[ 1, 5, 6 ].forEach( ( level ) => {
+			if ( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'heading-' + level ) ) {
+				hiddenLevels.push( 'h' + level );
+			}
+		} );
+		if ( hiddenLevels.length > 0 ) {
+			return Object.assign( {}, blockSettings, {
+				variations: blockSettings.variations.map( ( variation ) => {
+					/* Fully hide heading levels from the editor */
+					if ( -1 < hiddenLevels.indexOf( variation.name ) ) {
+						return Object.assign( {}, variation, { scope: [] } );
+					}
+					/* Hide all heading variations from the inserter  */
+					else if ( -1 < mrwEditorOptions.hiddenSettings.indexOf( 'heading-variations' ) ) {
+						return Object.assign( {}, variation, { scope: [ 'transform' ] } );
+					}
+				} )
+			} );
+		}
+	}
+
 	return blockSettings;
 });
 

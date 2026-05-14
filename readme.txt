@@ -79,6 +79,13 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 == Changelog ==
 = 2.15.0 (TBD) =
 
+* WordPress 7.0 updates
+    * Hide per-block Custom CSS (enable with `custom-css` value in `mrw_hidden_block_editor_settings`)
+    * Hide text indent block setting (enable with `text-indent` value in `mrw_hidden_block_editor_settings`)
+    * Hide the core breadcrumbs block from the post editor (enable everywhere with the `mrw_hidden_blocks` filter)
+    * Fix hiding Fit Text settings for Paragraph and Heading blocks with new settings approach (Editorializing: The way it should have been all along!)
+    * Hide new Heading variations for levels 1, 5, 6 to match previous behavior
+    * Don't display heading variations in the block inserters. (Editors will continue to insert Heading block and then change level from 2, if necessary.) Show block variations with `heading-variations` in `mrw_hidden_block_editor_settings`.
 * Code and comment quality improvements including strict comparison in all filters that use `in_array()` such as `mrw_hidden_blocks`.
 
 = 2.14.0 (November 18, 2025)

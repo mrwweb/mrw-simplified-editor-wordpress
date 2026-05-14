@@ -450,6 +450,7 @@ function hidden_block_editor_settings() {
 		'heading-1',
 		'heading-5',
 		'heading-6',
+		'heading-variations',
 		'highlight',
 		'image-background',
 		'image-dimensions',
