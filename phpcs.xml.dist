@@ -35,6 +35,8 @@
     <rule ref="WordPress">
         <!-- I'm pretty sure this rule is on the way out. I understand why people recommend it and I think it's more readable the other way -->
         <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+        <!-- I'm also using namespaces, so I'm not worried about this. -->
+        <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
     </rule>
     
     <!-- #############################################################################
