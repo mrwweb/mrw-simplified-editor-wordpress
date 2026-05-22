@@ -446,6 +446,7 @@ function hidden_block_editor_settings() {
 		'duotone',
 		'fit-text-heading',
 		'fit-text-paragraph',
+		'font-library',
 		'font-weight',
 		'font-style',
 		'heading-1',
@@ -563,6 +564,11 @@ function block_editor_settings( $editor_settings, $context ) {
 		$editor_settings['__experimentalFeatures']['color']['customDuotone']  = false;
 	}
 
+	/* Font Library - Seems like this doesn't work, leaving for now: https://github.com/WordPress/developer-blog-content/issues/337*/
+	if ( in_array( 'font-library', $hidden_settings, true ) ) {
+		$editor_settings['fontLibraryEnabled'] = false;
+	}
+
 	/* Font Style */
 	if ( in_array( 'font-style', $hidden_settings, true ) ) {
 		$editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
@@ -634,6 +640,22 @@ function block_editor_settings( $editor_settings, $context ) {
 	}
 
 	return $editor_settings;
+}
+
+add_action( 'admin_menu', __NAMESPACE__ . '\remove_font_library_menu' );
+/**
+ * Removes the new Font Library menu item for Classic in WP 7.0
+ * 
+ * @since 2.15.0
+ *
+ * @return void
+ */
+function remove_font_library_menu() {
+	$hidden_settings = hidden_block_editor_settings();
+
+	if ( in_array( 'font-library', $hidden_settings, true ) ) {
+		remove_submenu_page( 'themes.php', 'font-library.php' );
+	}
 }
 
 /**

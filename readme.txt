@@ -86,6 +86,7 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
     * Fix hiding Fit Text settings for Paragraph and Heading blocks with new settings approach (Editorializing: The way it should have been all along!)
     * Hide new Heading variations for levels 1, 5, 6 to match previous behavior
     * Don't display heading variations in the block inserters. (Editors will continue to insert Heading block and then change level from 2, if necessary.) Show block variations with `heading-variations` in `mrw_hidden_block_editor_settings`.
+    * Hide Appearance > Font Library menu item. Show with `font-library` in `mrw_hidden_block_editor_settings`.
 * Code and comment quality improvements including strict comparison in all filters that use `in_array()` such as `mrw_hidden_blocks`.
 
 = 2.14.0 (November 18, 2025)
