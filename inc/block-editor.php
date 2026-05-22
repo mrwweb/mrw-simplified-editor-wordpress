@@ -141,6 +141,7 @@ function hidden_blocks() {
 			'core/details',
 			'core/footnotes',
 			'core/freeform',
+			'core/icon',
 			'core/latest-posts',
 			'core/math',
 			'core/nextpage',
