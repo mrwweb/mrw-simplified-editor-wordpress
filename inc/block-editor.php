@@ -491,9 +491,9 @@ add_filter( 'block_type_metadata', __NAMESPACE__ . '\filter_block_type_metadata'
  * Filters the metadata provided for registering a block type.
  *
  * @param array $metadata Metadata for registering a block type.
- * 
+ *
  * @return array Metadata for registering a block type.
- * 
+ *
  * @since 2.15.0
  */
 function filter_block_type_metadata( $metadata ) {
@@ -501,8 +501,8 @@ function filter_block_type_metadata( $metadata ) {
 
 	/* Custom CSS */
 	if ( in_array( 'custom-css', $hidden_settings, true ) ) {
-        $metadata['supports']['customCSS'] = false;
-    }
+		$metadata['supports']['customCSS'] = false;
+	}
 
 	/* Text Indent */
 	if ( in_array( 'text-indent', $hidden_settings, true ) ) {
@@ -513,7 +513,7 @@ function filter_block_type_metadata( $metadata ) {
 	if ( $metadata['name'] === 'core/paragraph' && in_array( 'fit-text-paragraph', $hidden_settings, true ) ) {
 		$metadata['supports']['typography']['fitText'] = false;
 	}
-	
+
 	/* Fit Text in WP7.0+ */
 	if ( $metadata['name'] === 'core/heading' && in_array( 'fit-text-heading', $hidden_settings, true ) ) {
 		$metadata['supports']['typography']['fitText'] = false;
@@ -522,21 +522,18 @@ function filter_block_type_metadata( $metadata ) {
 	return $metadata;
 }
 
-add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\block_editor_settings', 99, 2 );
+add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\block_editor_settings', 99 );
 /**
  * Make changes to editor settings, accounting for plugin filters, via the core block_editor_settings filter
  *
- * @param  array  $editor_settings default editor settings
- * @param  string $context name of editor context
+ * @param  array $editor_settings default editor settings
  * @return array                  modified settings
  *
  * @see https://github.com/joppuyo/remove-drop-cap/blob/v1.1.0/remove-drop-cap.php#L22
  */
-function block_editor_settings( $editor_settings, $context ) {
+function block_editor_settings( $editor_settings ) {
 
 	$hidden_settings = hidden_block_editor_settings();
-
-	do_action( 'qm/debug', $editor_settings );
 
 	/* Border */
 	if ( in_array( 'border', $hidden_settings, true ) ) {
@@ -650,7 +647,7 @@ function block_editor_settings( $editor_settings, $context ) {
 add_action( 'admin_menu', __NAMESPACE__ . '\remove_font_library_menu' );
 /**
  * Removes the new Font Library menu item for Classic in WP 7.0
- * 
+ *
  * @since 2.15.0
  *
  * @return void
