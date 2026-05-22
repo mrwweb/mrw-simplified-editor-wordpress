@@ -491,7 +491,10 @@ add_filter( 'block_type_metadata', __NAMESPACE__ . '\filter_block_type_metadata'
  * Filters the metadata provided for registering a block type.
  *
  * @param array $metadata Metadata for registering a block type.
+ * 
  * @return array Metadata for registering a block type.
+ * 
+ * @since 2.15.0
  */
 function filter_block_type_metadata( $metadata ) {
 	$hidden_settings = hidden_block_editor_settings();
@@ -532,6 +535,8 @@ add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\block_editor_settings
 function block_editor_settings( $editor_settings, $context ) {
 
 	$hidden_settings = hidden_block_editor_settings();
+
+	do_action( 'qm/debug', $editor_settings );
 
 	/* Border */
 	if ( in_array( 'border', $hidden_settings, true ) ) {

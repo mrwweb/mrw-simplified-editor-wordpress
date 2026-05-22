@@ -5,12 +5,14 @@
  */
 wp.hooks.addFilter( 'blocks.registerBlockType', 'hideBlocks', ( blockSettings, blockName ) => {
 
+	/* Hide blocks from the inserter */
 	if ( -1 < mrwEditorOptions.hiddenBlocks.indexOf( blockName ) ) {
 		return Object.assign({}, blockSettings, {
 			supports: Object.assign( {}, blockSettings.supports, {inserter: false} )
 		});
 	}
 
+	/* Hide heading variation levels complete and all heading variations from the inserter */
 	if ( blockName === 'core/heading' && Array.isArray( blockSettings.variations ) ) {
 		const hiddenLevels = [];
 		[ 1, 5, 6 ].forEach( ( level ) => {
