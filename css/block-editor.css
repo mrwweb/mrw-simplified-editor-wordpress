@@ -15,16 +15,6 @@
 }
 
 /*
- Hide the "Upload" button in the editor because it skips the media library
- Hide the "Image from URL" option to discourage hotlinking and not having alt text
- Filter Value: image-file-upload
- */
-.mrw-block-editor-no-image-file-upload .block-editor-media-placeholder__upload-button,
-.mrw-block-editor-no-image-url .block-editor-media-placeholder__url-input-container {
-	display: none;
-}
-
-/*
  Hide the "Text over image" toolbar button when the Cover block is not in the inserter
  Only works for English sites :'(
  */
@@ -69,10 +59,13 @@
 =            "Save draft" Button            =
 ===========================================*/
 /* Styles copied from .is-secondary button class */
-.edit-post-header__settings .editor-post-save-draft {
-	white-space: nowrap;
-	border: 1px solid #a0a5aa;
-	background: #f3f5f6;
+.edit-post-header__settings .editor-post-save-draft,
+/* WP 7.0+ */
+.editor-header__settings .editor-post-save-draft {
+	background: #0000;
+	box-shadow: inset 0 0 0 1px var(--wp-components-color-accent,var(--wp-admin-theme-color,#3858e9)),0 0 0 currentColor;
+	color: var(--wp-components-color-accent,var(--wp-admin-theme-color,#3858e9));
+	outline: 1px solid #0000;
 }
 
 .edit-post-header__settings .editor-post-save-draft:focus:not(:disabled),
