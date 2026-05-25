@@ -4,6 +4,8 @@
  */
 namespace MRW\SimplifiedEditor;
 
+use Jetpack_Gutenberg;
+
 add_action( 'after_setup_theme', __NAMESPACE__ . '\block_editor_theme_support', 11 );
 /**
  * Make modifications to editor that can be made using default add_theme_support() calls
