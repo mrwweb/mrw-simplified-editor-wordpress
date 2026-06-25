@@ -507,7 +507,7 @@ function filter_block_type_metadata( $metadata ) {
 	}
 
 	/* Text Indent */
-	if ( in_array( 'text-indent', $hidden_settings, true ) ) {
+	if ( isset( $metadata['supports']['typography']['textIndent'] ) && in_array( 'text-indent', $hidden_settings, true ) ) {
 		$metadata['supports']['typography']['textIndent'] = false;
 	}
 

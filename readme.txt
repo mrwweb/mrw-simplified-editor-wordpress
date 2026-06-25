@@ -4,7 +4,7 @@ Tags: Block Editor, Blocks, Gutenberg, Editor Styles, Editor
 Requires at least: 6.5
 Requires PHP: 5.6.20
 Tested up to: 7.0
-Stable tag: 2.15.1
+Stable tag: 2.15.2
 Donate link: https://www.paypal.me/rootwiley
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -79,6 +79,10 @@ Visit the GitHub wiki for [examples of filters](https://github.com/mrwweb/mrw-si
 1. The Block Editor simplified, here with no colors or drop caps for the Paragraph block.
 
 == Changelog ==
+= 2.15.2 (June 25, 2026) =
+
+* Fix fatal error related to textIndent setting on some sites
+
 = 2.15.1 (May 25, 2026) =
 
 * Fix fatal error for sites using Jetpack blocks
